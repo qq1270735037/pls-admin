@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Employeeinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Employeeinfo)表服务接口
@@ -20,14 +19,7 @@ public interface EmployeeinfoService {
      */
     Employeeinfo queryById(Integer employeeId);
 
-    /**
-     * 分页查询
-     *
-     * @param employeeinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Employeeinfo> queryByPage(Employeeinfo employeeinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据

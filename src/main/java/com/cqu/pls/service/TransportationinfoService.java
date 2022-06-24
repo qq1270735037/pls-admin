@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Transportationinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Transportationinfo)表服务接口
@@ -20,14 +19,7 @@ public interface TransportationinfoService {
      */
     Transportationinfo queryById(Long transportationId);
 
-    /**
-     * 分页查询
-     *
-     * @param transportationinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Transportationinfo> queryByPage(Transportationinfo transportationinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据

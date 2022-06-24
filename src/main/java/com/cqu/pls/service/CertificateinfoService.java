@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Certificateinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Certificateinfo)表服务接口
@@ -20,14 +19,7 @@ public interface CertificateinfoService {
      */
     Certificateinfo queryById(Integer certificateId);
 
-    /**
-     * 分页查询
-     *
-     * @param certificateinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Certificateinfo> queryByPage(Certificateinfo certificateinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据

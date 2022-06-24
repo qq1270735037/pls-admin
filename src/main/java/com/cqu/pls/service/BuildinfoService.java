@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Buildinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Buildinfo)表服务接口
@@ -20,14 +19,7 @@ public interface BuildinfoService {
      */
     Buildinfo queryById(Integer buildId);
 
-    /**
-     * 分页查询
-     *
-     * @param buildinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Buildinfo> queryByPage(Buildinfo buildinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据

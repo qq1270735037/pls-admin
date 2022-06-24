@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Machineinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Machineinfo)表服务接口
@@ -20,14 +19,7 @@ public interface MachineinfoService {
      */
     Machineinfo queryById(Integer machineId);
 
-    /**
-     * 分页查询
-     *
-     * @param machineinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Machineinfo> queryByPage(Machineinfo machineinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据

@@ -1,8 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Carinfo;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 /**
  * (Carinfo)表服务接口
@@ -20,14 +19,7 @@ public interface CarinfoService {
      */
     Carinfo queryById(Integer carId);
 
-    /**
-     * 分页查询
-     *
-     * @param carinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    Page<Carinfo> queryByPage(Carinfo carinfo, PageRequest pageRequest);
+
 
     /**
      * 新增数据
