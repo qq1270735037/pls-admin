@@ -2,8 +2,8 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Advertisementinfo;
 import com.cqu.pls.service.AdvertisementinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +31,10 @@ public class AdvertisementinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Advertisementinfo>> queryByPage(Advertisementinfo advertisementinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.advertisementinfoService.queryByPage(advertisementinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Advertisementinfo>> queryByPage(Advertisementinfo advertisementinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.advertisementinfoService.queryByPage(advertisementinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据
