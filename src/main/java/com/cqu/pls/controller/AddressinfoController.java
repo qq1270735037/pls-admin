@@ -2,8 +2,6 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.service.AddressinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +29,10 @@ public class AddressinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Addressinfo>> queryByPage(Addressinfo addressinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.addressinfoService.queryByPage(addressinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Addressinfo>> queryByPage(Addressinfo addressinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.addressinfoService.queryByPage(addressinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据
