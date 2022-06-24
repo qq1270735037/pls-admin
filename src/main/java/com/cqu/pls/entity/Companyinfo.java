@@ -28,7 +28,7 @@ public class Companyinfo implements Serializable {
     
     private String companyPerson;
     
-    private Integer companyMobile;
+    private String companyMobile;
 
 
     public Integer getCompanyId() {
@@ -95,11 +95,11 @@ public class Companyinfo implements Serializable {
         this.companyPerson = companyPerson;
     }
 
-    public Integer getCompanyMobile() {
+    public String getCompanyMobile() {
         return companyMobile;
     }
 
-    public void setCompanyMobile(Integer companyMobile) {
+    public void setCompanyMobile(String companyMobile) {
         this.companyMobile = companyMobile;
     }
 
