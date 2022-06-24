@@ -2,7 +2,6 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Matetialinfo;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -28,7 +27,6 @@ public interface MatetialinfoDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<Matetialinfo> queryAllByLimit(Matetialinfo matetialinfo, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

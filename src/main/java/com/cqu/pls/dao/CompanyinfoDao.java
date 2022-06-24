@@ -2,7 +2,6 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Companyinfo;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public interface CompanyinfoDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<Companyinfo> queryAllByLimit(Companyinfo companyinfo, @Param("pageable") Pageable pageable);
+//    List<Companyinfo> queryAllByLimit(Companyinfo companyinfo, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

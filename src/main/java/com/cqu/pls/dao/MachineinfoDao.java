@@ -2,7 +2,6 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Machineinfo;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public interface MachineinfoDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<Machineinfo> queryAllByLimit(Machineinfo machineinfo, @Param("pageable") Pageable pageable);
+
 
     /**
      * 统计总行数
