@@ -48,8 +48,8 @@ public class MatetialinfoController {
 //    public ResponseEntity<Matetialinfo> queryById(@PathVariable("id") Integer id) {
 //        return ResponseEntity.ok(this.matetialinfoService.queryById(id));
 //    }
-    @PostMapping("get")
-    public DataResult queryById(Integer id) {
+    @PostMapping("selectOne")
+    public DataResult selectOne(Integer id,HttpSession httpSession) {
         Matetialinfo matetialinfo = this.matetialinfoService.queryById(id);
         System.out.println("id:"+id);
         System.out.println(matetialinfo);
