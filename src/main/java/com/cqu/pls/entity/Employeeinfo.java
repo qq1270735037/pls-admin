@@ -102,5 +102,19 @@ public class Employeeinfo implements Serializable {
         this.employeeNumber = employeeNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Employeeinfo{" +
+                "employeeId=" + employeeId +
+                ", companyId=" + companyId +
+                ", employeeName='" + employeeName + '\'' +
+                ", employeeGender='" + employeeGender + '\'' +
+                ", employeeAddress='" + employeeAddress + '\'' +
+                ", employeeMobile='" + employeeMobile + '\'' +
+                ", employeeDate='" + employeeDate + '\'' +
+                ", employeeStatus='" + employeeStatus + '\'' +
+                ", employeeNumber='" + employeeNumber + '\'' +
+                '}';
+    }
 }
 

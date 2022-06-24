@@ -73,5 +73,16 @@ public class Fixinfo implements Serializable {
         this.fixMoney = fixMoney;
     }
 
+    @Override
+    public String toString() {
+        return "Fixinfo{" +
+                "fixId=" + fixId +
+                ", carId=" + carId +
+                ", fixStarttime=" + fixStarttime +
+                ", fixEndtime=" + fixEndtime +
+                ", fixName='" + fixName + '\'' +
+                ", fixMoney=" + fixMoney +
+                '}';
+    }
 }
 

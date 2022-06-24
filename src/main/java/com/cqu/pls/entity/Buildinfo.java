@@ -82,5 +82,17 @@ public class Buildinfo implements Serializable {
         this.buildPerson = buildPerson;
     }
 
+    @Override
+    public String toString() {
+        return "Buildinfo{" +
+                "buildId=" + buildId +
+                ", addressId=" + addressId +
+                ", bulidName='" + bulidName + '\'' +
+                ", buildStyle='" + buildStyle + '\'' +
+                ", buildRent=" + buildRent +
+                ", buildArea=" + buildArea +
+                ", buildPerson='" + buildPerson + '\'' +
+                '}';
+    }
 }
 

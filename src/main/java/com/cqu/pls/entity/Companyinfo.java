@@ -103,5 +103,19 @@ public class Companyinfo implements Serializable {
         this.companyMobile = companyMobile;
     }
 
+    @Override
+    public String toString() {
+        return "Companyinfo{" +
+                "companyId=" + companyId +
+                ", companyName='" + companyName + '\'' +
+                ", companyTime=" + companyTime +
+                ", companyCity='" + companyCity + '\'' +
+                ", companyNumber=" + companyNumber +
+                ", companyWebside='" + companyWebside + '\'' +
+                ", companyCode='" + companyCode + '\'' +
+                ", companyPerson='" + companyPerson + '\'' +
+                ", companyMobile=" + companyMobile +
+                '}';
+    }
 }
 

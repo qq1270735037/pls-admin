@@ -63,5 +63,15 @@ public class Communicationinfo implements Serializable {
         this.communicationTime = communicationTime;
     }
 
+    @Override
+    public String toString() {
+        return "Communicationinfo{" +
+                "communicationId=" + communicationId +
+                ", employeeId=" + employeeId +
+                ", communicationTitle='" + communicationTitle + '\'' +
+                ", communicationContext='" + communicationContext + '\'' +
+                ", communicationTime=" + communicationTime +
+                '}';
+    }
 }
 

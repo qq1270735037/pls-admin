@@ -52,5 +52,14 @@ public class Purchasesale implements Serializable {
         this.purchasesaleCount = purchasesaleCount;
     }
 
+    @Override
+    public String toString() {
+        return "Purchasesale{" +
+                "purchasesaleId=" + purchasesaleId +
+                ", purchasesaleType='" + purchasesaleType + '\'' +
+                ", purchasesalePrice=" + purchasesalePrice +
+                ", purchasesaleCount=" + purchasesaleCount +
+                '}';
+    }
 }
 

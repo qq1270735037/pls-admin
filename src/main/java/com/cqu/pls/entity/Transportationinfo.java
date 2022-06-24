@@ -83,5 +83,17 @@ public class Transportationinfo implements Serializable {
         this.transportationMoney = transportationMoney;
     }
 
+    @Override
+    public String toString() {
+        return "Transportationinfo{" +
+                "transportationId=" + transportationId +
+                ", carId=" + carId +
+                ", transportationStartTime=" + transportationStartTime +
+                ", transportationEndTime=" + transportationEndTime +
+                ", transportationStartLocation='" + transportationStartLocation + '\'' +
+                ", transportationEndLocation='" + transportationEndLocation + '\'' +
+                ", transportationMoney='" + transportationMoney + '\'' +
+                '}';
+    }
 }
 

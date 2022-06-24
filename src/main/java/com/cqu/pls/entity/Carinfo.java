@@ -72,5 +72,16 @@ public class Carinfo implements Serializable {
         this.carBrand = carBrand;
     }
 
+    @Override
+    public String toString() {
+        return "Carinfo{" +
+                "carId=" + carId +
+                ", carNumber='" + carNumber + '\'' +
+                ", carStyle='" + carStyle + '\'' +
+                ", carLoad=" + carLoad +
+                ", carMileage=" + carMileage +
+                ", carBrand='" + carBrand + '\'' +
+                '}';
+    }
 }
 

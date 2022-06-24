@@ -93,5 +93,18 @@ public class Advertisementinfo implements Serializable {
         this.adImages = adImages;
     }
 
+    @Override
+    public String toString() {
+        return "Advertisementinfo{" +
+                "adId=" + adId +
+                ", employeeId=" + employeeId +
+                ", adContent='" + adContent + '\'' +
+                ", adMoney='" + adMoney + '\'' +
+                ", adAdviser='" + adAdviser + '\'' +
+                ", adStart=" + adStart +
+                ", adEnd=" + adEnd +
+                ", adImages='" + adImages + '\'' +
+                '}';
+    }
 }
 
