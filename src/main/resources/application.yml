@@ -20,7 +20,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123321
-    url: jdbc:mysql://159.75.38.129:3306/doc?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://159.75.38.129:3306/pls?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
   devtools:
     #热部署生效,默认就是true
     restart:
