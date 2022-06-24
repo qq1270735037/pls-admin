@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Machineinfo;
 import com.cqu.pls.service.MachineinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class MachineinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Machineinfo>> queryByPage(Machineinfo machineinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.machineinfoService.queryByPage(machineinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Machineinfo>> queryByPage(Machineinfo machineinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.machineinfoService.queryByPage(machineinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据

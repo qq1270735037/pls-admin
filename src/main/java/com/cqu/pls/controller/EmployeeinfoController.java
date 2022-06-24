@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Employeeinfo;
 import com.cqu.pls.service.EmployeeinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class EmployeeinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Employeeinfo>> queryByPage(Employeeinfo employeeinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.employeeinfoService.queryByPage(employeeinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Employeeinfo>> queryByPage(Employeeinfo employeeinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.employeeinfoService.queryByPage(employeeinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据

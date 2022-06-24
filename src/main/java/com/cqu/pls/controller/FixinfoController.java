@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Fixinfo;
 import com.cqu.pls.service.FixinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class FixinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Fixinfo>> queryByPage(Fixinfo fixinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.fixinfoService.queryByPage(fixinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Fixinfo>> queryByPage(Fixinfo fixinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.fixinfoService.queryByPage(fixinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据

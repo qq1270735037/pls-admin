@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.service.BuildinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class BuildinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Buildinfo>> queryByPage(Buildinfo buildinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.buildinfoService.queryByPage(buildinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Buildinfo>> queryByPage(Buildinfo buildinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.buildinfoService.queryByPage(buildinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据

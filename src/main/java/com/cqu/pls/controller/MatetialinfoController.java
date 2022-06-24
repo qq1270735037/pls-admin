@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.service.MatetialinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class MatetialinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Matetialinfo>> queryByPage(Matetialinfo matetialinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.matetialinfoService.queryByPage(matetialinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Matetialinfo>> queryByPage(Matetialinfo matetialinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.matetialinfoService.queryByPage(matetialinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据

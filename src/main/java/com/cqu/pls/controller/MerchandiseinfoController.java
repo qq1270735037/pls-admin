@@ -2,8 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Merchandiseinfo;
 import com.cqu.pls.service.MerchandiseinfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +30,10 @@ public class MerchandiseinfoController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Merchandiseinfo>> queryByPage(Merchandiseinfo merchandiseinfo, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.merchandiseinfoService.queryByPage(merchandiseinfo, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Merchandiseinfo>> queryByPage(Merchandiseinfo merchandiseinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.merchandiseinfoService.queryByPage(merchandiseinfo, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据
