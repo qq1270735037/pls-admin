@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.TransportationinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Transportationinfo">
+        <!--@Table TransportationInfo-->
+        <result property="transportationId" column="transportation_id" jdbcType="INTEGER"/>
+        <result property="carId" column="car_id" jdbcType="INTEGER"/>
+        <result property="transportationStartTime" column="transportation_start_time" jdbcType="TIMESTAMP"/>
+        <result property="transportationEndTime" column="transportation_end_time" jdbcType="TIMESTAMP"/>
+        <result property="transportationStartLocation" column="transportation_start_location" jdbcType="VARCHAR"/>
+        <result property="transportationEndLocation" column="transportation_end_location" jdbcType="VARCHAR"/>
+        <result property="transportationMoney" column="transportation_money" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          transportation_id, car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money
+        from TransportationInfo
+        where transportation_id = #{transportationId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          transportation_id, car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money
+        from TransportationInfo
+        <where>
+            <if test="transportationId != null">
+                and transportation_id = #{transportationId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="transportationStartTime != null">
+                and transportation_start_time = #{transportationStartTime}
+            </if>
+            <if test="transportationEndTime != null">
+                and transportation_end_time = #{transportationEndTime}
+            </if>
+            <if test="transportationStartLocation != null and transportationStartLocation != ''">
+                and transportation_start_location = #{transportationStartLocation}
+            </if>
+            <if test="transportationEndLocation != null and transportationEndLocation != ''">
+                and transportation_end_location = #{transportationEndLocation}
+            </if>
+            <if test="transportationMoney != null and transportationMoney != ''">
+                and transportation_money = #{transportationMoney}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          transportation_id, car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money
+        from pls.TransportationInfo
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from TransportationInfo
+        <where>
+            <if test="transportationId != null">
+                and transportation_id = #{transportationId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="transportationStartTime != null">
+                and transportation_start_time = #{transportationStartTime}
+            </if>
+            <if test="transportationEndTime != null">
+                and transportation_end_time = #{transportationEndTime}
+            </if>
+            <if test="transportationStartLocation != null and transportationStartLocation != ''">
+                and transportation_start_location = #{transportationStartLocation}
+            </if>
+            <if test="transportationEndLocation != null and transportationEndLocation != ''">
+                and transportation_end_location = #{transportationEndLocation}
+            </if>
+            <if test="transportationMoney != null and transportationMoney != ''">
+                and transportation_money = #{transportationMoney}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="transportationId" useGeneratedKeys="true">
+        insert into TransportationInfo(car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money)
+        values (#{carId}, #{transportationStartTime}, #{transportationEndTime}, #{transportationStartLocation}, #{transportationEndLocation}, #{transportationMoney})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="transportationId" useGeneratedKeys="true">
+        insert into TransportationInfo(car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.carId}, #{entity.transportationStartTime}, #{entity.transportationEndTime}, #{entity.transportationStartLocation}, #{entity.transportationEndLocation}, #{entity.transportationMoney})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="transportationId" useGeneratedKeys="true">
+        insert into TransportationInfo(car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.carId}, #{entity.transportationStartTime}, #{entity.transportationEndTime}, #{entity.transportationStartLocation}, #{entity.transportationEndLocation}, #{entity.transportationMoney})
+        </foreach>
+        on duplicate key update
+        car_id = values(car_id),
+        transportation_start_time = values(transportation_start_time),
+        transportation_end_time = values(transportation_end_time),
+        transportation_start_location = values(transportation_start_location),
+        transportation_end_location = values(transportation_end_location),
+        transportation_money = values(transportation_money)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update TransportationInfo
+        <set>
+            <if test="carId != null">
+                car_id = #{carId},
+            </if>
+            <if test="transportationStartTime != null">
+                transportation_start_time = #{transportationStartTime},
+            </if>
+            <if test="transportationEndTime != null">
+                transportation_end_time = #{transportationEndTime},
+            </if>
+            <if test="transportationStartLocation != null and transportationStartLocation != ''">
+                transportation_start_location = #{transportationStartLocation},
+            </if>
+            <if test="transportationEndLocation != null and transportationEndLocation != ''">
+                transportation_end_location = #{transportationEndLocation},
+            </if>
+            <if test="transportationMoney != null and transportationMoney != ''">
+                transportation_money = #{transportationMoney},
+            </if>
+        </set>
+        where transportation_id = #{transportationId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from TransportationInfo where transportation_id = #{transportationId}
+    </delete>
+
+</mapper>
+

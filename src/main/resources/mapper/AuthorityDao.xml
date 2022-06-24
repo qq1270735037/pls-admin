@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.AuthorityDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Authority">
+        <!--@Table authority-->
+        <result property="authorityId" column="authority_id" jdbcType="INTEGER"/>
+        <result property="authorityName" column="authority_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          authority_id, authority_name
+        from authority
+        where authority_id = #{authorityId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          authority_id, authority_name
+        from authority
+        <where>
+            <if test="authorityId != null">
+                and authority_id = #{authorityId}
+            </if>
+            <if test="authorityName != null and authorityName != ''">
+                and authority_name = #{authorityName}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          authority_id, authority_name
+        from pls.authority
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from authority
+        <where>
+            <if test="authorityId != null">
+                and authority_id = #{authorityId}
+            </if>
+            <if test="authorityName != null and authorityName != ''">
+                and authority_name = #{authorityName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="authorityId" useGeneratedKeys="true">
+        insert into authority(authority_name)
+        values (#{authorityName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="authorityId" useGeneratedKeys="true">
+        insert into authority(authority_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.authorityName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="authorityId" useGeneratedKeys="true">
+        insert into authority(authority_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.authorityName})
+        </foreach>
+        on duplicate key update
+        authority_name = values(authority_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update authority
+        <set>
+            <if test="authorityName != null and authorityName != ''">
+                authority_name = #{authorityName},
+            </if>
+        </set>
+        where authority_id = #{authorityId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from authority where authority_id = #{authorityId}
+    </delete>
+
+</mapper>
+

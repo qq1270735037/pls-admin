@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.BuildinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Buildinfo">
+        <!--@Table BuildInfo-->
+        <result property="buildId" column="build_id" jdbcType="INTEGER"/>
+        <result property="addressId" column="address_id" jdbcType="INTEGER"/>
+        <result property="bulidName" column="bulid_name" jdbcType="VARCHAR"/>
+        <result property="buildStyle" column="build_style" jdbcType="VARCHAR"/>
+        <result property="buildRent" column="build_rent" jdbcType="INTEGER"/>
+        <result property="buildArea" column="build_area" jdbcType="INTEGER"/>
+        <result property="buildPerson" column="build_person" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          build_id, address_id, bulid_name, build_style, build_rent, build_area, build_person
+        from BuildInfo
+        where build_id = #{buildId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          build_id, address_id, bulid_name, build_style, build_rent, build_area, build_person
+        from BuildInfo
+        <where>
+            <if test="buildId != null">
+                and build_id = #{buildId}
+            </if>
+            <if test="addressId != null">
+                and address_id = #{addressId}
+            </if>
+            <if test="bulidName != null and bulidName != ''">
+                and bulid_name = #{bulidName}
+            </if>
+            <if test="buildStyle != null and buildStyle != ''">
+                and build_style = #{buildStyle}
+            </if>
+            <if test="buildRent != null">
+                and build_rent = #{buildRent}
+            </if>
+            <if test="buildArea != null">
+                and build_area = #{buildArea}
+            </if>
+            <if test="buildPerson != null and buildPerson != ''">
+                and build_person = #{buildPerson}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          build_id, address_id, bulid_name, build_style, build_rent, build_area, build_person
+        from pls.BuildInfo
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from BuildInfo
+        <where>
+            <if test="buildId != null">
+                and build_id = #{buildId}
+            </if>
+            <if test="addressId != null">
+                and address_id = #{addressId}
+            </if>
+            <if test="bulidName != null and bulidName != ''">
+                and bulid_name = #{bulidName}
+            </if>
+            <if test="buildStyle != null and buildStyle != ''">
+                and build_style = #{buildStyle}
+            </if>
+            <if test="buildRent != null">
+                and build_rent = #{buildRent}
+            </if>
+            <if test="buildArea != null">
+                and build_area = #{buildArea}
+            </if>
+            <if test="buildPerson != null and buildPerson != ''">
+                and build_person = #{buildPerson}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="buildId" useGeneratedKeys="true">
+        insert into BuildInfo(address_id, bulid_name, build_style, build_rent, build_area, build_person)
+        values (#{addressId}, #{bulidName}, #{buildStyle}, #{buildRent}, #{buildArea}, #{buildPerson})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="buildId" useGeneratedKeys="true">
+        insert into BuildInfo(address_id, bulid_name, build_style, build_rent, build_area, build_person)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.addressId}, #{entity.bulidName}, #{entity.buildStyle}, #{entity.buildRent}, #{entity.buildArea}, #{entity.buildPerson})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="buildId" useGeneratedKeys="true">
+        insert into BuildInfo(address_id, bulid_name, build_style, build_rent, build_area, build_person)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.addressId}, #{entity.bulidName}, #{entity.buildStyle}, #{entity.buildRent}, #{entity.buildArea}, #{entity.buildPerson})
+        </foreach>
+        on duplicate key update
+        address_id = values(address_id),
+        bulid_name = values(bulid_name),
+        build_style = values(build_style),
+        build_rent = values(build_rent),
+        build_area = values(build_area),
+        build_person = values(build_person)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update BuildInfo
+        <set>
+            <if test="addressId != null">
+                address_id = #{addressId},
+            </if>
+            <if test="bulidName != null and bulidName != ''">
+                bulid_name = #{bulidName},
+            </if>
+            <if test="buildStyle != null and buildStyle != ''">
+                build_style = #{buildStyle},
+            </if>
+            <if test="buildRent != null">
+                build_rent = #{buildRent},
+            </if>
+            <if test="buildArea != null">
+                build_area = #{buildArea},
+            </if>
+            <if test="buildPerson != null and buildPerson != ''">
+                build_person = #{buildPerson},
+            </if>
+        </set>
+        where build_id = #{buildId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from BuildInfo where build_id = #{buildId}
+    </delete>
+
+</mapper>
+
