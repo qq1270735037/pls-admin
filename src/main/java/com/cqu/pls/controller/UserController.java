@@ -2,8 +2,6 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.User;
 import com.cqu.pls.service.UserService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +29,10 @@ public class UserController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据
