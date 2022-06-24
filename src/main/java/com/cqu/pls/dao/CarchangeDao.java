@@ -2,7 +2,7 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Carchange;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 /**
@@ -28,7 +28,7 @@ public interface CarchangeDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<Carchange> queryAllByLimit(Carchange carchange, @Param("pageable") Pageable pageable);
+//    List<Carchange> queryAllByLimit(Carchange carchange, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

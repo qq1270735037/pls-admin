@@ -3,6 +3,7 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.service.AddressinfoService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

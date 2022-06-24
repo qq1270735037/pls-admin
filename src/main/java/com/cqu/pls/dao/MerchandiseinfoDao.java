@@ -2,7 +2,6 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Merchandiseinfo;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -21,14 +20,7 @@ public interface MerchandiseinfoDao {
      */
     Merchandiseinfo queryById(Integer merchandiseId);
 
-    /**
-     * 查询指定行数据
-     *
-     * @param merchandiseinfo 查询条件
-     * @param pageable         分页对象
-     * @return 对象列表
-     */
-    List<Merchandiseinfo> queryAllByLimit(Merchandiseinfo merchandiseinfo, @Param("pageable") Pageable pageable);
+
 
     /**
      * 统计总行数

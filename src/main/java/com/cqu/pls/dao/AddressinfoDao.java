@@ -2,7 +2,7 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Addressinfo;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 /**
@@ -28,7 +28,7 @@ public interface AddressinfoDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<Addressinfo> queryAllByLimit(Addressinfo addressinfo, @Param("pageable") Pageable pageable);
+//    List<Addressinfo> queryAllByLimit(Addressinfo addressinfo, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数
