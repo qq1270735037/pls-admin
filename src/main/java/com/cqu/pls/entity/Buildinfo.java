@@ -1,5 +1,8 @@
 package com.cqu.pls.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +11,8 @@ import java.io.Serializable;
  * @author makejava
  * @since 2022-06-24 14:34:03
  */
+@NoArgsConstructor
+@AllArgsConstructor
 public class Buildinfo implements Serializable {
     private static final long serialVersionUID = -55071142384680025L;
     
