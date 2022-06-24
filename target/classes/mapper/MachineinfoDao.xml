@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.MachineinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Machineinfo">
+        <!--@Table MachineInfo-->
+        <result property="machineId" column="machine_id" jdbcType="INTEGER"/>
+        <result property="machineName" column="machine_name" jdbcType="VARCHAR"/>
+        <result property="machineType" column="machine_type" jdbcType="VARCHAR"/>
+        <result property="machineYear" column="machine_year" jdbcType="INTEGER"/>
+        <result property="machinePower" column="machine_power" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          machine_id, machine_name, machine_type, machine_year, machine_power
+        from MachineInfo
+        where machine_id = #{machineId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          machine_id, machine_name, machine_type, machine_year, machine_power
+        from MachineInfo
+        <where>
+            <if test="machineId != null">
+                and machine_id = #{machineId}
+            </if>
+            <if test="machineName != null and machineName != ''">
+                and machine_name = #{machineName}
+            </if>
+            <if test="machineType != null and machineType != ''">
+                and machine_type = #{machineType}
+            </if>
+            <if test="machineYear != null">
+                and machine_year = #{machineYear}
+            </if>
+            <if test="machinePower != null">
+                and machine_power = #{machinePower}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          machine_id, machine_name, machine_type, machine_year, machine_power
+        from pls.MachineInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from MachineInfo
+        <where>
+            <if test="machineId != null">
+                and machine_id = #{machineId}
+            </if>
+            <if test="machineName != null and machineName != ''">
+                and machine_name = #{machineName}
+            </if>
+            <if test="machineType != null and machineType != ''">
+                and machine_type = #{machineType}
+            </if>
+            <if test="machineYear != null">
+                and machine_year = #{machineYear}
+            </if>
+            <if test="machinePower != null">
+                and machine_power = #{machinePower}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="machineId" useGeneratedKeys="true">
+        insert into MachineInfo(machine_name, machine_type, machine_year, machine_power)
+        values (#{machineName}, #{machineType}, #{machineYear}, #{machinePower})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="machineId" useGeneratedKeys="true">
+        insert into MachineInfo(machine_name, machine_type, machine_year, machine_power)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.machineName}, #{entity.machineType}, #{entity.machineYear}, #{entity.machinePower})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="machineId" useGeneratedKeys="true">
+        insert into MachineInfo(machine_name, machine_type, machine_year, machine_power)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.machineName}, #{entity.machineType}, #{entity.machineYear}, #{entity.machinePower})
+        </foreach>
+        on duplicate key update
+        machine_name = values(machine_name),
+        machine_type = values(machine_type),
+        machine_year = values(machine_year),
+        machine_power = values(machine_power)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update MachineInfo
+        <set>
+            <if test="machineName != null and machineName != ''">
+                machine_name = #{machineName},
+            </if>
+            <if test="machineType != null and machineType != ''">
+                machine_type = #{machineType},
+            </if>
+            <if test="machineYear != null">
+                machine_year = #{machineYear},
+            </if>
+            <if test="machinePower != null">
+                machine_power = #{machinePower},
+            </if>
+        </set>
+        where machine_id = #{machineId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from MachineInfo where machine_id = #{machineId}
+    </delete>
+
+</mapper>
+
