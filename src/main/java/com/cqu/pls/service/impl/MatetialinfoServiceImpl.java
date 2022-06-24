@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.dao.MatetialinfoDao;
 import com.cqu.pls.service.MatetialinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
         return this.matetialinfoDao.queryById(materialId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param matetialinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Matetialinfo> queryByPage(Matetialinfo matetialinfo, PageRequest pageRequest) {
-        long total = this.matetialinfoDao.count(matetialinfo);
-        return new PageImpl<>(this.matetialinfoDao.queryAllByLimit(matetialinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

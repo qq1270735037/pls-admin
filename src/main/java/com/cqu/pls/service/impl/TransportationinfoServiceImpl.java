@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Transportationinfo;
 import com.cqu.pls.dao.TransportationinfoDao;
 import com.cqu.pls.service.TransportationinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class TransportationinfoServiceImpl implements TransportationinfoService 
         return this.transportationinfoDao.queryById(transportationId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param transportationinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Transportationinfo> queryByPage(Transportationinfo transportationinfo, PageRequest pageRequest) {
-        long total = this.transportationinfoDao.count(transportationinfo);
-        return new PageImpl<>(this.transportationinfoDao.queryAllByLimit(transportationinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

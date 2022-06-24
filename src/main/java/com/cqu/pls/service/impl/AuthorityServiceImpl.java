@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Authority;
 import com.cqu.pls.dao.AuthorityDao;
 import com.cqu.pls.service.AuthorityService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class AuthorityServiceImpl implements AuthorityService {
         return this.authorityDao.queryById(authorityId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param authority 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Authority> queryByPage(Authority authority, PageRequest pageRequest) {
-        long total = this.authorityDao.count(authority);
-        return new PageImpl<>(this.authorityDao.queryAllByLimit(authority, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

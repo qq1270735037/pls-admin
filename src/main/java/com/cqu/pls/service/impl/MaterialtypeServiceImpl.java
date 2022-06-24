@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Materialtype;
 import com.cqu.pls.dao.MaterialtypeDao;
 import com.cqu.pls.service.MaterialtypeService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class MaterialtypeServiceImpl implements MaterialtypeService {
         return this.materialtypeDao.queryById(materialtypeId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param materialtype 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Materialtype> queryByPage(Materialtype materialtype, PageRequest pageRequest) {
-        long total = this.materialtypeDao.count(materialtype);
-        return new PageImpl<>(this.materialtypeDao.queryAllByLimit(materialtype, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

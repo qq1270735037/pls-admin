@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Machineinfo;
 import com.cqu.pls.dao.MachineinfoDao;
 import com.cqu.pls.service.MachineinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class MachineinfoServiceImpl implements MachineinfoService {
         return this.machineinfoDao.queryById(machineId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param machineinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Machineinfo> queryByPage(Machineinfo machineinfo, PageRequest pageRequest) {
-        long total = this.machineinfoDao.count(machineinfo);
-        return new PageImpl<>(this.machineinfoDao.queryAllByLimit(machineinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

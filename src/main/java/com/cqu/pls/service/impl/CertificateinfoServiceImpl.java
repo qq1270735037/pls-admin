@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Certificateinfo;
 import com.cqu.pls.dao.CertificateinfoDao;
 import com.cqu.pls.service.CertificateinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class CertificateinfoServiceImpl implements CertificateinfoService {
         return this.certificateinfoDao.queryById(certificateId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param certificateinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Certificateinfo> queryByPage(Certificateinfo certificateinfo, PageRequest pageRequest) {
-        long total = this.certificateinfoDao.count(certificateinfo);
-        return new PageImpl<>(this.certificateinfoDao.queryAllByLimit(certificateinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

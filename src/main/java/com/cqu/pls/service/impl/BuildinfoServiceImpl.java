@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.dao.BuildinfoDao;
 import com.cqu.pls.service.BuildinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class BuildinfoServiceImpl implements BuildinfoService {
         return this.buildinfoDao.queryById(buildId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param buildinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Buildinfo> queryByPage(Buildinfo buildinfo, PageRequest pageRequest) {
-        long total = this.buildinfoDao.count(buildinfo);
-        return new PageImpl<>(this.buildinfoDao.queryAllByLimit(buildinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

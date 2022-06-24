@@ -4,9 +4,6 @@ import com.cqu.pls.entity.Advertisementinfo;
 import com.cqu.pls.dao.AdvertisementinfoDao;
 import com.cqu.pls.service.AdvertisementinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 
@@ -32,18 +29,7 @@ public class AdvertisementinfoServiceImpl implements AdvertisementinfoService {
         return this.advertisementinfoDao.queryById(adId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param advertisementinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Advertisementinfo> queryByPage(Advertisementinfo advertisementinfo, PageRequest pageRequest) {
-        long total = this.advertisementinfoDao.count(advertisementinfo);
-        return new PageImpl<>(this.advertisementinfoDao.queryAllByLimit(advertisementinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

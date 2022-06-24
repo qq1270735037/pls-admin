@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Merchandiseinfo;
 import com.cqu.pls.dao.MerchandiseinfoDao;
 import com.cqu.pls.service.MerchandiseinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class MerchandiseinfoServiceImpl implements MerchandiseinfoService {
         return this.merchandiseinfoDao.queryById(merchandiseId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param merchandiseinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Merchandiseinfo> queryByPage(Merchandiseinfo merchandiseinfo, PageRequest pageRequest) {
-        long total = this.merchandiseinfoDao.count(merchandiseinfo);
-        return new PageImpl<>(this.merchandiseinfoDao.queryAllByLimit(merchandiseinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

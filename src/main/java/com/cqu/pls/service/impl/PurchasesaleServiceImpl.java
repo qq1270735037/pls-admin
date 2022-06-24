@@ -4,9 +4,6 @@ import com.cqu.pls.entity.Purchasesale;
 import com.cqu.pls.dao.PurchasesaleDao;
 import com.cqu.pls.service.PurchasesaleService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 
@@ -32,18 +29,7 @@ public class PurchasesaleServiceImpl implements PurchasesaleService {
         return this.purchasesaleDao.queryById(purchasesaleId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param purchasesale 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Purchasesale> queryByPage(Purchasesale purchasesale, PageRequest pageRequest) {
-        long total = this.purchasesaleDao.count(purchasesale);
-        return new PageImpl<>(this.purchasesaleDao.queryAllByLimit(purchasesale, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

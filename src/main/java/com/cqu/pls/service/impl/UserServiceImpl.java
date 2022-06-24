@@ -4,9 +4,7 @@ import com.cqu.pls.entity.User;
 import com.cqu.pls.dao.UserDao;
 import com.cqu.pls.service.UserService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class UserServiceImpl implements UserService {
         return this.userDao.queryById(userId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param user 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<User> queryByPage(User user, PageRequest pageRequest) {
-        long total = this.userDao.count(user);
-        return new PageImpl<>(this.userDao.queryAllByLimit(user, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

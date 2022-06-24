@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Communicationinfo;
 import com.cqu.pls.dao.CommunicationinfoDao;
 import com.cqu.pls.service.CommunicationinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class CommunicationinfoServiceImpl implements CommunicationinfoService {
         return this.communicationinfoDao.queryById(communicationId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param communicationinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Communicationinfo> queryByPage(Communicationinfo communicationinfo, PageRequest pageRequest) {
-        long total = this.communicationinfoDao.count(communicationinfo);
-        return new PageImpl<>(this.communicationinfoDao.queryAllByLimit(communicationinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

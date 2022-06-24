@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Carchange;
 import com.cqu.pls.dao.CarchangeDao;
 import com.cqu.pls.service.CarchangeService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class CarchangeServiceImpl implements CarchangeService {
         return this.carchangeDao.queryById(carChangeId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param carchange 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Carchange> queryByPage(Carchange carchange, PageRequest pageRequest) {
-        long total = this.carchangeDao.count(carchange);
-        return new PageImpl<>(this.carchangeDao.queryAllByLimit(carchange, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

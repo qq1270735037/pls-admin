@@ -4,9 +4,6 @@ import com.cqu.pls.entity.Employeeinfo;
 import com.cqu.pls.dao.EmployeeinfoDao;
 import com.cqu.pls.service.EmployeeinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 
@@ -32,18 +29,7 @@ public class EmployeeinfoServiceImpl implements EmployeeinfoService {
         return this.employeeinfoDao.queryById(employeeId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param employeeinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Employeeinfo> queryByPage(Employeeinfo employeeinfo, PageRequest pageRequest) {
-        long total = this.employeeinfoDao.count(employeeinfo);
-        return new PageImpl<>(this.employeeinfoDao.queryAllByLimit(employeeinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

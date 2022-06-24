@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Fixinfo;
 import com.cqu.pls.dao.FixinfoDao;
 import com.cqu.pls.service.FixinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class FixinfoServiceImpl implements FixinfoService {
         return this.fixinfoDao.queryById(fixId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param fixinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Fixinfo> queryByPage(Fixinfo fixinfo, PageRequest pageRequest) {
-        long total = this.fixinfoDao.count(fixinfo);
-        return new PageImpl<>(this.fixinfoDao.queryAllByLimit(fixinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

@@ -4,9 +4,7 @@ import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.dao.AddressinfoDao;
 import com.cqu.pls.service.AddressinfoService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+
 
 import javax.annotation.Resource;
 
@@ -32,18 +30,7 @@ public class AddressinfoServiceImpl implements AddressinfoService {
         return this.addressinfoDao.queryById(addressId);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param addressinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Addressinfo> queryByPage(Addressinfo addressinfo, PageRequest pageRequest) {
-        long total = this.addressinfoDao.count(addressinfo);
-        return new PageImpl<>(this.addressinfoDao.queryAllByLimit(addressinfo, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据
