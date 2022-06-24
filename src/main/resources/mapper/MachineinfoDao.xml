@@ -49,6 +49,7 @@
         select
           machine_id, machine_name, machine_type, machine_year, machine_power
         from pls.MachineInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

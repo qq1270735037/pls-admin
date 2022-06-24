@@ -53,6 +53,7 @@
         select
           fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
         from pls.FixInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

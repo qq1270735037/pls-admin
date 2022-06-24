@@ -65,6 +65,7 @@
         select
           employee_id, company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number
         from pls.EmployeeInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

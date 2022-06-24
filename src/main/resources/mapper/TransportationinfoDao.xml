@@ -57,6 +57,7 @@
         select
           transportation_id, car_id, transportation_start_time, transportation_end_time, transportation_start_location, transportation_end_location, transportation_money
         from pls.TransportationInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

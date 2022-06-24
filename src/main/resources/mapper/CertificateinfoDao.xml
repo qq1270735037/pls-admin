@@ -57,6 +57,7 @@
         select
           certificate_id, employee_id, certificate_code, certificate_name, certificate_start_time, certificate_end_time, certificate_agent
         from pls.CertificateInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

@@ -61,6 +61,7 @@
         select
           ad_id, employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
         from pls.AdvertisementInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

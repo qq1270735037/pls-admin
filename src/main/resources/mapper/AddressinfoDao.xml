@@ -45,6 +45,7 @@
         select
           address_id, address_province, address_city, address_name
         from pls.AddressInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

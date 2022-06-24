@@ -65,6 +65,7 @@
         select
           company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
         from pls.CompanyInfo
+    </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
