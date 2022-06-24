@@ -4,8 +4,8 @@ package com.cqu.pls.utils.result;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.cqu.springboot.demo.utils.result.code.Code;
-import com.cqu.springboot.demo.utils.result.code.Errs;
+import com.cqu.pls.utils.result.code.Code;
+import com.cqu.pls.utils.result.code.Errs;
 import org.jsoup.helper.StringUtil;
 
 /**

@@ -51,6 +51,7 @@ public class MatetialinfoController {
     @GetMapping("get")
     public DataResult queryById(Integer id) {
         Matetialinfo matetialinfo = this.matetialinfoService.queryById(id);
+        System.out.println(matetialinfo);
         return DataResult.successByData(matetialinfo);
     }
 
