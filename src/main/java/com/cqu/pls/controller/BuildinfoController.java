@@ -2,7 +2,6 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.service.BuildinfoService;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
