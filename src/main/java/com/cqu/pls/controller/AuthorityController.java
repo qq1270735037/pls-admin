@@ -2,8 +2,6 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Authority;
 import com.cqu.pls.service.AuthorityService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +29,10 @@ public class AuthorityController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
-    public ResponseEntity<Page<Authority>> queryByPage(Authority authority, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.authorityService.queryByPage(authority, pageRequest));
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Authority>> queryByPage(Authority authority, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.authorityService.queryByPage(authority, pageRequest));
+//    }
 
     /**
      * 通过主键查询单条数据
