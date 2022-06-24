@@ -52,5 +52,14 @@ public class User implements Serializable {
         this.userPwd = userPwd;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", authorityId=" + authorityId +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                '}';
+    }
 }
 

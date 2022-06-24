@@ -72,5 +72,16 @@ public class Matetialinfo implements Serializable {
         this.materialCount = materialCount;
     }
 
+    @Override
+    public String toString() {
+        return "Matetialinfo{" +
+                "materialId=" + materialId +
+                ", materialtypeId=" + materialtypeId +
+                ", materialName='" + materialName + '\'' +
+                ", materialPrice=" + materialPrice +
+                ", materialUsage='" + materialUsage + '\'' +
+                ", materialCount=" + materialCount +
+                '}';
+    }
 }
 

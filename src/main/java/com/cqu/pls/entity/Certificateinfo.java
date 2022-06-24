@@ -83,5 +83,17 @@ public class Certificateinfo implements Serializable {
         this.certificateAgent = certificateAgent;
     }
 
+    @Override
+    public String toString() {
+        return "Certificateinfo{" +
+                "certificateId=" + certificateId +
+                ", employeeId=" + employeeId +
+                ", certificateCode=" + certificateCode +
+                ", certificateName='" + certificateName + '\'' +
+                ", certificateStartTime=" + certificateStartTime +
+                ", certificateEndTime=" + certificateEndTime +
+                ", certificateAgent='" + certificateAgent + '\'' +
+                '}';
+    }
 }
 

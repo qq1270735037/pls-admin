@@ -32,5 +32,12 @@ public class Materialtype implements Serializable {
         this.materialtypeType = materialtypeType;
     }
 
+    @Override
+    public String toString() {
+        return "Materialtype{" +
+                "materialtypeId=" + materialtypeId +
+                ", materialtypeType='" + materialtypeType + '\'' +
+                '}';
+    }
 }
 

@@ -52,5 +52,14 @@ public class Addressinfo implements Serializable {
         this.addressName = addressName;
     }
 
+    @Override
+    public String toString() {
+        return "Addressinfo{" +
+                "addressId=" + addressId +
+                ", addressProvince='" + addressProvince + '\'' +
+                ", addressCity='" + addressCity + '\'' +
+                ", addressName='" + addressName + '\'' +
+                '}';
+    }
 }
 

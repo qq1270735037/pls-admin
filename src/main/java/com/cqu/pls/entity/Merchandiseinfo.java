@@ -112,5 +112,20 @@ public class Merchandiseinfo implements Serializable {
         this.merchandiseCount = merchandiseCount;
     }
 
+    @Override
+    public String toString() {
+        return "Merchandiseinfo{" +
+                "merchandiseId=" + merchandiseId +
+                ", buildId=" + buildId +
+                ", purchasesaleId=" + purchasesaleId +
+                ", merchandiseName='" + merchandiseName + '\'' +
+                ", merchandiseType='" + merchandiseType + '\'' +
+                ", repositoryCount=" + repositoryCount +
+                ", merchandiseHeight=" + merchandiseHeight +
+                ", merchandiseSize=" + merchandiseSize +
+                ", merchandiseSupplier='" + merchandiseSupplier + '\'' +
+                ", merchandiseCount=" + merchandiseCount +
+                '}';
+    }
 }
 

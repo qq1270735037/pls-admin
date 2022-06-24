@@ -62,5 +62,15 @@ public class Machineinfo implements Serializable {
         this.machinePower = machinePower;
     }
 
+    @Override
+    public String toString() {
+        return "Machineinfo{" +
+                "machineId=" + machineId +
+                ", machineName='" + machineName + '\'' +
+                ", machineType='" + machineType + '\'' +
+                ", machineYear=" + machineYear +
+                ", machinePower=" + machinePower +
+                '}';
+    }
 }
 

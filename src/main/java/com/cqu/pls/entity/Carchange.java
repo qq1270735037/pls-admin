@@ -52,5 +52,14 @@ public class Carchange implements Serializable {
         this.operation = operation;
     }
 
+    @Override
+    public String toString() {
+        return "Carchange{" +
+                "carChangeId=" + carChangeId +
+                ", carId=" + carId +
+                ", carChangeType='" + carChangeType + '\'' +
+                ", operation=" + operation +
+                '}';
+    }
 }
 
