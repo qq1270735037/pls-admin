@@ -12,7 +12,7 @@
         <result property="companyWebside" column="company_webside" jdbcType="VARCHAR"/>
         <result property="companyCode" column="company_code" jdbcType="VARCHAR"/>
         <result property="companyPerson" column="company_person" jdbcType="VARCHAR"/>
-        <result property="companyMobile" column="company_mobile" jdbcType="INTEGER"/>
+        <result property="companyMobile" column="company_mobile" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->

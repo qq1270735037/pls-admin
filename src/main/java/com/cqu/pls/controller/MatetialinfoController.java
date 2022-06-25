@@ -3,10 +3,12 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.service.MatetialinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * (Matetialinfo)表控制层
@@ -15,6 +17,7 @@ import javax.annotation.Resource;
  * @since 2022-06-24 14:34:04
  */
 @RestController
+@CrossOrigin
 @RequestMapping("matetialinfo")
 public class MatetialinfoController {
     /**
@@ -41,10 +44,18 @@ public class MatetialinfoController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("{id}")
-    public ResponseEntity<Matetialinfo> queryById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.matetialinfoService.queryById(id));
+//    @GetMapping("{id}")
+//    public ResponseEntity<Matetialinfo> queryById(@PathVariable("id") Integer id) {
+//        return ResponseEntity.ok(this.matetialinfoService.queryById(id));
+//    }
+    @PostMapping("selectOne")
+    public DataResult selectOne(Integer id,HttpSession httpSession) {
+        Matetialinfo matetialinfo = this.matetialinfoService.queryById(id);
+        System.out.println("id:"+id);
+        System.out.println(matetialinfo);
+        return DataResult.successByData(matetialinfo);
     }
+
 
     /**
      * 新增数据
