@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * @since 2022-06-24 14:34:04
  */
 @RestController
-@CrossOrigin
+
 @RequestMapping("matetialinfo")
 public class MatetialinfoController {
     /**
@@ -48,14 +48,19 @@ public class MatetialinfoController {
 //    public ResponseEntity<Matetialinfo> queryById(@PathVariable("id") Integer id) {
 //        return ResponseEntity.ok(this.matetialinfoService.queryById(id));
 //    }
+//    @PostMapping("selectOne")
+//    public DataResult selectOne(Integer id,HttpSession httpSession) {
+//        Matetialinfo matetialinfo = this.matetialinfoService.queryById(id);
+//        System.out.println("id:"+id);
+//        System.out.println(matetialinfo);
+//        return DataResult.successByData(matetialinfo);
+//    }
     @PostMapping("selectOne")
-    public DataResult selectOne(Integer id,HttpSession httpSession) {
-        Matetialinfo matetialinfo = this.matetialinfoService.queryById(id);
-        System.out.println("id:"+id);
-        System.out.println(matetialinfo);
-        return DataResult.successByData(matetialinfo);
+    @ResponseBody
+    public DataResult selectOne(@RequestBody(required = false) Matetialinfo matetialinfo) {
+        Matetialinfo matetialinfo1 = this.matetialinfoService.queryById(matetialinfo.getMaterialId());
+        return DataResult.successByData(matetialinfo1);
     }
-
 
     /**
      * 新增数据
