@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Carinfo)表服务实现类
@@ -30,6 +31,15 @@ public class CarinfoServiceImpl implements CarinfoService {
         return this.carinfoDao.queryById(carId);
     }
 
+    /**
+     * 条件查询
+     * @param carinfo
+     * @return
+     */
+    @Override
+    public List<Carinfo> queryBycondition(Carinfo carinfo){
+        return this.carinfoDao.queryByCondition(carinfo);
+    }
 
 
     /**

@@ -136,5 +136,30 @@
         delete from CarInfo where car_id = #{carId}
     </delete>
 
+    <select id="queryByCondition" resultMap="BaseResultMap">
+        select
+        car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from CarInfo
+        <where>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and car_number like concat("%",#{carNumber},"%")
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                and car_style like concat("%",#{carStyle},"%")
+            </if>
+            <if test="carLoad != null">
+                and car_load  like concat("%",#{carLoad},"%")
+            </if>
+            <if test="carMileage != null">
+                and car_mileage = #{carMileage}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                and car_brand = #{carBrand}
+            </if>
+        </where>
+    </select>
 </mapper>
 
