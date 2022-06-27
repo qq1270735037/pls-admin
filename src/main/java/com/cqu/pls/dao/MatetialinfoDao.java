@@ -79,5 +79,7 @@ public interface MatetialinfoDao {
     int deleteById(Integer materialId);
 
     List<Matetialinfo> queryAll();
+
+    List<Matetialinfo> selectByName(Matetialinfo materialName);
 }
 

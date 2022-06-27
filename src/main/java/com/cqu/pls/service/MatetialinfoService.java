@@ -48,4 +48,6 @@ public interface MatetialinfoService {
     boolean deleteById(Integer materialId);
 
     List<Matetialinfo> queryAll();
+
+    List<Matetialinfo> selectByName(Matetialinfo matetialinfo);
 }

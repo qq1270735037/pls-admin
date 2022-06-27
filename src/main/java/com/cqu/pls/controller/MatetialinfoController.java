@@ -68,6 +68,16 @@ public class MatetialinfoController {
     }
 
     /**
+     * 根据名字查询
+     * @return
+     */
+    @PostMapping("selectByName")
+    @ResponseBody
+    public DataResult selectByName(@RequestBody Matetialinfo matetialinfo) {
+
+        return DataResult.successByDataArray(matetialinfoService.selectByName(matetialinfo));
+    }
+    /**
      * 新增数据
      *
      * @param matetialinfo 实体

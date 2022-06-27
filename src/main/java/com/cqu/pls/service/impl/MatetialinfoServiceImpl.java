@@ -72,4 +72,9 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
     public List<Matetialinfo> queryAll() {
         return  this.matetialinfoDao.queryAll();
     }
+
+    @Override
+    public List<Matetialinfo> selectByName(Matetialinfo matetialinfo) {
+        return  this.matetialinfoDao.selectByName(matetialinfo);
+    }
 }
