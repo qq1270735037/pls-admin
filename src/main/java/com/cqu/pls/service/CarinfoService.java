@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Carinfo;
 
+import java.util.List;
+
 
 /**
  * (Carinfo)表服务接口
@@ -19,7 +21,13 @@ public interface CarinfoService {
      */
     Carinfo queryById(Integer carId);
 
-
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param carId 主键
+     * @return 实例对象
+     */
+    List<Carinfo> queryBycondition(Carinfo carinfo);
 
     /**
      * 新增数据

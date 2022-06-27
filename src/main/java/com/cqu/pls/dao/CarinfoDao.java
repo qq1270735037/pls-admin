@@ -22,6 +22,12 @@ public interface CarinfoDao {
     Carinfo queryById(Integer carId);
 
     /**
+     * 条件查询
+     * @param carinfo
+     * @return
+     */
+    List<Carinfo> queryByCondition(Carinfo carinfo);
+    /**
      * 查询指定行数据
      *
      * @param carinfo 查询条件

@@ -3,10 +3,12 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.CarinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Carinfo)表控制层
@@ -41,11 +43,17 @@ public class CarinfoController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("{id}")
-    public ResponseEntity<Carinfo> queryById(@PathVariable("id") Integer id) {
+    @GetMapping("get")
+    public ResponseEntity<Carinfo> queryById(@RequestParam("id") Integer id) {
         return ResponseEntity.ok(this.carinfoService.queryById(id));
     }
+    @PostMapping("queryByCondition")
+    public List<Carinfo> queryByCondition( Carinfo carinfo) {
+//        List<Carinfo> carinfos = carinfoService.queryBycondition(carinfo);
 
+//        return DataResult.successByTotalData(carinfos, carinfo);
+        return this.carinfoService.queryBycondition(carinfo);
+    }
     /**
      * 新增数据
      *
