@@ -31,6 +31,13 @@ public interface AddressinfoDao {
 //    List<Addressinfo> queryAllByLimit(Addressinfo addressinfo, @Param("pageable") Pageable pageable);
 
     /**
+     * 条件查询
+     * @param addressinfo
+     * @return
+     */
+    List<Addressinfo> queryByCondition(Addressinfo addressinfo);
+
+    /**
      * 统计总行数
      *
      * @param addressinfo 查询条件
