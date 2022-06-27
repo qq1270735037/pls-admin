@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Matetialinfo)表服务实现类
@@ -65,5 +66,10 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
     @Override
     public boolean deleteById(Integer materialId) {
         return this.matetialinfoDao.deleteById(materialId) > 0;
+    }
+
+    @Override
+    public List<Matetialinfo> queryAll() {
+        return  this.matetialinfoDao.queryAll();
     }
 }
