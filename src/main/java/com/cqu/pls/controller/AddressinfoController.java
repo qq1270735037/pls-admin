@@ -1,11 +1,13 @@
 package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Addressinfo;
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.AddressinfoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Addressinfo)表控制层
@@ -43,6 +45,10 @@ public class AddressinfoController {
     @GetMapping("{id}")
     public ResponseEntity<Addressinfo> queryById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(this.addressinfoService.queryById(id));
+    }
+    @PostMapping("queryByCondition")
+    public List<Addressinfo> queryByCondition(Addressinfo addressinfo) {
+        return this.addressinfoService.queryBycondition(addressinfo);
     }
 
     /**

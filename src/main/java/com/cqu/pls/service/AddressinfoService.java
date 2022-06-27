@@ -1,6 +1,9 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Addressinfo;
+import com.cqu.pls.entity.Carinfo;
+
+import java.util.List;
 
 
 /**
@@ -19,7 +22,12 @@ public interface AddressinfoService {
      */
     Addressinfo queryById(Integer addressId);
 
-
+    /**
+     *
+     * @param addressinfo
+     * @return
+     */
+    List<Addressinfo> queryBycondition(Addressinfo addressinfo);
     /**
      * 新增数据
      *
