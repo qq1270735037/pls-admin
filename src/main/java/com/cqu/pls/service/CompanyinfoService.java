@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Companyinfo;
 
+import java.util.List;
+
 
 /**
  * (Companyinfo)表服务接口
@@ -45,4 +47,10 @@ public interface CompanyinfoService {
      */
     boolean deleteById(Integer companyId);
 
+    /**
+     * 通过公司名称进行筛选
+     * @param companyinfo
+     * @return
+     */
+    List<Companyinfo> queryByName(Companyinfo companyinfo);
 }

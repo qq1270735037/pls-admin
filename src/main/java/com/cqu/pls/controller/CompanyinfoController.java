@@ -1,12 +1,16 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.cqu.pls.entity.Companyinfo;
 import com.cqu.pls.service.CompanyinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
+import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Companyinfo)表控制层
@@ -79,5 +83,17 @@ public class CompanyinfoController {
         return ResponseEntity.ok(this.companyinfoService.deleteById(id));
     }
 
+    /**
+     * 通过公司名称模糊查询
+     * @param companyinfo
+     * @return
+     */
+    @PostMapping("queryByName")
+    public DataResult queryByName(@RequestBody Companyinfo companyinfo){
+        //System.out.println(companyinfo.getCompanyName());
+        //List<Companyinfo> companyinfos = this.companyinfoService.queryByName(companyinfo);
+
+        return DataResult.successByDataArray(this.companyinfoService.queryByName(companyinfo));
+    }
 }
 
