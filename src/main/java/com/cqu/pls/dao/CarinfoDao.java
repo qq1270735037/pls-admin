@@ -1,8 +1,9 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.dto.CarinfoDTO;
 import com.cqu.pls.entity.Carinfo;
 import org.apache.ibatis.annotations.Param;
-
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -31,11 +32,17 @@ public interface CarinfoDao {
      * 查询指定行数据
      *
      * @param carinfo 查询条件
-     * @param pageable         分页对象
+     * @param pageable  分页对象
      * @return 对象列表
      */
-//    List<Carinfo> queryAllByLimit(Carinfo carinfo, @Param("pageable") Pageable pageable);
+    List<Carinfo> queryAllByLimit(Carinfo carinfo, @Param("pageable") Pageable pageable);
 
+    /**
+     * 模糊查询 ，分页
+     * @param carinfoDTO
+     * @return
+     */
+    List<Carinfo> queryByPage(CarinfoDTO carinfoDTO);
     /**
      * 统计总行数
      *
