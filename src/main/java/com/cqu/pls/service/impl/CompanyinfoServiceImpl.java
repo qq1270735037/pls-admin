@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Companyinfo)表服务实现类
@@ -65,5 +66,15 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
     @Override
     public boolean deleteById(Integer companyId) {
         return this.companyinfoDao.deleteById(companyId) > 0;
+    }
+
+    /**
+     * 通过公司名称模糊查询
+     * @param companyinfo
+     * @return
+     */
+    @Override
+    public List<Companyinfo> queryByName(Companyinfo companyinfo) {
+        return this.companyinfoDao.queryByName(companyinfo);
     }
 }

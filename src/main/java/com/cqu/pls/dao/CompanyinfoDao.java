@@ -78,5 +78,11 @@ public interface CompanyinfoDao {
      */
     int deleteById(Integer companyId);
 
+    /**
+     * 通过公司名称模糊查询
+     * @param companyinfo
+     * @return
+     */
+    List<Companyinfo> queryByName(Companyinfo companyinfo);
 }
 

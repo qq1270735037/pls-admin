@@ -30,7 +30,6 @@ public class MatetialinfoController {
      * 分页查询
      *
      * @param matetialinfo 筛选条件
-     * @param pageRequest      分页对象
      * @return 查询结果
      */
 //    @GetMapping
@@ -38,12 +37,7 @@ public class MatetialinfoController {
 //        return ResponseEntity.ok(this.matetialinfoService.queryByPage(matetialinfo, pageRequest));
 //    }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
+
 //    @GetMapping("{id}")
 //    public ResponseEntity<Matetialinfo> queryById(@PathVariable("id") Integer id) {
 //        return ResponseEntity.ok(this.matetialinfoService.queryById(id));
@@ -62,6 +56,27 @@ public class MatetialinfoController {
         return DataResult.successByData(matetialinfo1);
     }
 
+    /**
+     * 查询全部
+     * @return
+     */
+    @PostMapping("selectAll")
+    @ResponseBody
+    public DataResult selectAll() {
+
+        return DataResult.successByDataArray(matetialinfoService.queryAll());
+    }
+
+    /**
+     * 根据名字查询
+     * @return
+     */
+    @PostMapping("selectByName")
+    @ResponseBody
+    public DataResult selectByName(@RequestBody Matetialinfo matetialinfo) {
+
+        return DataResult.successByDataArray(matetialinfoService.selectByName(matetialinfo));
+    }
     /**
      * 新增数据
      *

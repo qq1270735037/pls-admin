@@ -169,5 +169,15 @@
         delete from CompanyInfo where company_id = #{companyId}
     </delete>
 
+    <select id="queryByName" resultMap="BaseResultMap">
+        select
+        company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
+        from CompanyInfo
+        <where>
+            <if test="companyName != null and companyName != ''">
+                and company_name like concat('%',#{companyName},'%')
+            </if>
+        </where>
+    </select>
 </mapper>
 

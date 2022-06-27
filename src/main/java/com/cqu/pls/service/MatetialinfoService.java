@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Matetialinfo;
 
+import java.util.List;
+
 
 /**
  * (Matetialinfo)表服务接口
@@ -45,4 +47,7 @@ public interface MatetialinfoService {
      */
     boolean deleteById(Integer materialId);
 
+    List<Matetialinfo> queryAll();
+
+    List<Matetialinfo> selectByName(Matetialinfo matetialinfo);
 }

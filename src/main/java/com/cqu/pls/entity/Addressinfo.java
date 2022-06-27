@@ -66,5 +66,6 @@ public class Addressinfo implements Serializable {
                 ", addressName='" + addressName + '\'' +
                 '}';
     }
+
 }
 
