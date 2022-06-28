@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Merchandiseinfo;
 
+import java.util.List;
+
 
 /**
  * (Merchandiseinfo)表服务接口
@@ -45,4 +47,10 @@ public interface MerchandiseinfoService {
      */
     boolean deleteById(Integer merchandiseId);
 
+    /**
+     *
+     * @param merchandiseinfo
+     * @return
+     */
+    List<Merchandiseinfo> queryBycondition(Merchandiseinfo merchandiseinfo);
 }

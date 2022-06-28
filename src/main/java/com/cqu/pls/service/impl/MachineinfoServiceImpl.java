@@ -1,5 +1,8 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.dto.CarinfoDTO;
+import com.cqu.pls.dto.MachineinfoDTO;
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.entity.Machineinfo;
 import com.cqu.pls.dao.MachineinfoDao;
 import com.cqu.pls.service.MachineinfoService;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Machineinfo)表服务实现类
@@ -31,7 +35,15 @@ public class MachineinfoServiceImpl implements MachineinfoService {
     }
 
 
-
+    /**
+     * 分页查询
+     * @param carinfoDTO      分页对象
+     * @return 查询结果
+     */
+    @Override
+    public List<Machineinfo> queryByPage(MachineinfoDTO machineinfoDTO) {
+        return  this.machineinfoDao.queryByPage(machineinfoDTO);
+    }
     /**
      * 新增数据
      *
@@ -65,5 +77,15 @@ public class MachineinfoServiceImpl implements MachineinfoService {
     @Override
     public boolean deleteById(Integer machineId) {
         return this.machineinfoDao.deleteById(machineId) > 0;
+    }
+
+    /**
+     *
+     * @param carinfo
+     * @return
+     */
+    @Override
+    public Long getCarByConditionCount(Machineinfo machineinfo){
+        return this.machineinfoDao.count(machineinfo);
     }
 }

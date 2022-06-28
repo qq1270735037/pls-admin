@@ -1,17 +1,19 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.cqu.pls.entity.Merchandiseinfo;
 import com.cqu.pls.service.MerchandiseinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
- * (Merchandiseinfo)表控制层
+ * 货物表控制层
  *
- * @author makejava
+ * @author qufang
  * @since 2022-06-24 14:34:04
  */
 @RestController
@@ -22,6 +24,49 @@ public class MerchandiseinfoController {
      */
     @Resource
     private MerchandiseinfoService merchandiseinfoService;
+
+    /**
+     *
+     * @param merchandiseinfo
+     * @return
+     */
+    @PostMapping("queryByCondition")
+    public DataResult queryByCondition(@RequestBody Merchandiseinfo merchandiseinfo) {
+        return DataResult.successByDataArray(this.merchandiseinfoService.queryBycondition(merchandiseinfo));
+    }
+
+    /**
+     * 新增数据
+     *
+     * @param merchandiseinfo 实体
+     * @return 新增结果
+     */
+    @PostMapping("add")
+    public DataResult add(@RequestBody(required = false) Merchandiseinfo merchandiseinfo) {
+        return DataResult.successByMessage("成功",this.merchandiseinfoService.insert(merchandiseinfo));
+    }
+
+    /**
+     * 编辑数据
+     *
+     * @param merchandiseinfo 实体
+     * @return 编辑结果
+     */
+    @PostMapping("update")
+    public DataResult update(@RequestBody Merchandiseinfo merchandiseinfo) {
+        return DataResult.successByMessage("成功",this.merchandiseinfoService.update(merchandiseinfo));
+    }
+    /**
+     * 删除数据
+     *
+     * @param sid 主键  sid = {id:" xxx"}
+     * @return 删除是否成功
+     */
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
+        Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
+        return DataResult.successByMessage("成功",this.merchandiseinfoService.deleteById(id));
+    }
 
     /**
      * 分页查询
@@ -46,16 +91,7 @@ public class MerchandiseinfoController {
         return ResponseEntity.ok(this.merchandiseinfoService.queryById(id));
     }
 
-    /**
-     * 新增数据
-     *
-     * @param merchandiseinfo 实体
-     * @return 新增结果
-     */
-    @PostMapping
-    public ResponseEntity<Merchandiseinfo> add(Merchandiseinfo merchandiseinfo) {
-        return ResponseEntity.ok(this.merchandiseinfoService.insert(merchandiseinfo));
-    }
+
 
     /**
      * 编辑数据

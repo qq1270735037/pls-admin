@@ -71,5 +71,11 @@ public interface MerchandiseinfoDao {
      */
     int deleteById(Integer merchandiseId);
 
+    /**
+     * 条件查询
+     * @param merchandiseinfo
+     * @return
+     */
+    List<Merchandiseinfo> queryByCondition(Merchandiseinfo merchandiseinfo);
 }
 
