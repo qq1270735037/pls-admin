@@ -1,15 +1,12 @@
 package com.cqu.pls.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.cqu.pls.entity.Employeeinfo;
 import com.cqu.pls.service.EmployeeinfoService;
 
-import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * (Employeeinfo)表控制层
@@ -30,23 +27,23 @@ public class EmployeeinfoController {
      * 分页查询
      *
      * @param employeeinfo 筛选条件
+     * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @PostMapping("queryByPage")
-    public DataResult queryByPage(@RequestBody(required = false) Employeeinfo employeeinfo) {
-        List<Employeeinfo> employeeinfos = this.employeeinfoService.queryByPage(employeeinfo);
-        int size = employeeinfos.size();
-        return DataResult.successByTotalData(employeeinfos,(long)size);
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Employeeinfo>> queryByPage(Employeeinfo employeeinfo, PageRequest pageRequest) {
+//        return ResponseEntity.ok(this.employeeinfoService.queryByPage(employeeinfo, pageRequest));
+//    }
+
     /**
      * 通过主键查询单条数据
      *
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("get")
-    public DataResult queryById(@RequestParam("id") Integer id) {
-        return  DataResult.successByData(this.employeeinfoService.queryById(id));
+    @GetMapping("{id}")
+    public ResponseEntity<Employeeinfo> queryById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(this.employeeinfoService.queryById(id));
     }
 
     /**
@@ -55,10 +52,9 @@ public class EmployeeinfoController {
      * @param employeeinfo 实体
      * @return 新增结果
      */
-    @PostMapping("add")
-    public DataResult add(@RequestBody(required = false)Employeeinfo employeeinfo) {
-        return DataResult.successByMessage("成功",
-                this.employeeinfoService.insert(employeeinfo));
+    @PostMapping
+    public ResponseEntity<Employeeinfo> add(Employeeinfo employeeinfo) {
+        return ResponseEntity.ok(this.employeeinfoService.insert(employeeinfo));
     }
 
     /**
@@ -67,23 +63,20 @@ public class EmployeeinfoController {
      * @param employeeinfo 实体
      * @return 编辑结果
      */
-    @PostMapping("update")
-    public DataResult update(@RequestBody(required = false)Employeeinfo employeeinfo) {
-        return DataResult.successByMessage("成功",
-                this.employeeinfoService.update(employeeinfo));
+    @PutMapping
+    public ResponseEntity<Employeeinfo> edit(Employeeinfo employeeinfo) {
+        return ResponseEntity.ok(this.employeeinfoService.update(employeeinfo));
     }
 
     /**
      * 删除数据
      *
-     * @param sid 主键
+     * @param id 主键
      * @return 删除是否成功
      */
-    @PostMapping
-    public DataResult deleteById(@RequestBody(required = false) String sid) {
-        Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
-        return DataResult.successByMessage("成功",
-                this.employeeinfoService.deleteById(id));
+    @DeleteMapping
+    public ResponseEntity<Boolean> deleteById(Integer id) {
+        return ResponseEntity.ok(this.employeeinfoService.deleteById(id));
     }
 
 }

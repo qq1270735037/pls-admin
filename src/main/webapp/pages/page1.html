@@ -1,0 +1,164 @@
+<template>
+    <div class="aside">
+        <!-- 导航菜单组件
+          el-menu: 容器组件
+          @open 监听下拉打开
+          @close 监听下拉菜单打开
+          default-active string 默认选中的菜单项的index的值
+          text-color: 文本的颜色
+          active-text-color: 菜单被选中时的文本颜色
+          router: 是否使用vue-router的模式进行跳转，启用该模式激活导航时以Index作为
+          参数进行路由跳转
+          default-active 设置为当前路由的path
+         -->
+        <el-menu
+                router
+                :default-active="$route.path"
+                class="el-menu-vertical-demo"
+                background-color="#3d5f81"
+                text-color="#fff"
+                active-text-color="#ffd04b"
+        >
+            <!-- 没有下级菜单的菜单项 -->
+            <el-menu-item index="/statistics">
+                <i class="el-icon-menu"></i>
+                <span slot="title">首页</span>
+            </el-menu-item>
+            <!-- 有下级菜单的菜单项 -->
+            <el-submenu index="1">
+                <template slot="title">
+                    <i class="el-icon-s-tools"></i>
+                    <span>系统管理</span>
+                </template>
+                <!-- 一组菜单项 -->
+                <el-menu-item-group>
+                    <el-menu-item index="/menu">菜单管理</el-menu-item>
+                    <el-menu-item index="/role">角色管理</el-menu-item>
+                    <el-menu-item index="/admin">管理员管理</el-menu-item>
+                </el-menu-item-group>
+            </el-submenu>
+
+            <el-submenu index="2">
+                <template slot="title">
+                    <i class="el-icon-s-goods"></i>
+                    <span>商城管理</span>
+                </template>
+                <!-- 一组菜单项 -->
+                <el-menu-item-group>
+                    <el-menu-item index="/category">商品分类</el-menu-item>
+                    <el-menu-item index="/specs">商品规格</el-menu-item>
+                    <el-menu-item index="/goods">商品管理</el-menu-item>
+                    <el-menu-item index="/seckill">秒杀活动</el-menu-item>
+                    <el-menu-item index="/banner">轮播图管理</el-menu-item>
+                </el-menu-item-group>
+            </el-submenu>
+        </el-menu>
+    </div>
+</template>
+
+<script>
+    export default {}
+</script>
+
+<style scoped>
+    .aside {
+        background: #3d5f81;
+        height: 100%;
+    }
+    .el-menu {
+        border-right: none;
+    }
+</style>
+const routes = [
+{
+path: '/',
+// 重定向
+redirect: '/statistics',
+name: 'Index',
+component: () => import('@/pages/main/Index'),
+children: [
+{
+path: 'statistics',
+name: 'statistics',
+component: () => import('@/pages/statistics/Index'),
+meta: {
+title: '图表统计'
+}
+},
+{
+path: 'menu',
+name: 'menu',
+component: () => import('@/pages/menu/Index'),
+meta: {
+title: '菜单管理'
+}
+},
+{
+path: 'role',
+name: 'role',
+component: () => import('@/pages/role/Index'),
+meta: {
+title: '角色管理'
+}
+},
+{
+path: 'admin',
+name: 'admin',
+component: () => import('@/pages/admin/Index'),
+meta: {
+title: '管理员管理'
+}
+},
+{
+path: 'category',
+name: 'category',
+component: () => import('@/pages/category/Index'),
+meta: {
+title: '商品分类'
+}
+},
+{
+path: 'specs',
+name: 'specs',
+component: () => import('@/pages/specs/Index'),
+meta: {
+title: '商品规格'
+}
+},
+{
+path: 'goods',
+name: 'goods',
+component: () => import('@/pages/goods/Index'),
+meta: {
+title: '商品管理'
+}
+},
+{
+path: 'seckill',
+name: 'seckill',
+component: () => import('@/pages/seckill/Index'),
+meta: {
+title: '秒杀活动'
+}
+},
+{
+path: 'banner',
+name: 'banner',
+component: () => import('@/pages/banner/Index'),
+meta: {
+title: '轮播图'
+}
+}
+]
+},
+{
+path: '/login',
+name: 'login',
+component: () => import('@/pages/login/Index'),
+meta: {
+title: '登录'
+}
+}
+]
+
+export default routes

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <!-- 页面meta -->
+
+        <meta charset="utf-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>攀枝花</title>
+
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+
+        <!-- 引入样式 -->
+
+        <link rel="stylesheet" href="../plugins/elementui/index.css">
+
+        <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="../css/style.css">
+
+    </head>
+
+
+    <script>
+        export default {}
+    </script>
+
+    <style scoped>
+        .aside {
+            background: #3d5f81;
+            height: 100%;
+        }
+        .el-menu {
+            border-right: none;
+        }
+    </style>
+
+    <body class="hold-transition">
+
+        <div id="app">
+
+            <div class="content-header">
+
+                <h1>图书管理</h1>
+
+            </div>
+
+            <div class="app-container">
+
+                <div class="box">
+
+                    <div class="filter-container">
+
+                        <el-input placeholder="图书名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
+
+                        <el-button @click="getAll()" class="dalfBut">查询</el-button>
+
+                        <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
+
+                    </div>
+                    <div>
+                        <template>
+                            <div class="aside">
+                                <!-- 导航菜单组件
+                                  el-menu: 容器组件
+                                  @open 监听下拉打开
+                                  @close 监听下拉菜单打开
+                                  default-active string 默认选中的菜单项的index的值
+                                  text-color: 文本的颜色
+                                  active-text-color: 菜单被选中时的文本颜色
+                                  router: 是否使用vue-router的模式进行跳转，启用该模式激活导航时以Index作为
+                                  参数进行路由跳转
+                                  default-active 设置为当前路由的path
+                                 -->
+                                <el-menu
+                                        router
+                                        :default-active="$route.path"
+                                        class="el-menu-vertical-demo"
+                                        background-color="#3d5f81"
+                                        text-color="#fff"
+                                        active-text-color="#ffd04b"
+                                >
+                                    <!-- 没有下级菜单的菜单项 -->
+                                    <el-menu-item index="/statistics">
+                                        <i class="el-icon-menu"></i>
+                                        <span slot="title">首页</span>
+                                    </el-menu-item>
+                                    <!-- 有下级菜单的菜单项 -->
+                                    <el-submenu index="1">
+                                        <template slot="title">
+                                            <i class="el-icon-s-tools"></i>
+                                            <span>系统管理</span>
+                                        </template>
+                                        <!-- 一组菜单项 -->
+                                        <el-menu-item-group>
+                                            <el-menu-item index="/menu">菜单管理</el-menu-item>
+                                            <el-menu-item index="/role">角色管理</el-menu-item>
+                                            <el-menu-item index="/admin">管理员管理</el-menu-item>
+                                        </el-menu-item-group>
+                                    </el-submenu>
+
+                                    <el-submenu index="2">
+                                        <template slot="title">
+                                            <i class="el-icon-s-goods"></i>
+                                            <span>商城管理</span>
+                                        </template>
+                                        <!-- 一组菜单项 -->
+                                        <el-menu-item-group>
+                                            <el-menu-item index="/category">商品分类</el-menu-item>
+                                            <el-menu-item index="/specs">商品规格</el-menu-item>
+                                            <el-menu-item index="/goods">商品管理</el-menu-item>
+                                            <el-menu-item index="/seckill">秒杀活动</el-menu-item>
+                                            <el-menu-item index="/banner">轮播图管理</el-menu-item>
+                                        </el-menu-item-group>
+                                    </el-submenu>
+                                </el-menu>
+                            </div>
+                        </template>
+                    </div>
+
+                    <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
+
+                        <el-table-column type="index" align="center" label="序号"></el-table-column>
+
+                        <el-table-column prop="type" label="图书类别" align="center"></el-table-column>
+
+                        <el-table-column prop="name" label="图书名称" align="center"></el-table-column>
+
+                        <el-table-column prop="description" label="描述" align="center"></el-table-column>
+
+                        <el-table-column label="操作" align="center">
+
+                            <template slot-scope="scope">
+
+                                <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
+
+                                <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
+
+                            </template>
+
+                        </el-table-column>
+
+                    </el-table>
+
+                    <!-- 新增标签弹层 -->
+
+                    <div class="add-form">
+
+                        <el-dialog title="新增图书" :visible.sync="dialogFormVisible">
+
+                            <el-form ref="dataAddForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
+
+                                <el-row>
+
+                                    <el-col :span="12">
+
+                                        <el-form-item label="图书类别" prop="type">
+
+                                            <el-input v-model="formData.type"/>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                    <el-col :span="12">
+
+                                        <el-form-item label="图书名称" prop="name">
+
+                                            <el-input v-model="formData.name"/>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                </el-row>
+
+
+                                <el-row>
+
+                                    <el-col :span="24">
+
+                                        <el-form-item label="描述">
+
+                                            <el-input v-model="formData.description" type="textarea"></el-input>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                </el-row>
+
+                            </el-form>
+
+                            <div slot="footer" class="dialog-footer">
+
+                                <el-button @click="dialogFormVisible = false">取消</el-button>
+
+                                <el-button type="primary" @click="handleAdd()">确定</el-button>
+
+                            </div>
+
+                        </el-dialog>
+
+                    </div>
+
+                    <!-- 编辑标签弹层 -->
+
+                    <div class="add-form">
+
+                        <el-dialog title="编辑检查项" :visible.sync="dialogFormVisible4Edit">
+
+                            <el-form ref="dataEditForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
+
+                                <el-row>
+
+                                    <el-col :span="12">
+
+                                        <el-form-item label="图书类别" prop="type">
+
+                                            <el-input v-model="formData.type"/>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                    <el-col :span="12">
+
+                                        <el-form-item label="图书名称" prop="name">
+
+                                            <el-input v-model="formData.name"/>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                </el-row>
+
+                                <el-row>
+
+                                    <el-col :span="24">
+
+                                        <el-form-item label="描述">
+
+                                            <el-input v-model="formData.description" type="textarea"></el-input>
+
+                                        </el-form-item>
+
+                                    </el-col>
+
+                                </el-row>
+
+                            </el-form>
+
+                            <div slot="footer" class="dialog-footer">
+
+                                <el-button @click="dialogFormVisible4Edit = false">取消</el-button>
+
+                                <el-button type="primary" @click="handleEdit()">确定</el-button>
+
+                            </div>
+
+                        </el-dialog>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <!-- 引入组件库 -->
+
+    <script src="../js/vue.js"></script>
+
+    <script src="../plugins/elementui/index.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+
+    <script src="../js/axios-0.18.0.js"></script>
+
+    <script>
+        var vue = new Vue({
+
+            el: '#app',
+            data:{
+                pagination: {},
+				dataList: [],//当前页要展示的列表数据
+                formData: {},//表单数据
+                dialogFormVisible: false,//控制表单是否可见
+                dialogFormVisible4Edit:false,//编辑表单是否可见
+                rules: {//校验规则
+                    type: [{ required: true, message: '图书类别为必填项', trigger: 'blur' }],
+                    name: [{ required: true, message: '图书名称为必填项', trigger: 'blur' }]
+                }
+            },
+
+            //钩子函数，VUE对象初始化完成后自动执行
+            created() {
+
+                this.getAll();
+            },
+
+            methods: {
+                //列表
+
+                getAll() {
+                    //发送ajax请求
+                    axios.get("/info").then((res)=>{
+                        this.dataList = res.data.data;
+                    });
+                },
+
+                //弹出添加窗口
+                handleCreate() {
+                    this.resetForm();
+                    this.dialogFormVisible = true;
+
+
+
+                },
+
+                //重置表单
+                resetForm() {
+                    this.formData = {};
+
+                },
+
+                //添加
+                handleAdd () {
+                    //用post方法发送表单
+                    axios.post("/info",this.formData).then((res)=>{
+
+                        if(res.data.code==20011){
+                            this.$message("添加成功")
+                            this.dialogFormVisible=false;
+
+                        }
+                        else if(res.data.code==20010){
+                            this.$message("添加失败");
+                        }
+                        else{
+                            this.$message("系统繁忙请重试!");
+                        }
+
+                    }).finally(()=>{
+                        this.getAll();
+                    })
+                    //发送ajax请求
+
+                },
+
+                //弹出编辑窗口
+                handleUpdate(row) {
+
+                    axios.get("/info/"+row.name).then((res)=>{
+                        this.formData=res.data.data;
+                        this.dialogFormVisible4Edit=true;
+                    })
+
+                },
+
+
+                //编辑
+                handleEdit() {
+                    axios.put("/info",this.formData).then((res)=>{
+
+                        if(res.data.code==20031){
+                            this.$message("修改成功")
+                            this.dialogFormVisible4Edit=false;
+
+                        }
+                        else if(res.data.code==20030){
+                            this.$message("修改失败");
+                        }
+                        else{
+                            this.$message("系统繁忙请重试!");
+                        }
+
+                    }).finally(()=>{
+                        this.getAll();
+                    })
+
+
+                    //发送ajax请求
+
+                },
+
+                // 删除
+                handleDelete(row) {
+                    this.$confirm("将永久删除此项, 是否继续","提示",{
+                        type:'info'
+                    }).then(()=>{
+                        axios.delete("/info/"+row.name).then((res)=>{
+                            if(res.data.code==20021){
+                                this.$message("删除成功!");
+                            }
+                            else if(res.data.code==20020){
+                                this.$message("删除失败!")
+                            }
+                        }).finally(()=>{this.getAll()})
+
+                    }).catch(()=>{
+                        this.$message("取消删除")
+                    });
+
+
+                }
+            }
+        })
+
+    </script>
+
+</html>
