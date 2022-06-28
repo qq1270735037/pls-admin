@@ -1,5 +1,6 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.AddressinfoService;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * (Addressinfo)表控制层
  *
- * @author makejava
+ * @author qufang
  * @since 2022-06-24 14:33:55
  */
 @RestController
@@ -53,15 +54,48 @@ public class AddressinfoController {
         return DataResult.successByDataArray(this.addressinfoService.queryBycondition(addressinfo));
     }
 
+//    /**
+//     * 新增数据
+//     *
+//     * @param addressinfo 实体
+//     * @return 新增结果
+//     */
+//    @PostMapping
+//    public ResponseEntity<Addressinfo> add(Addressinfo addressinfo) {
+//        return ResponseEntity.ok(this.addressinfoService.insert(addressinfo));
+//    }
+
     /**
      * 新增数据
      *
      * @param addressinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Addressinfo> add(Addressinfo addressinfo) {
-        return ResponseEntity.ok(this.addressinfoService.insert(addressinfo));
+    @PostMapping("add")
+    public DataResult add(@RequestBody(required = false) Addressinfo addressinfo) {
+        return DataResult.successByMessage("成功",this.addressinfoService.insert(addressinfo));
+    }
+
+    /**
+     * 编辑数据
+     *
+     * @param addressinfo 实体
+     * @return 编辑结果
+     */
+    @PostMapping("update")
+    public DataResult update(@RequestBody Addressinfo addressinfo) {
+        return DataResult.successByMessage("成功",this.addressinfoService.update(addressinfo));
+    }
+    /**
+     * 删除数据
+     *
+     * @param sid 主键  sid = {id:" xxx"}
+     * @return 删除是否成功
+     */
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
+        Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
+        return DataResult.successByMessage("成功",this.addressinfoService.deleteById(id));
     }
 
     /**
