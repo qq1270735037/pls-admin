@@ -1,6 +1,11 @@
 package com.cqu.pls.service;
 
+import com.cqu.pls.dto.CarinfoDTO;
+import com.cqu.pls.dto.MachineinfoDTO;
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.entity.Machineinfo;
+
+import java.util.List;
 
 
 /**
@@ -20,7 +25,11 @@ public interface MachineinfoService {
     Machineinfo queryById(Integer machineId);
 
 
-
+    /**
+     * 分页查询
+     * @return
+     */
+    List<Machineinfo> queryByPage(MachineinfoDTO machineinfoDTO);
     /**
      * 新增数据
      *
@@ -44,5 +53,12 @@ public interface MachineinfoService {
      * @return 是否成功
      */
     boolean deleteById(Integer machineId);
+
+    /**
+     * 根据条件查询总条数
+     * @param
+     * @return
+     */
+    Long getCarByConditionCount(Machineinfo machineinfo);
 
 }
