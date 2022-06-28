@@ -3,6 +3,7 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.AddressinfoService;
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,9 +47,10 @@ public class AddressinfoController {
     public ResponseEntity<Addressinfo> queryById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(this.addressinfoService.queryById(id));
     }
+
     @PostMapping("queryByCondition")
-    public List<Addressinfo> queryByCondition(Addressinfo addressinfo) {
-        return this.addressinfoService.queryBycondition(addressinfo);
+    public DataResult queryByCondition(Addressinfo addressinfo) {
+        return DataResult.successByDataArray(this.addressinfoService.queryBycondition(addressinfo));
     }
 
     /**

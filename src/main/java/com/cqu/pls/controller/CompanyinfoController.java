@@ -5,6 +5,7 @@ import com.cqu.pls.entity.Companyinfo;
 import com.cqu.pls.service.CompanyinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.utils.result.code.Code;
 import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -94,6 +95,20 @@ public class CompanyinfoController {
         //List<Companyinfo> companyinfos = this.companyinfoService.queryByName(companyinfo);
 
         return DataResult.successByDataArray(this.companyinfoService.queryByName(companyinfo));
+    }
+
+    /**
+     * 更新公司信息
+     * @param companyinfo
+     * @return
+     */
+    @PostMapping("update")
+    public DataResult update(@RequestBody Companyinfo companyinfo){
+        if(companyinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+//        System.out.println(companyinfo);
+        return DataResult.successByMessage("更新成功",this.companyinfoService.update(companyinfo));
     }
 }
 
