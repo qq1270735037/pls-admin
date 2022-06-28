@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Employeeinfo;
 
+import java.util.List;
+
 
 /**
  * (Employeeinfo)表服务接口
@@ -19,7 +21,13 @@ public interface EmployeeinfoService {
      */
     Employeeinfo queryById(Integer employeeId);
 
-
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param employeeinfo
+     * @return 实例对象数组
+     */
+    List<Employeeinfo> queryByPage(Employeeinfo employeeinfo);
 
     /**
      * 新增数据
