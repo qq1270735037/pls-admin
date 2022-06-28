@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Certificateinfo)表服务实现类
@@ -18,6 +19,16 @@ import javax.annotation.Resource;
 public class CertificateinfoServiceImpl implements CertificateinfoService {
     @Resource
     private CertificateinfoDao certificateinfoDao;
+
+    @Override
+    public List<Certificateinfo> queryAll() {
+        return certificateinfoDao.queryAll();
+    }
+
+    @Override
+    public List<Certificateinfo> queryOne(Certificateinfo certificateinfo) {
+        return certificateinfoDao.queryOne(certificateinfo);
+    }
 
     /**
      * 通过ID查询单条数据

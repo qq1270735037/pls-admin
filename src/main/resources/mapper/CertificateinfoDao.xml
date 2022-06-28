@@ -13,6 +13,14 @@
         <result property="certificateAgent" column="certificate_agent" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+
+<!--   查询所有-->
+<!--    <select id="selectAll" resultType="com.cqu.pls.entity.Certificateinfo">-->
+<!--        select * from CertificateInfo-->
+<!--    </select>-->
+
+
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
@@ -146,6 +154,11 @@
     <delete id="deleteById">
         delete from CertificateInfo where certificate_id = #{certificateId}
     </delete>
+    
+    <select id="queryOne" resultMap="BaseResultMap">
+        select * from CertificateInfo where cast(certificate_code as char) like concat('${certificateId}','%')
+    </select>
+    
 
 </mapper>
 
