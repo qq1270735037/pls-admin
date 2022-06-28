@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.CompanyinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Companyinfo">
+        <!--@Table CompanyInfo-->
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="companyName" column="company_name" jdbcType="VARCHAR"/>
+        <result property="companyTime" column="company_time" jdbcType="TIMESTAMP"/>
+        <result property="companyCity" column="company_city" jdbcType="VARCHAR"/>
+        <result property="companyNumber" column="company_number" jdbcType="INTEGER"/>
+        <result property="companyWebside" column="company_webside" jdbcType="VARCHAR"/>
+        <result property="companyCode" column="company_code" jdbcType="VARCHAR"/>
+        <result property="companyPerson" column="company_person" jdbcType="VARCHAR"/>
+        <result property="companyMobile" column="company_mobile" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
+        from CompanyInfo
+        where company_id = #{companyId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
+        from CompanyInfo
+        <where>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="companyName != null and companyName != ''">
+                and company_name = #{companyName}
+            </if>
+            <if test="companyTime != null">
+                and company_time = #{companyTime}
+            </if>
+            <if test="companyCity != null and companyCity != ''">
+                and company_city = #{companyCity}
+            </if>
+            <if test="companyNumber != null">
+                and company_number = #{companyNumber}
+            </if>
+            <if test="companyWebside != null and companyWebside != ''">
+                and company_webside = #{companyWebside}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                and company_code = #{companyCode}
+            </if>
+            <if test="companyPerson != null and companyPerson != ''">
+                and company_person = #{companyPerson}
+            </if>
+            <if test="companyMobile != null">
+                and company_mobile = #{companyMobile}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
+        from pls.CompanyInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from CompanyInfo
+        <where>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="companyName != null and companyName != ''">
+                and company_name = #{companyName}
+            </if>
+            <if test="companyTime != null">
+                and company_time = #{companyTime}
+            </if>
+            <if test="companyCity != null and companyCity != ''">
+                and company_city = #{companyCity}
+            </if>
+            <if test="companyNumber != null">
+                and company_number = #{companyNumber}
+            </if>
+            <if test="companyWebside != null and companyWebside != ''">
+                and company_webside = #{companyWebside}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                and company_code = #{companyCode}
+            </if>
+            <if test="companyPerson != null and companyPerson != ''">
+                and company_person = #{companyPerson}
+            </if>
+            <if test="companyMobile != null">
+                and company_mobile = #{companyMobile}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="companyId" useGeneratedKeys="true">
+        insert into CompanyInfo(company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile)
+        values (#{companyName}, #{companyTime}, #{companyCity}, #{companyNumber}, #{companyWebside}, #{companyCode}, #{companyPerson}, #{companyMobile})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="companyId" useGeneratedKeys="true">
+        insert into CompanyInfo(company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.companyName}, #{entity.companyTime}, #{entity.companyCity}, #{entity.companyNumber}, #{entity.companyWebside}, #{entity.companyCode}, #{entity.companyPerson}, #{entity.companyMobile})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="companyId" useGeneratedKeys="true">
+        insert into CompanyInfo(company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.companyName}, #{entity.companyTime}, #{entity.companyCity}, #{entity.companyNumber}, #{entity.companyWebside}, #{entity.companyCode}, #{entity.companyPerson}, #{entity.companyMobile})
+        </foreach>
+        on duplicate key update
+        company_name = values(company_name),
+        company_time = values(company_time),
+        company_city = values(company_city),
+        company_number = values(company_number),
+        company_webside = values(company_webside),
+        company_code = values(company_code),
+        company_person = values(company_person),
+        company_mobile = values(company_mobile)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update CompanyInfo
+        <set>
+            <if test="companyName != null and companyName != ''">
+                company_name = #{companyName},
+            </if>
+            <if test="companyTime != null">
+                company_time = #{companyTime},
+            </if>
+            <if test="companyCity != null and companyCity != ''">
+                company_city = #{companyCity},
+            </if>
+            <if test="companyNumber != null">
+                company_number = #{companyNumber},
+            </if>
+            <if test="companyWebside != null and companyWebside != ''">
+                company_webside = #{companyWebside},
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                company_code = #{companyCode},
+            </if>
+            <if test="companyPerson != null and companyPerson != ''">
+                company_person = #{companyPerson},
+            </if>
+            <if test="companyMobile != null">
+                company_mobile = #{companyMobile},
+            </if>
+        </set>
+        where company_id = #{companyId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from CompanyInfo where company_id = #{companyId}
+    </delete>
+
+    <select id="queryByName" resultMap="BaseResultMap">
+        select
+        company_id, company_name, company_time, company_city, company_number, company_webside, company_code, company_person, company_mobile
+        from CompanyInfo
+        <where>
+            <if test="companyName != null and companyName != ''">
+                and company_name like concat('%',#{companyName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
+

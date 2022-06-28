@@ -1,0 +1,455 @@
+[INFO]2022-06-25 08:37:39,417 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 61592 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 08:37:39,419 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 08:37:39,516 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 08:37:39,516 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 08:37:41,731 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 08:37:41,759 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 08:37:41,760 - Starting service [Tomcat]
+[INFO]2022-06-25 08:37:41,760 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 08:37:41,896 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 08:37:41,896 - Root WebApplicationContext: initialization completed in 2379 ms
+[INFO]2022-06-25 08:37:43,756 - LiveReload server is running on port 35729
+[INFO]2022-06-25 08:37:43,795 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 08:37:43,833 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 08:37:43,875 - Started PlsApplication in 5.26 seconds (JVM running for 11.425)
+[INFO]2022-06-25 09:24:00,777 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 09:24:00,785 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 09:24:00,844 - Completed initialization in 59 ms
+[INFO]2022-06-25 09:24:01,072 - HikariPool-1 - Starting...
+[INFO]2022-06-25 09:24:01,686 - HikariPool-1 - Start completed.
+[INFO]2022-06-25 09:37:20,414 - HikariPool-1 - Shutdown initiated...
+[INFO]2022-06-25 09:37:20,463 - HikariPool-1 - Shutdown completed.
+[INFO]2022-06-25 09:37:53,328 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 80124 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 09:37:53,330 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 09:37:53,437 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 09:37:53,438 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 09:37:55,634 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 09:37:55,646 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:37:55,647 - Starting service [Tomcat]
+[INFO]2022-06-25 09:37:55,647 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 09:37:55,775 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 09:37:55,775 - Root WebApplicationContext: initialization completed in 2336 ms
+[INFO]2022-06-25 09:37:57,677 - LiveReload server is running on port 35729
+[INFO]2022-06-25 09:37:57,703 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:37:57,731 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 09:37:57,771 - Started PlsApplication in 5.568 seconds (JVM running for 15.206)
+[INFO]2022-06-25 09:38:24,486 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 79148 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 09:38:24,488 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 09:38:24,596 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 09:38:24,596 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 09:38:26,422 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 09:38:26,435 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:38:26,436 - Starting service [Tomcat]
+[INFO]2022-06-25 09:38:26,436 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 09:38:26,553 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 09:38:26,553 - Root WebApplicationContext: initialization completed in 1956 ms
+[INFO]2022-06-25 09:38:28,214 - LiveReload server is running on port 35729
+[INFO]2022-06-25 09:38:28,246 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:38:28,283 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 09:38:28,343 - Started PlsApplication in 4.594 seconds (JVM running for 11.672)
+[INFO]2022-06-25 09:38:39,250 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 09:38:39,250 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 09:38:39,252 - Completed initialization in 2 ms
+[INFO]2022-06-25 09:38:39,363 - HikariPool-1 - Starting...
+[INFO]2022-06-25 09:38:39,968 - HikariPool-1 - Start completed.
+[INFO]2022-06-25 09:41:54,369 - HikariPool-1 - Shutdown initiated...
+[INFO]2022-06-25 09:41:54,378 - HikariPool-1 - Shutdown completed.
+[INFO]2022-06-25 09:42:08,468 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 57292 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 09:42:08,470 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 09:42:08,591 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 09:42:08,592 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 09:42:10,550 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 09:42:10,565 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:42:10,566 - Starting service [Tomcat]
+[INFO]2022-06-25 09:42:10,567 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 09:42:10,679 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 09:42:10,680 - Root WebApplicationContext: initialization completed in 2086 ms
+[INFO]2022-06-25 09:42:12,294 - LiveReload server is running on port 35729
+[INFO]2022-06-25 09:42:12,328 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:42:12,363 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 09:42:12,416 - Started PlsApplication in 4.725 seconds (JVM running for 11.593)
+[INFO]2022-06-25 09:42:26,331 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 09:42:26,331 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 09:42:26,335 - Completed initialization in 3 ms
+[INFO]2022-06-25 09:42:26,422 - HikariPool-1 - Starting...
+[INFO]2022-06-25 09:42:26,976 - HikariPool-1 - Start completed.
+[INFO]2022-06-25 09:43:36,726 - HikariPool-1 - Shutdown initiated...
+[INFO]2022-06-25 09:43:36,736 - HikariPool-1 - Shutdown completed.
+[INFO]2022-06-25 09:43:50,533 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 66636 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 09:43:50,535 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 09:43:50,632 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 09:43:50,632 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 09:43:52,589 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 09:43:52,604 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:43:52,605 - Starting service [Tomcat]
+[INFO]2022-06-25 09:43:52,606 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 09:43:52,718 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 09:43:52,718 - Root WebApplicationContext: initialization completed in 2085 ms
+[INFO]2022-06-25 09:43:54,239 - LiveReload server is running on port 35729
+[INFO]2022-06-25 09:43:54,266 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:43:54,292 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 09:43:54,348 - Started PlsApplication in 4.568 seconds (JVM running for 11.395)
+[INFO]2022-06-25 09:44:04,104 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 09:44:04,104 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 09:44:04,106 - Completed initialization in 2 ms
+[INFO]2022-06-25 09:44:04,285 - HikariPool-1 - Starting...
+[INFO]2022-06-25 09:44:04,854 - HikariPool-1 - Start completed.
+[ERROR]2022-06-25 09:44:05,079 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+### The error may exist in file [C:\Users\子陌\Desktop\pls-admin\target\classes\mapper\EmployeeinfoDao.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)         values (?, ?, ?, ?, ?, ?, ?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+; Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)] with root cause
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy100.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
+	at com.sun.proxy.$Proxy98.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy68.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy78.insert(Unknown Source)
+	at com.cqu.pls.service.impl.EmployeeinfoServiceImpl.insert(EmployeeinfoServiceImpl.java:42)
+	at com.cqu.pls.controller.EmployeeinfoController.add(EmployeeinfoController.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:97)
+	at com.cqu.pls.config.CorsFilter.doFilter(CorsFilter.java:64)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[ERROR]2022-06-25 09:44:10,906 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+### The error may exist in file [C:\Users\子陌\Desktop\pls-admin\target\classes\mapper\EmployeeinfoDao.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)         values (?, ?, ?, ?, ?, ?, ?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+; Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)] with root cause
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy100.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
+	at com.sun.proxy.$Proxy98.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy68.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy78.insert(Unknown Source)
+	at com.cqu.pls.service.impl.EmployeeinfoServiceImpl.insert(EmployeeinfoServiceImpl.java:42)
+	at com.cqu.pls.controller.EmployeeinfoController.add(EmployeeinfoController.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:97)
+	at com.cqu.pls.config.CorsFilter.doFilter(CorsFilter.java:64)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[ERROR]2022-06-25 09:44:19,703 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+### The error may exist in file [C:\Users\子陌\Desktop\pls-admin\target\classes\mapper\EmployeeinfoDao.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)         values (?, ?, ?, ?, ?, ?, ?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+; Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)] with root cause
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`pls`.`EmployeeInfo`, CONSTRAINT `FK_qq` FOREIGN KEY (`company_id`) REFERENCES `CompanyInfo` (`company_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy100.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
+	at com.sun.proxy.$Proxy98.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy68.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy78.insert(Unknown Source)
+	at com.cqu.pls.service.impl.EmployeeinfoServiceImpl.insert(EmployeeinfoServiceImpl.java:42)
+	at com.cqu.pls.controller.EmployeeinfoController.add(EmployeeinfoController.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:97)
+	at com.cqu.pls.config.CorsFilter.doFilter(CorsFilter.java:64)
+	at javax.servlet.http.HttpFilter.doFilter(HttpFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[INFO]2022-06-25 09:56:39,428 - HikariPool-1 - Shutdown initiated...
+[INFO]2022-06-25 09:56:39,461 - HikariPool-1 - Shutdown completed.
+[INFO]2022-06-25 09:56:51,783 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 80076 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 09:56:51,785 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 09:56:51,901 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 09:56:51,902 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 09:56:54,052 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 09:56:54,064 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:56:54,065 - Starting service [Tomcat]
+[INFO]2022-06-25 09:56:54,065 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 09:56:54,179 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 09:56:54,179 - Root WebApplicationContext: initialization completed in 2276 ms
+[INFO]2022-06-25 09:56:55,796 - LiveReload server is running on port 35729
+[INFO]2022-06-25 09:56:55,841 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 09:56:55,886 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 09:56:55,946 - Started PlsApplication in 5.075 seconds (JVM running for 13.018)
+[INFO]2022-06-25 09:57:19,803 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 09:57:19,803 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 09:57:19,805 - Completed initialization in 2 ms
+[INFO]2022-06-25 10:00:41,616 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 59088 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 10:00:41,618 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 10:00:41,709 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 10:00:41,709 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 10:00:43,789 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 10:00:43,799 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 10:00:43,799 - Starting service [Tomcat]
+[INFO]2022-06-25 10:00:43,800 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 10:00:43,909 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 10:00:43,910 - Root WebApplicationContext: initialization completed in 2200 ms
+[INFO]2022-06-25 10:00:45,448 - LiveReload server is running on port 35729
+[INFO]2022-06-25 10:00:45,480 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 10:00:45,517 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 10:00:45,569 - Started PlsApplication in 4.738 seconds (JVM running for 11.877)
+[INFO]2022-06-25 10:01:03,725 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 10:01:03,725 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 10:01:03,727 - Completed initialization in 2 ms
+[INFO]2022-06-25 10:07:10,777 - Starting PlsApplication using Java 1.8.0_302 on DESKTOP-V2VJJD2 with PID 77272 (C:\Users\子陌\Desktop\pls-admin\target\classes started by 子陌 in C:\Users\子陌\Desktop\pls-admin)
+[INFO]2022-06-25 10:07:10,780 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2022-06-25 10:07:10,876 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2022-06-25 10:07:10,876 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2022-06-25 10:07:12,668 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2022-06-25 10:07:12,685 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 10:07:12,686 - Starting service [Tomcat]
+[INFO]2022-06-25 10:07:12,686 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2022-06-25 10:07:12,860 - Initializing Spring embedded WebApplicationContext
+[INFO]2022-06-25 10:07:12,860 - Root WebApplicationContext: initialization completed in 1983 ms
+[INFO]2022-06-25 10:07:14,406 - LiveReload server is running on port 35729
+[INFO]2022-06-25 10:07:14,440 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2022-06-25 10:07:14,471 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2022-06-25 10:07:14,521 - Started PlsApplication in 4.514 seconds (JVM running for 11.463)
+[INFO]2022-06-25 10:07:30,251 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2022-06-25 10:07:30,251 - Initializing Servlet 'dispatcherServlet'
+[INFO]2022-06-25 10:07:30,253 - Completed initialization in 2 ms

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.EmployeeinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Employeeinfo">
+        <!--@Table EmployeeInfo-->
+        <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="employeeName" column="employee_name" jdbcType="VARCHAR"/>
+        <result property="employeeGender" column="employee_gender" jdbcType="VARCHAR"/>
+        <result property="employeeAddress" column="employee_address" jdbcType="VARCHAR"/>
+        <result property="employeeMobile" column="employee_mobile" jdbcType="VARCHAR"/>
+        <result property="employeeDate" column="employee_date" jdbcType="VARCHAR"/>
+        <result property="employeeStatus" column="employee_status" jdbcType="VARCHAR"/>
+        <result property="employeeNumber" column="employee_number" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          employee_id, company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number
+        from EmployeeInfo
+        where employee_id = #{employeeId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          employee_id, company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number
+        from EmployeeInfo
+        <where>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="employeeName != null and employeeName != ''">
+                and employee_name = #{employeeName}
+            </if>
+            <if test="employeeGender != null and employeeGender != ''">
+                and employee_gender = #{employeeGender}
+            </if>
+            <if test="employeeAddress != null and employeeAddress != ''">
+                and employee_address = #{employeeAddress}
+            </if>
+            <if test="employeeMobile != null and employeeMobile != ''">
+                and employee_mobile = #{employeeMobile}
+            </if>
+            <if test="employeeDate != null and employeeDate != ''">
+                and employee_date = #{employeeDate}
+            </if>
+            <if test="employeeStatus != null and employeeStatus != ''">
+                and employee_status = #{employeeStatus}
+            </if>
+            <if test="employeeNumber != null and employeeNumber != ''">
+                and employee_number = #{employeeNumber}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          employee_id, company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number
+        from pls.EmployeeInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from EmployeeInfo
+        <where>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="employeeName != null and employeeName != ''">
+                and employee_name = #{employeeName}
+            </if>
+            <if test="employeeGender != null and employeeGender != ''">
+                and employee_gender = #{employeeGender}
+            </if>
+            <if test="employeeAddress != null and employeeAddress != ''">
+                and employee_address = #{employeeAddress}
+            </if>
+            <if test="employeeMobile != null and employeeMobile != ''">
+                and employee_mobile = #{employeeMobile}
+            </if>
+            <if test="employeeDate != null and employeeDate != ''">
+                and employee_date = #{employeeDate}
+            </if>
+            <if test="employeeStatus != null and employeeStatus != ''">
+                and employee_status = #{employeeStatus}
+            </if>
+            <if test="employeeNumber != null and employeeNumber != ''">
+                and employee_number = #{employeeNumber}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="employeeId" useGeneratedKeys="true">
+        insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)
+        values (#{companyId}, #{employeeName}, #{employeeGender}, #{employeeAddress}, #{employeeMobile}, #{employeeDate}, #{employeeStatus}, #{employeeNumber})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="employeeId" useGeneratedKeys="true">
+        insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.companyId}, #{entity.employeeName}, #{entity.employeeGender}, #{entity.employeeAddress}, #{entity.employeeMobile}, #{entity.employeeDate}, #{entity.employeeStatus}, #{entity.employeeNumber})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="employeeId" useGeneratedKeys="true">
+        insert into EmployeeInfo(company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.companyId}, #{entity.employeeName}, #{entity.employeeGender}, #{entity.employeeAddress}, #{entity.employeeMobile}, #{entity.employeeDate}, #{entity.employeeStatus}, #{entity.employeeNumber})
+        </foreach>
+        on duplicate key update
+        company_id = values(company_id),
+        employee_name = values(employee_name),
+        employee_gender = values(employee_gender),
+        employee_address = values(employee_address),
+        employee_mobile = values(employee_mobile),
+        employee_date = values(employee_date),
+        employee_status = values(employee_status),
+        employee_number = values(employee_number)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update EmployeeInfo
+        <set>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="employeeName != null and employeeName != ''">
+                employee_name = #{employeeName},
+            </if>
+            <if test="employeeGender != null and employeeGender != ''">
+                employee_gender = #{employeeGender},
+            </if>
+            <if test="employeeAddress != null and employeeAddress != ''">
+                employee_address = #{employeeAddress},
+            </if>
+            <if test="employeeMobile != null and employeeMobile != ''">
+                employee_mobile = #{employeeMobile},
+            </if>
+            <if test="employeeDate != null and employeeDate != ''">
+                employee_date = #{employeeDate},
+            </if>
+            <if test="employeeStatus != null and employeeStatus != ''">
+                employee_status = #{employeeStatus},
+            </if>
+            <if test="employeeNumber != null and employeeNumber != ''">
+                employee_number = #{employeeNumber},
+            </if>
+        </set>
+        where employee_id = #{employeeId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from EmployeeInfo where employee_id = #{employeeId}
+    </delete>
+
+    <select id="queryByPage" resultMap="BaseResultMap">
+        select
+        employee_id, company_id, employee_name, employee_gender, employee_address, employee_mobile, employee_date, employee_status, employee_number
+        from EmployeeInfo
+        <where>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="employeeName != null and employeeName != ''">
+                and employee_name = #{employeeName}
+            </if>
+            <if test="employeeGender != null and employeeGender != ''">
+                and employee_gender = #{employeeGender}
+            </if>
+            <if test="employeeAddress != null and employeeAddress != ''">
+                and employee_address = #{employeeAddress}
+            </if>
+            <if test="employeeMobile != null and employeeMobile != ''">
+                and employee_mobile = #{employeeMobile}
+            </if>
+            <if test="employeeDate != null and employeeDate != ''">
+                and employee_date = #{employeeDate}
+            </if>
+            <if test="employeeStatus != null and employeeStatus != ''">
+                and employee_status = #{employeeStatus}
+            </if>
+            <if test="employeeNumber != null and employeeNumber != ''">
+                and employee_number = #{employeeNumber}
+            </if>
+        </where>
+    </select>
+</mapper>
+

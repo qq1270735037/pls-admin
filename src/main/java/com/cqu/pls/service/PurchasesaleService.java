@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Purchasesale;
 
+import java.util.List;
+
 
 /**
  * (Purchasesale)表服务接口
@@ -10,6 +12,9 @@ import com.cqu.pls.entity.Purchasesale;
  * @since 2022-06-24 14:34:05
  */
 public interface PurchasesaleService {
+
+    List<Purchasesale> queryOne(Purchasesale purchasesale);
+    List<Purchasesale> queryAll();
 
     /**
      * 通过ID查询单条数据
