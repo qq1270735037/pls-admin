@@ -125,5 +125,28 @@
         delete from MachineInfo where machine_id = #{machineId}
     </delete>
 
+    <select id="queryByPage" resultMap="BaseResultMap" parameterType="com.cqu.pls.dto.MachineinfoDTO" >
+        select
+        machine_id, machine_name, machine_type, machine_year, machine_power
+        from MachineInfo
+        <where>
+            <if test="machineId != null">
+                and machine_id = #{machineId}
+            </if>
+            <if test="machineName != null and machineName != ''">
+                and machine_name like concat("%",#{machineName},"%")
+            </if>
+            <if test="machineType != null and machineType != ''">
+                and machine_type like concat("%",#{machineType},"%")
+            </if>
+            <if test="machineYear != null">
+                and machine_year  = #{machineYear}
+            </if>
+            <if test="machinePower != null">
+                and machine_power = #{machinePower}
+            </if>
+        </where>
+        order by machine_id asc limit #{page}, #{limit}
+    </select>
 </mapper>
 

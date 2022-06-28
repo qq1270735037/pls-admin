@@ -1,5 +1,7 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.dto.CarinfoDTO;
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.entity.Machineinfo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -28,7 +30,12 @@ public interface MachineinfoDao {
      * @return 对象列表
      */
 
-
+    /**
+     * 模糊查询 ，分页
+     * @param
+     * @return
+     */
+    List<Machineinfo> queryByPage(Machineinfo machineinfo);
     /**
      * 统计总行数
      *
