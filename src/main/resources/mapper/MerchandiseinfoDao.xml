@@ -179,6 +179,44 @@
     <delete id="deleteById">
         delete from MerchandiseInfo where merchandise_id = #{merchandiseId}
     </delete>
+    <select id="queryByCondition" resultMap="BaseResultMap">
+        select
+        merchandise_id, build_id, purchasesale_id, merchandise_name,merchandise_type,
+        repository_count,merchandise_height,merchandise_size,merchandise_supplier,merchandise_count
+        from MerchandiseInfo
+        <where>
+            <if test="merchandiseId != null">
+                and merchandise_id = #{merchandiseId}
+            </if>
+            <if test="buildId != null">
+                and build_id = #{buildId}
+            </if>
+            <if test="purchasesaleId != null">
+                and purchasesale_id = #{purchasesaleId}
+            </if>
+            <if test="merchandiseName != null and merchandiseName != ''">
+                and merchandise_name  like concat("%",#{merchandiseName},"%")
+            </if>
+            <if test="merchandiseType != null and merchandiseType != ''">
+                and merchandise_type  like concat("%",#{merchandiseType},"%")
+            </if>
+            <if test="repositoryCount != null">
+                and repository_count = #{repositoryCount}
+            </if>
+            <if test="merchandiseHeight != null">
+                and merchandise_height = #{merchandiseHeight}
+            </if>
+            <if test="merchandiseSize != null">
+                and merchandise_size = #{merchandiseSize}
+            </if>
+            <if test="merchandiseSupplier != null and merchandiseSupplier != ''">
+                and merchandise_supplier  like concat("%",#{merchandiseSupplier},"%")
+            </if>
+            <if test="merchandiseCount != null">
+                and merchandise_count = #{merchandiseCount}
+            </if>
+        </where>
+    </select>
 
 </mapper>
 

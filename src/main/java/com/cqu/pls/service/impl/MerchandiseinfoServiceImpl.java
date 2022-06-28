@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Merchandiseinfo)表服务实现类
@@ -65,5 +66,10 @@ public class MerchandiseinfoServiceImpl implements MerchandiseinfoService {
     @Override
     public boolean deleteById(Integer merchandiseId) {
         return this.merchandiseinfoDao.deleteById(merchandiseId) > 0;
+    }
+
+    @Override
+    public List<Merchandiseinfo> queryBycondition(Merchandiseinfo merchandiseinfo) {
+        return this.merchandiseinfoDao.queryByCondition(merchandiseinfo);
     }
 }
