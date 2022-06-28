@@ -1,18 +1,13 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.dao.CarinfoDao;
 import com.cqu.pls.dto.CarinfoDTO;
 import com.cqu.pls.entity.Carinfo;
-import com.cqu.pls.dao.CarinfoDao;
 import com.cqu.pls.service.CarinfoService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,6 +19,7 @@ import java.util.List;
  * @since 2022-06-24 14:34:04
  */
 @Service("carinfoService")
+@Transactional
 public class CarinfoServiceImpl implements CarinfoService {
     @Resource
     private CarinfoDao carinfoDao;

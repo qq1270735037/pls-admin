@@ -1,19 +1,14 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cqu.pls.dto.CarinfoDTO;
 import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.CarinfoService;
-
-
 import com.cqu.pls.utils.result.DataResult;
-
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,29 +25,12 @@ public class CarinfoController {
      */
     @Resource
     private CarinfoService carinfoService;
-
-//    /**
-//     * 分页查询
-//     *
-//     * @param carinfo 筛选条件
-//     * @param pageRequest      分页对象
-//     * @return 查询结果
-//     */
-//    @GetMapping
-//    public ResponseEntity<Page<Carinfo>> queryByPage(Carinfo carinfo, PageRequest pageRequest) {
-//        return ResponseEntity.ok(this.carinfoService.queryByPage(carinfo, pageRequest));
-//    }
-
     /**
      * 通过主键查询单条数据
      *
      * @param id 主键
      * @return 单条数据
      */
-//    @GetMapping("get")
-//    public ResponseEntity<Carinfo> queryById(@RequestParam("id") Integer id) {
-//        return ResponseEntity.ok(this.carinfoService.queryById(id));
-//    }
     @GetMapping("get")
     public DataResult queryById(@RequestParam("id") Integer id) {
         Carinfo queryById = this.carinfoService.queryById(id);
@@ -96,30 +74,28 @@ public class CarinfoController {
      */
     @PostMapping("add")
     public DataResult add(@RequestBody(required = false) Carinfo carinfo) {
-        this.carinfoService.insert(carinfo);
-        return DataResult.succ();
+        return DataResult.successByMessage("成功",this.carinfoService.insert(carinfo));
     }
-
     /**
      * 编辑数据
      *
      * @param carinfo 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Carinfo> edit(Carinfo carinfo) {
-        return ResponseEntity.ok(this.carinfoService.update(carinfo));
+    @PostMapping("update")
+    public DataResult update(@RequestBody Carinfo carinfo) {
+        return DataResult.successByMessage("成功",this.carinfoService.update(carinfo));
     }
-
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param sid 主键  sid = {id:" xxx"}
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.carinfoService.deleteById(id));
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
+        Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
+        return DataResult.successByMessage("成功",this.carinfoService.deleteById(id));
     }
 }
 
