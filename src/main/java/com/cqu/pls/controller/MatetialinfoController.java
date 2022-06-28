@@ -58,7 +58,6 @@ public class MatetialinfoController {
 
     /**
      * 查询全部
-     * @return
      */
     @PostMapping("selectAll")
     @ResponseBody
@@ -83,9 +82,10 @@ public class MatetialinfoController {
      * @param matetialinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Matetialinfo> add(Matetialinfo matetialinfo) {
-        return ResponseEntity.ok(this.matetialinfoService.insert(matetialinfo));
+    @PostMapping("add")
+    public DataResult add(@RequestBody Matetialinfo matetialinfo) {
+        Matetialinfo insert = this.matetialinfoService.insert(matetialinfo);
+        return DataResult.successByData(insert);
     }
 
 
@@ -97,12 +97,13 @@ public class MatetialinfoController {
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param matetialinfo 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.matetialinfoService.deleteById(id));
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody Matetialinfo matetialinfo) {
+        boolean b = this.matetialinfoService.deleteById(matetialinfo);
+        return DataResult.successByDatas(b);
     }
 
 }

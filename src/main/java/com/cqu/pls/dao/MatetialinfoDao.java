@@ -1,6 +1,5 @@
 package com.cqu.pls.dao;
 
-import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.entity.Matetialinfo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -76,7 +75,7 @@ public interface MatetialinfoDao {
      * @param materialId 主键
      * @return 影响行数
      */
-    int deleteById(Integer materialId);
+    int deleteById(Matetialinfo materialId);
 
     List<Matetialinfo> queryAll();
 

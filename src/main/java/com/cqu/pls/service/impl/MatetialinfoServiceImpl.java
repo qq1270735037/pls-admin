@@ -60,12 +60,12 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
     /**
      * 通过主键删除数据
      *
-     * @param materialId 主键
+     * @param matetialinfo 主键
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Integer materialId) {
-        return this.matetialinfoDao.deleteById(materialId) > 0;
+    public boolean deleteById(Matetialinfo matetialinfo) {
+        return this.matetialinfoDao.deleteById(matetialinfo) > 0;
     }
 
     @Override

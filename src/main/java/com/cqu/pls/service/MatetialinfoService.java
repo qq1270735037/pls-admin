@@ -45,7 +45,7 @@ public interface MatetialinfoService {
      * @param materialId 主键
      * @return 是否成功
      */
-    boolean deleteById(Integer materialId);
+    boolean deleteById(Matetialinfo matetialinfo);
 
     List<Matetialinfo> queryAll();
 
