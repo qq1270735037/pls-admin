@@ -88,17 +88,12 @@ public class MatetialinfoController {
         return ResponseEntity.ok(this.matetialinfoService.insert(matetialinfo));
     }
 
-    /**
-     * 编辑数据
-     *
-     * @param matetialinfo 实体
-     * @return 编辑结果
-     */
-    @PutMapping
-    public ResponseEntity<Matetialinfo> edit(Matetialinfo matetialinfo) {
-        return ResponseEntity.ok(this.matetialinfoService.update(matetialinfo));
-    }
 
+    @PostMapping("edit")
+    public DataResult edit(@RequestBody Matetialinfo matetialinfo) {
+
+        return DataResult.successByData(matetialinfoService.update(matetialinfo));
+    }
     /**
      * 删除数据
      *
