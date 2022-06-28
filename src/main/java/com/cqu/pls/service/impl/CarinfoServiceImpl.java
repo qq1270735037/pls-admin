@@ -1,8 +1,16 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.dto.CarinfoDTO;
 import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.dao.CarinfoDao;
 import com.cqu.pls.service.CarinfoService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -30,15 +38,24 @@ public class CarinfoServiceImpl implements CarinfoService {
     public Carinfo queryById(Integer carId) {
         return this.carinfoDao.queryById(carId);
     }
-
+    /**
+     * 分页查询
+     * @param carinfoDTO      分页对象
+     * @return 查询结果
+     */
+    @Override
+    public List<Carinfo> queryByPage(CarinfoDTO carinfoDTO) {
+        return  this.carinfoDao.queryByPage(carinfoDTO);
+    }
     /**
      * 条件查询
-     * @param carinfo
+     * @param carinfoDTO
      * @return
      */
     @Override
-    public List<Carinfo> queryBycondition(Carinfo carinfo){
-        return this.carinfoDao.queryByCondition(carinfo);
+    public List<Carinfo> queryBycondition(CarinfoDTO carinfoDTO){
+        Page<Carinfo> page = PageHelper.startPage(1, 10).doSelectPage(()-> carinfoDao.queryByCondition(new Carinfo()));
+        return this.carinfoDao.queryByCondition(carinfoDTO);
     }
 
 
@@ -75,5 +92,15 @@ public class CarinfoServiceImpl implements CarinfoService {
     @Override
     public boolean deleteById(Integer carId) {
         return this.carinfoDao.deleteById(carId) > 0;
+    }
+
+    /**
+     *
+     * @param carinfo
+     * @return
+     */
+    @Override
+    public Long getCarByConditionCount(Carinfo carinfo){
+        return this.carinfoDao.count(carinfo);
     }
 }
