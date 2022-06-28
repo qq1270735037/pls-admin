@@ -102,13 +102,40 @@ public class CompanyinfoController {
      * @param companyinfo
      * @return
      */
-    @PostMapping("update")
+    @PostMapping("updateCompany")
     public DataResult update(@RequestBody Companyinfo companyinfo){
         if(companyinfo==null){
             return DataResult.errByErrCode(Code.ERROR);
         }
 //        System.out.println(companyinfo);
         return DataResult.successByMessage("更新成功",this.companyinfoService.update(companyinfo));
+    }
+
+    /**
+     * 插入新公司信息
+     * @param companyinfo
+     * @return
+     */
+    @PostMapping("insertCompany")
+    public DataResult insert(@RequestBody Companyinfo companyinfo){
+        if(companyinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        return DataResult.successByMessage("插入成功",this.companyinfoService.insert(companyinfo));
+    }
+
+    /**
+     * 删除公司信息
+     * @param companyinfo
+     * @return
+     */
+    @PostMapping("deleteCompany")
+    public DataResult delete(@RequestBody Companyinfo companyinfo){
+        if(companyinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        int id=companyinfo.getCompanyId();
+        return DataResult.successByMessage("删除成功",this.companyinfoService.deleteById(id));
     }
 }
 
