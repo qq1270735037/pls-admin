@@ -50,7 +50,7 @@ public class AddressinfoController {
     }
 
     @PostMapping("queryByCondition")
-    public DataResult queryByCondition(Addressinfo addressinfo) {
+    public DataResult queryByCondition(@RequestBody Addressinfo addressinfo) {
         return DataResult.successByDataArray(this.addressinfoService.queryBycondition(addressinfo));
     }
 
