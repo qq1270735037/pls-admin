@@ -114,5 +114,9 @@
         delete from PurchaseSale where purchasesale_id = #{purchasesaleId}
     </delete>
 
+    <select id="queryOne" resultMap="BaseResultMap">
+        select * from PurchaseSale where purchasesale_type like concat('%',#{purchasesaleType},'%')
+    </select>
+
 </mapper>
 

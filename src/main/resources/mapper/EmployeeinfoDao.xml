@@ -181,7 +181,7 @@
                 and company_id = #{companyId}
             </if>
             <if test="employeeName != null and employeeName != ''">
-                and employee_name = #{employeeName}
+                and employee_name like concat("%",#{employeeName},"%")
             </if>
             <if test="employeeGender != null and employeeGender != ''">
                 and employee_gender = #{employeeGender}

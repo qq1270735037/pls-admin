@@ -1,6 +1,9 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Buildinfo;
+import com.cqu.pls.vo.BuildAndAddress;
+
+import java.util.List;
 
 
 /**
@@ -40,9 +43,14 @@ public interface BuildinfoService {
     /**
      * 通过主键删除数据
      *
-     * @param buildId 主键
+     * @param buildinfo 主键
      * @return 是否成功
      */
-    boolean deleteById(Integer buildId);
+    boolean deleteById(Buildinfo buildinfo);
 
+    List<Buildinfo> queryAll();
+
+    List<BuildAndAddress> getBuildAndAddressList();
+
+    List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress);
 }

@@ -13,6 +13,35 @@
         <result property="buildPerson" column="build_person" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+    <!--一对一的映射-->
+<!--    <resultMap id="buildAndaddressOneToOne" type="com.cqu.pls.vo.BuildAndAddress">-->
+<!--        &lt;!&ndash;主表主键id&ndash;&gt;-->
+<!--        <id property="buildId" column="build_id"></id>-->
+<!--        <association property="buildinfo" javaType="com.cqu.pls.entity.Buildinfo" autoMapping="true">-->
+<!--            &lt;!&ndash;<result property="docTitle" column="doc_title"></result>-->
+<!--            <result property="docSummary" column="doc_summary"></result>&ndash;&gt;-->
+
+<!--        </association>-->
+<!--        <association property="addressinfo" javaType="com.cqu.pls.entity.Addressinfo" autoMapping="true">-->
+<!--            &lt;!&ndash;<id property="categoryId" column="category_id"></id>-->
+<!--            <result property="categoryName" column="category_name"></result>&ndash;&gt;-->
+<!--        </association>-->
+<!--    </resultMap>
+            <resultMap id="buildAndaddressOneToOne" type="com.cqu.pls.vo.BuildAndAddress">-->
+<!--        &lt;!&ndash;主表主键id&ndash;&gt;-->
+<!--        <id property="buildId" column="build_id"></id>-->
+<!--        <association property="buildinfo" javaType="com.cqu.pls.entity.Buildinfo" autoMapping="true">-->
+<!--            &lt;!&ndash;<result property="docTitle" column="doc_title"></result>-->
+<!--            <result property="docSummary" column="doc_summary"></result>&ndash;&gt;-->
+
+<!--        </association>-->
+<!--        <association property="addressinfo" javaType="com.cqu.pls.entity.Addressinfo" autoMapping="true">-->
+<!--            &lt;!&ndash;<id property="categoryId" column="category_id"></id>-->
+<!--            <result property="categoryName" column="category_name"></result>&ndash;&gt;-->
+<!--        </association>-->
+<!--    </resultMap>-->
+
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
@@ -146,6 +175,16 @@
     <delete id="deleteById">
         delete from BuildInfo where build_id = #{buildId}
     </delete>
-
+    <!--联合查询-->
+    <select id="getBuildAndAddressList" resultType="com.cqu.pls.vo.BuildAndAddress">
+        select * from BuildInfo, AddressInfo
+        where BuildInfo.address_id=AddressInfo.address_id
+    </select>
+    <!--通过名称查询-->
+    <select id="getBuildByName" resultType="com.cqu.pls.vo.BuildAndAddress">
+        select * from BuildInfo, AddressInfo
+        where bulid_name like concat('%',#{bulidName},'%')
+        and BuildInfo.address_id=AddressInfo.address_id
+    </select>
 </mapper>
 

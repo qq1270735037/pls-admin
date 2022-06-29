@@ -12,6 +12,12 @@ import java.util.List;
  */
 public interface PurchasesaleDao {
 
+
+
+
+    List<Purchasesale> queryAll();
+    List<Purchasesale> queryOne(Purchasesale purchasesale);
+
     /**
      * 通过ID查询单条数据
      *

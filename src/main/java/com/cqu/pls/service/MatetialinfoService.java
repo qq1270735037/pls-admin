@@ -42,7 +42,7 @@ public interface MatetialinfoService {
     /**
      * 通过主键删除数据
      *
-     * @param materialId 主键
+     * @param matetialinfo 主键
      * @return 是否成功
      */
     boolean deleteById(Matetialinfo matetialinfo);

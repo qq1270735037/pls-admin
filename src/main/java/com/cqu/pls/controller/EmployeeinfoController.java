@@ -1,14 +1,19 @@
 package com.cqu.pls.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.cqu.pls.entity.Companyinfo;
 import com.cqu.pls.entity.Employeeinfo;
+import com.cqu.pls.service.CompanyinfoService;
 import com.cqu.pls.service.EmployeeinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.vo.EmployeeVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +31,8 @@ public class EmployeeinfoController {
     @Resource
     private EmployeeinfoService employeeinfoService;
 
+    @Resource
+    private CompanyinfoService companyinfoService;
     /**
      * 分页查询
      *
@@ -34,9 +41,19 @@ public class EmployeeinfoController {
      */
     @PostMapping("queryByPage")
     public DataResult queryByPage(@RequestBody(required = false) Employeeinfo employeeinfo) {
+        ArrayList<EmployeeVo> employeeVos = new ArrayList<>();
         List<Employeeinfo> employeeinfos = this.employeeinfoService.queryByPage(employeeinfo);
         int size = employeeinfos.size();
-        return DataResult.successByTotalData(employeeinfos,(long)size);
+
+        for (Employeeinfo employeeinfo1 : employeeinfos) {
+            String companyName = this.companyinfoService.queryById(employeeinfo1.getCompanyId()).getCompanyName();
+            EmployeeVo employeeVo = new EmployeeVo();
+            BeanUtils.copyProperties(employeeinfo1,employeeVo);
+            employeeVo.setCompanyName(companyName);
+            employeeVos.add(employeeVo);
+        }
+//        System.out.println();
+        return DataResult.successByTotalData(employeeVos,(long)size);
     }
     /**
      * 通过主键查询单条数据
@@ -79,12 +96,11 @@ public class EmployeeinfoController {
      * @param sid 主键
      * @return 删除是否成功
      */
-    @PostMapping
-    public DataResult deleteById(@RequestBody(required = false) String sid) {
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
         Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
         return DataResult.successByMessage("成功",
                 this.employeeinfoService.deleteById(id));
     }
-
 }
 

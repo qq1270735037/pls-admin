@@ -3,10 +3,12 @@ package com.cqu.pls.service.impl;
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.dao.BuildinfoDao;
 import com.cqu.pls.service.BuildinfoService;
+import com.cqu.pls.vo.BuildAndAddress;
 import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Buildinfo)表服务实现类
@@ -59,11 +61,26 @@ public class BuildinfoServiceImpl implements BuildinfoService {
     /**
      * 通过主键删除数据
      *
-     * @param buildId 主键
+     * @param buildinfo 主键
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Integer buildId) {
-        return this.buildinfoDao.deleteById(buildId) > 0;
+    public boolean deleteById(Buildinfo buildinfo) {
+        return this.buildinfoDao.deleteById(buildinfo) > 0;
+    }
+
+    @Override
+    public List<Buildinfo> queryAll() {
+        return this.buildinfoDao.queryAll();
+    }
+
+    @Override
+    public List<BuildAndAddress> getBuildAndAddressList() {
+        return this.buildinfoDao.getBuildAndAddressList();
+    }
+
+    @Override
+    public List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress) {
+        return this.buildinfoDao.getBuildByName( buildAndAddress);
     }
 }
