@@ -1,20 +1,15 @@
 package com.cqu.pls.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
 /**
  * (Purchasesale)实体类
  *
  * @author makejava
- * @since 2022-06-24 14:34:05
+ * @since 2022-06-29 10:59:33
  */
-@NoArgsConstructor
-@AllArgsConstructor
 public class Purchasesale implements Serializable {
-    private static final long serialVersionUID = -62727252257942799L;
+    private static final long serialVersionUID = 146460432932036963L;
     
     private Integer purchasesaleId;
     
@@ -23,6 +18,10 @@ public class Purchasesale implements Serializable {
     private Double purchasesalePrice;
     
     private Integer purchasesaleCount;
+    
+    private Integer merchandiseId;
+    
+    private String merchandiseName;
 
 
     public Integer getPurchasesaleId() {
@@ -57,14 +56,21 @@ public class Purchasesale implements Serializable {
         this.purchasesaleCount = purchasesaleCount;
     }
 
-    @Override
-    public String toString() {
-        return "Purchasesale{" +
-                "purchasesaleId=" + purchasesaleId +
-                ", purchasesaleType='" + purchasesaleType + '\'' +
-                ", purchasesalePrice=" + purchasesalePrice +
-                ", purchasesaleCount=" + purchasesaleCount +
-                '}';
+    public Integer getMerchandiseId() {
+        return merchandiseId;
     }
+
+    public void setMerchandiseId(Integer merchandiseId) {
+        this.merchandiseId = merchandiseId;
+    }
+
+    public String getMerchandiseName() {
+        return merchandiseName;
+    }
+
+    public void setMerchandiseName(String merchandiseName) {
+        this.merchandiseName = merchandiseName;
+    }
+
 }
 

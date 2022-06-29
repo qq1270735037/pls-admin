@@ -43,7 +43,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BaseResultMap">
         select
-          purchasesale_id, purchasesale_type, purchasesale_price, purchasesale_count
+          *
         from pls.PurchaseSale
     </select>
     <!--统计总行数-->
@@ -68,8 +68,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="purchasesaleId" useGeneratedKeys="true">
-        insert into PurchaseSale(purchasesale_type, purchasesale_price, purchasesale_count)
-        values (#{purchasesaleType}, #{purchasesalePrice}, #{purchasesaleCount})
+        insert into PurchaseSale(purchasesale_type,purchasesale_price,purchasesale_count,merchandise_id,merchandise_name)
+        values (#{purchasesaleType}, #{purchasesalePrice}, #{purchasesaleCount},#{merchandiseId},#{merchandiseName})
     </insert>
 
     <insert id="insertBatch" keyProperty="purchasesaleId" useGeneratedKeys="true">
@@ -105,6 +105,14 @@
             <if test="purchasesaleCount != null">
                 purchasesale_count = #{purchasesaleCount},
             </if>
+            <if test="merchandiseName!=null">
+            merchandise_name=#{merchandiseName},
+
+            </if>
+            <if test="merchandiseId!=null">
+            merchandise_id=#{merchandiseId}
+
+            </if>
         </set>
         where purchasesale_id = #{purchasesaleId}
     </update>
@@ -115,8 +123,24 @@
     </delete>
 
     <select id="queryOne" resultMap="BaseResultMap">
-        select * from PurchaseSale where purchasesale_type like concat('%',#{purchasesaleType},'%')
+        select * from PurchaseSale where merchandise_name like concat('%',#{merchandiseName},'%')
     </select>
+
+
+    <update id="addToMerchandiseinfo" >
+        update MerchandiseInfo set repository_count = repository_count+ #{purchasesaleCount} where merchandise_id= #{merchandiseId}
+    </update>
+
+    <update id="reduceToMerchandiseinfo">
+        update MerchandiseInfo set repository_count=repository_count-#{purchasesaleCount} where merchandise_id = #{merchandiseId}
+    </update>
+
+
+
+
+
+
+
 
 </mapper>
 

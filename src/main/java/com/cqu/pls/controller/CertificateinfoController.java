@@ -52,8 +52,7 @@ public class CertificateinfoController {
      */
     @PostMapping("/add")
     public DataResult add(@RequestBody Certificateinfo certificateinfo) {
-        System.out.println(certificateinfo.getCertificateEndTime());
-        System.out.println(certificateinfo.getCertificateCode());
+
         return DataResult.successByData(certificateinfoService.insert(certificateinfo));
     }
 

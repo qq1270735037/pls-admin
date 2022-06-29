@@ -1,21 +1,26 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.entity.Machineinfo;
 import com.cqu.pls.entity.Purchasesale;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
  * (Purchasesale)表数据库访问层
  *
  * @author makejava
- * @since 2022-06-24 14:34:05
+ * @since 2022-06-29 10:59:32
  */
 public interface PurchasesaleDao {
 
 
+    int addToMerchandiseinfo(Purchasesale purchasesale);
+    int reduceToMerchandiseinfo(Purchasesale purchasesale);
 
 
-    List<Purchasesale> queryAll();
+
+    List<Purchasesale>  queryAll();
     List<Purchasesale> queryOne(Purchasesale purchasesale);
 
     /**
@@ -24,6 +29,8 @@ public interface PurchasesaleDao {
      * @param purchasesaleId 主键
      * @return 实例对象
      */
+
+
     Purchasesale queryById(Integer purchasesaleId);
 
     /**
@@ -33,6 +40,7 @@ public interface PurchasesaleDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
+    List<Purchasesale> queryAllByLimit(Purchasesale purchasesale, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数

@@ -4,6 +4,9 @@ import com.cqu.pls.entity.Purchasesale;
 import com.cqu.pls.dao.PurchasesaleDao;
 import com.cqu.pls.service.PurchasesaleService;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,13 +15,22 @@ import java.util.List;
  * (Purchasesale)表服务实现类
  *
  * @author makejava
- * @since 2022-06-24 14:34:05
+ * @since 2022-06-29 10:59:38
  */
 @Service("purchasesaleService")
 public class PurchasesaleServiceImpl implements PurchasesaleService {
-
     @Resource
     private PurchasesaleDao purchasesaleDao;
+
+    @Override
+    public Boolean addToMerchandiseInfo(Purchasesale purchasesale) {
+        return purchasesaleDao.addToMerchandiseinfo(purchasesale)>0;
+    }
+
+    @Override
+    public Boolean reduceToMerchandiseInfo(Purchasesale purchasesale) {
+        return purchasesaleDao.reduceToMerchandiseinfo(purchasesale)>0;
+    }
 
     @Override
     public List<Purchasesale> queryOne(Purchasesale purchasesale) {
@@ -41,7 +53,18 @@ public class PurchasesaleServiceImpl implements PurchasesaleService {
         return this.purchasesaleDao.queryById(purchasesaleId);
     }
 
-
+    /**
+     * 分页查询
+     *
+     * @param purchasesale 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+    @Override
+    public Page<Purchasesale> queryByPage(Purchasesale purchasesale, PageRequest pageRequest) {
+        long total = this.purchasesaleDao.count(purchasesale);
+        return new PageImpl<>(this.purchasesaleDao.queryAllByLimit(purchasesale, pageRequest), pageRequest, total);
+    }
 
     /**
      * 新增数据
