@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Fixinfo;
 import com.cqu.pls.dao.FixinfoDao;
 import com.cqu.pls.service.FixinfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.List;
  * @since 2022-06-24 14:34:04
  */
 @Service("fixinfoService")
+@Transactional
 public class FixinfoServiceImpl implements FixinfoService {
     @Resource
     private FixinfoDao fixinfoDao;

@@ -1,17 +1,14 @@
 package com.cqu.pls.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.cqu.pls.entity.Companyinfo;
 import com.cqu.pls.service.CompanyinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
 import com.cqu.pls.utils.result.code.Code;
-import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * (Companyinfo)表控制层

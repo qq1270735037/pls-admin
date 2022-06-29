@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Companyinfo;
 import com.cqu.pls.dao.CompanyinfoDao;
 import com.cqu.pls.service.CompanyinfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.List;
  * @since 2022-06-24 14:34:04
  */
 @Service("companyinfoService")
+@Transactional
 public class CompanyinfoServiceImpl implements CompanyinfoService {
     @Resource
     private CompanyinfoDao companyinfoDao;
