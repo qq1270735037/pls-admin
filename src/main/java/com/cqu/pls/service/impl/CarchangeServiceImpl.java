@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Carchange;
 import com.cqu.pls.dao.CarchangeDao;
 import com.cqu.pls.service.CarchangeService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.List;
  * @since 2022-06-24 14:34:03
  */
 @Service("carchangeService")
+@Transactional
 public class CarchangeServiceImpl implements CarchangeService {
     @Resource
     private CarchangeDao carchangeDao;

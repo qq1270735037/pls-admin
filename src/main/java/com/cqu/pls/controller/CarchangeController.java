@@ -1,8 +1,10 @@
 package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Carchange;
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.service.CarchangeService;
 
+import com.cqu.pls.service.CarinfoService;
 import com.cqu.pls.utils.result.DataResult;
 import com.cqu.pls.utils.result.code.Code;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,8 @@ public class CarchangeController {
      */
     @Resource
     private CarchangeService carchangeService;
-
+    @Resource
+    private CarinfoService carinfoService;
     /**
      * 分页查询
      *
@@ -115,6 +118,43 @@ public class CarchangeController {
         }
         Integer id = carchange.getCarChangeId();
         return DataResult.successByMessage("删除成功",this.carchangeService.deleteById(id));
+    }
+
+    /**
+     * 通过买卖类型筛选数据
+     * @param carinfo
+     * @return
+     */
+    @PostMapping("insertCarChange")
+    public DataResult insertCarChange(@RequestBody Carinfo carinfo){
+        if(carinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        Carinfo car=this.carinfoService.insert(carinfo);
+        Carchange carchange = new Carchange();
+        carchange.setCarId(car.getCarId());
+        carchange.setCarChangeType(car.getCarStyle());
+        carchange.setOperation(1);//买入
+        return DataResult.successByMessage("插入成功",this.carchangeService.insert(carchange));
+    }
+
+    /**
+     * 新增一条售出记录
+     * @param carchange
+     * @return
+     */
+    @PostMapping("saleCar")
+    public DataResult saleCar(@RequestBody Carchange carchange){
+        if(carchange==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        Carinfo car = this.carinfoService.queryById(carchange.getCarId());
+        if(car==null){
+            return DataResult.err();//数据库中没有该辆车
+        }
+        else {
+            return DataResult.successByMessage("售出成功", this.carchangeService.insert(carchange));
+        }
     }
 }
 

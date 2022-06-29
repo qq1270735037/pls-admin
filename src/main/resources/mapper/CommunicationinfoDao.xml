@@ -125,5 +125,28 @@
         delete from CommunicationInfo where communication_id = #{communicationId}
     </delete>
 
+    <!--  条件查询  -->
+    <select id="queryByCondition" resultMap="BaseResultMap">
+        select
+        communication_id, employee_id, communication_title, communication_context, communication_time
+        from CommunicationInfo
+        <where>
+            <if test="communicationId != null">
+                and communication_id = #{communicationId}
+            </if>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="communicationTitle != null and communicationTitle != ''">
+                and communication_title like concat("%",#{communicationTitle},"%")
+            </if>
+            <if test="communicationContext != null and communicationContext != ''">
+                and communication_context = #{communicationContext}
+            </if>
+            <if test="communicationTime != null">
+                and communication_time = #{communicationTime}
+            </if>
+        </where>
+    </select>
 </mapper>
 

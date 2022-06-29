@@ -1,8 +1,11 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
 import com.cqu.pls.service.CommunicationinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * (Communicationinfo)表控制层
  *
- * @author makejava
+ * @author wangyaohui
  * @since 2022-06-24 14:34:04
  */
 @RestController
@@ -23,13 +26,13 @@ public class CommunicationinfoController {
     @Resource
     private CommunicationinfoService communicationinfoService;
 
-    /**
-     * 分页查询
-     *
-     * @param communicationinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
+//    /**
+//     * 分页查询
+//     *
+//     * @param communicationinfo 筛选条件
+//     * @param pageRequest      分页对象
+//     * @return 查询结果
+//     */
 //    @GetMapping
 //    public ResponseEntity<Page<Communicationinfo>> queryByPage(Communicationinfo communicationinfo, PageRequest pageRequest) {
 //        return ResponseEntity.ok(this.communicationinfoService.queryByPage(communicationinfo, pageRequest));
@@ -46,15 +49,19 @@ public class CommunicationinfoController {
         return ResponseEntity.ok(this.communicationinfoService.queryById(id));
     }
 
+    @PostMapping("queryByCondition")
+    public DataResult queryByCondition(@RequestBody Communicationinfo communicationinfo) {
+        return DataResult.successByDataArray(this.communicationinfoService.queryBycondition(communicationinfo));
+    }
     /**
      * 新增数据
      *
      * @param communicationinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Communicationinfo> add(Communicationinfo communicationinfo) {
-        return ResponseEntity.ok(this.communicationinfoService.insert(communicationinfo));
+    @PostMapping("add")
+    public DataResult add(@RequestBody(required = false) Communicationinfo communicationinfo) {
+        return DataResult.successByData(this.communicationinfoService.insert(communicationinfo));
     }
 
     /**
@@ -63,20 +70,21 @@ public class CommunicationinfoController {
      * @param communicationinfo 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Communicationinfo> edit(Communicationinfo communicationinfo) {
-        return ResponseEntity.ok(this.communicationinfoService.update(communicationinfo));
+    @PostMapping("update")
+    public DataResult update(@RequestBody(required = false) Communicationinfo communicationinfo) {
+        return DataResult.successByMessage("更新成功",this.communicationinfoService.update(communicationinfo));
     }
 
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param sid 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.communicationinfoService.deleteById(id));
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
+        Integer id = Integer.parseInt(JSON.parseObject(sid).get("id").toString());
+        return DataResult.successByMessage("删除成功",this.communicationinfoService.deleteById(id));
     }
 
 }

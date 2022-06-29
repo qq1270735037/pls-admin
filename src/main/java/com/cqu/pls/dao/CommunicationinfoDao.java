@@ -1,5 +1,6 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -20,6 +21,7 @@ public interface CommunicationinfoDao {
      */
     Communicationinfo queryById(Integer communicationId);
 
+    List<Communicationinfo> queryByCondition(Communicationinfo communicationinfo);
     /**
      * 查询指定行数据
      *
