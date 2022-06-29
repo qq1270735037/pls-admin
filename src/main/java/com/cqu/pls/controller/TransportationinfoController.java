@@ -1,8 +1,11 @@
 package com.cqu.pls.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.cqu.pls.entity.Merchandiseinfo;
 import com.cqu.pls.entity.Transportationinfo;
 import com.cqu.pls.service.TransportationinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,18 +27,6 @@ public class TransportationinfoController {
     private TransportationinfoService transportationinfoService;
 
     /**
-     * 分页查询
-     *
-     * @param transportationinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
-//    @GetMapping
-//    public ResponseEntity<Page<Transportationinfo>> queryByPage(Transportationinfo transportationinfo, PageRequest pageRequest) {
-//        return ResponseEntity.ok(this.transportationinfoService.queryByPage(transportationinfo, pageRequest));
-//    }
-
-    /**
      * 通过主键查询单条数据
      *
      * @param id 主键
@@ -47,14 +38,24 @@ public class TransportationinfoController {
     }
 
     /**
+     *
+     * @param transportationinfo
+     * @return
+     */
+    @PostMapping("queryByCondition")
+    public DataResult queryByCondition(@RequestBody Transportationinfo transportationinfo) {
+        return DataResult.successByDataArray(this.transportationinfoService.queryBycondition(transportationinfo));
+    }
+
+    /**
      * 新增数据
      *
      * @param transportationinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Transportationinfo> add(Transportationinfo transportationinfo) {
-        return ResponseEntity.ok(this.transportationinfoService.insert(transportationinfo));
+    @PostMapping("add")
+    public DataResult add(@RequestBody(required = false) Transportationinfo transportationinfo) {
+        return DataResult.successByMessage("成功",this.transportationinfoService.insert(transportationinfo));
     }
 
     /**
@@ -63,20 +64,20 @@ public class TransportationinfoController {
      * @param transportationinfo 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Transportationinfo> edit(Transportationinfo transportationinfo) {
-        return ResponseEntity.ok(this.transportationinfoService.update(transportationinfo));
+    @PostMapping("update")
+    public DataResult update(@RequestBody Transportationinfo transportationinfo) {
+        return DataResult.successByMessage("成功",this.transportationinfoService.update(transportationinfo));
     }
-
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param sid 主键  sid = {id:" xxx"}
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.transportationinfoService.deleteById(id));
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody String sid) {
+        Long id = Long.valueOf(Integer.parseInt(JSON.parseObject(sid).get("id").toString()));
+        return DataResult.successByMessage("成功",this.transportationinfoService.deleteById(id));
     }
 
 }

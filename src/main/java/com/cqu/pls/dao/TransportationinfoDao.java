@@ -78,5 +78,11 @@ public interface TransportationinfoDao {
      */
     int deleteById(Long transportationId);
 
+    /**
+     *
+     * @param transportationinfo
+     * @return
+     */
+    List<Transportationinfo> queryByCondition(Transportationinfo transportationinfo);
 }
 

@@ -147,5 +147,36 @@
         delete from TransportationInfo where transportation_id = #{transportationId}
     </delete>
 
+
+    <select id="queryByCondition" resultMap="BaseResultMap">
+        select
+            transportation_id, car_id, address_city, transportation_start_time,transportation_end_time,
+            transportation_start_location,transportation_end_location,transportation_money
+            from TransportationInfo
+            <where>
+                <if test="transportationId != null">
+                    and transportation_id = #{transportationId}
+                </if>
+                <if test="carId != null">
+                    and car_id = #{carId}
+                </if>
+                <if test="transportationStartTime != null and transportationStartTime != ''">
+                    and transportation_start_time like concat("%",#{transportationStartTime},"%")
+                </if>
+                <if test="transportationEndTime != null and transportationEndTime != ''">
+                    and transportation_end_time  like concat("%",#{transportationEndTime},"%")
+                </if>
+                <if test="transportationStartTime != null and transportationStartTime != ''">
+                    and transportation_start_location  like concat("%",#{transportationStartTime},"%")
+                </if>
+                <if test="transportationEndLocation != null and transportationEndLocation != ''">
+                    and transportation_end_location  like concat("%",#{transportationEndLocation},"%")
+                </if>
+                <if test="transportationMoney != null and transportationMoney != ''">
+                    and transportation_money  like concat("%",#{transportationMoney},"%")
+                </if>
+            </where>
+    </select>
+
 </mapper>
 
