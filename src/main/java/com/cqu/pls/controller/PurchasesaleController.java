@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
+
 
 /**
  * (Purchasesale)表控制层
@@ -25,24 +25,13 @@ public class PurchasesaleController {
     @Resource
     private PurchasesaleService purchasesaleService;
 
-    /**
-     * 分页查询
-     *
-     * @param purchasesale 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
+
 //    @GetMapping
 //    public ResponseEntity<Page<Purchasesale>> queryByPage(Purchasesale purchasesale, PageRequest pageRequest) {
 //        return ResponseEntity.ok(this.purchasesaleService.queryByPage(purchasesale, pageRequest));
 //    }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
+
     @GetMapping("/selectAll")
     public DataResult selectAll() {
         return DataResult.successByDataArray(purchasesaleService.queryAll());
@@ -76,12 +65,7 @@ public class PurchasesaleController {
         return DataResult.successByData(purchasesaleService.update(purchasesale));
     }
 
-    /**
-     * 删除数据
-     *
-     * @param id 主键
-     * @return 删除是否成功
-     */
+
     @PostMapping("/deleteById")
     public DataResult deleteById(@RequestBody Purchasesale purchasesale) {
         return DataResult.successByDatas(purchasesaleService.deleteById(purchasesale.getPurchasesaleId()));
