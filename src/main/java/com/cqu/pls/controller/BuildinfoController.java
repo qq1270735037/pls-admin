@@ -1,7 +1,10 @@
 package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Buildinfo;
+import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.service.BuildinfoService;
+import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.vo.BuildAndAddress;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,15 +48,22 @@ public class BuildinfoController {
         return ResponseEntity.ok(this.buildinfoService.queryById(id));
     }
 
+    @PostMapping("selectAll")
+    @ResponseBody
+    public DataResult selectAll() {
+
+        return DataResult.successByDataArray(buildinfoService.queryAll());
+    }
+
     /**
      * 新增数据
      *
      * @param buildinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Buildinfo> add(Buildinfo buildinfo) {
-        return ResponseEntity.ok(this.buildinfoService.insert(buildinfo));
+    @PostMapping("add")
+    public DataResult add(@RequestBody Buildinfo buildinfo) {
+        return DataResult.successByDatas(this.buildinfoService.insert(buildinfo));
     }
 
     /**
@@ -62,20 +72,43 @@ public class BuildinfoController {
      * @param buildinfo 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Buildinfo> edit(Buildinfo buildinfo) {
-        return ResponseEntity.ok(this.buildinfoService.update(buildinfo));
+    @PostMapping("edit")
+    public DataResult edit(@RequestBody Buildinfo buildinfo) {
+        return DataResult.successByDatas(this.buildinfoService.update(buildinfo));
     }
 
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param buildinfo 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.buildinfoService.deleteById(id));
+    @PostMapping("deleteById")
+    public DataResult deleteById(@RequestBody Buildinfo buildinfo) {
+        return DataResult.successByDatas(this.buildinfoService.deleteById(buildinfo));
+    }
+
+    /**
+     * \
+     * 联合查询
+     *
+     * @return
+     */
+    @PostMapping("getBuildAndAddress")
+    public DataResult getBuildAndAddress() {
+        return DataResult.successByDataArray(this.buildinfoService.getBuildAndAddressList());
+    }
+
+    /**
+     * 根据名字查询
+     *
+     * @return
+     */
+    @PostMapping("getBuildByName")
+    @ResponseBody
+    public DataResult getBuildByName(@RequestBody BuildAndAddress buildAndAddress) {
+
+        return DataResult.successByDataArray(this.buildinfoService.getBuildByName(buildAndAddress));
     }
 
 }

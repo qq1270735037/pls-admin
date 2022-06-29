@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Certificateinfo;
 
+import java.util.List;
+
 
 /**
  * (Certificateinfo)表服务接口
@@ -10,6 +12,12 @@ import com.cqu.pls.entity.Certificateinfo;
  * @since 2022-06-24 14:34:04
  */
 public interface CertificateinfoService {
+
+
+
+
+    List<Certificateinfo> queryAll();
+    List<Certificateinfo> queryOne(Certificateinfo certificateinfo);
 
     /**
      * 通过ID查询单条数据

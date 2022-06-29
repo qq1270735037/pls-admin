@@ -6,6 +6,7 @@ import com.cqu.pls.service.PurchasesaleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Purchasesale)表服务实现类
@@ -15,8 +16,19 @@ import javax.annotation.Resource;
  */
 @Service("purchasesaleService")
 public class PurchasesaleServiceImpl implements PurchasesaleService {
+
     @Resource
     private PurchasesaleDao purchasesaleDao;
+
+    @Override
+    public List<Purchasesale> queryOne(Purchasesale purchasesale) {
+        return purchasesaleDao.queryOne(purchasesale);
+    }
+
+    @Override
+    public List<Purchasesale> queryAll() {
+        return purchasesaleDao.queryAll();
+    }
 
     /**
      * 通过ID查询单条数据

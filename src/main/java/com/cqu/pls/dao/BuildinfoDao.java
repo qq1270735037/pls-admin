@@ -1,6 +1,8 @@
 package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Buildinfo;
+import com.cqu.pls.entity.Matetialinfo;
+import com.cqu.pls.vo.BuildAndAddress;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -74,10 +76,19 @@ public interface BuildinfoDao {
     /**
      * 通过主键删除数据
      *
-     * @param buildId 主键
+     * @param buildinfo 主键
      * @return 影响行数
      */
-    int deleteById(Integer buildId);
+    int deleteById(Buildinfo buildinfo);
 
+    List<Buildinfo> queryAll();
+
+    /**
+     * 高级映射, 一对一 返回集合
+     * @return
+     */
+    List<BuildAndAddress> getBuildAndAddressList();
+
+    List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress);
 }
 
