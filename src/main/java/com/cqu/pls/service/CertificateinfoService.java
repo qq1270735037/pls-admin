@@ -35,7 +35,7 @@ public interface CertificateinfoService {
      * @param certificateinfo 实例对象
      * @return 实例对象
      */
-    Certificateinfo insert(Certificateinfo certificateinfo);
+    boolean insert(Certificateinfo certificateinfo);
 
     /**
      * 修改数据

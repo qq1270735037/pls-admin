@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Certificateinfo;
 import com.cqu.pls.service.CertificateinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.utils.result.code.Code;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,19 @@ public class CertificateinfoController {
     @PostMapping("/add")
     public DataResult add(@RequestBody Certificateinfo certificateinfo) {
 
-        return DataResult.successByData(certificateinfoService.insert(certificateinfo));
+        try{
+            boolean b = certificateinfoService.insert(certificateinfo);
+            return DataResult.successByDatas(b);
+
+        }catch (Exception ex){
+
+            return DataResult.err().setMessage("新增失败,请查看是否填写字段有误");
+
+        }
+
+
+
+
     }
 
     /**
@@ -64,13 +77,22 @@ public class CertificateinfoController {
      */
     @PostMapping("/edit")
     public DataResult edit(@RequestBody Certificateinfo certificateinfo) {
-        return DataResult.successByData(certificateinfoService.update(certificateinfo));
+        Certificateinfo certificateinfo1 = certificateinfoService.update(certificateinfo);
+        if(certificateinfo1==null) return DataResult.err().setMessage("修改,请查看是否填写字段有误");
+        return DataResult.successByData(certificateinfo1);
+
     }
 
 
     @PostMapping("/deleteById")
     public DataResult deleteById (@RequestBody Certificateinfo certificateinfo) {
-        return DataResult.successByDatas(certificateinfoService.deleteById(certificateinfo.getCertificateId()));
+        boolean b = certificateinfoService.deleteById(certificateinfo.getCertificateId());
+        if(b==false){
+            return DataResult.err().setMessage("删除失败");
+
+        }
+        return DataResult.successByDatas(b);
+
 
     }
 

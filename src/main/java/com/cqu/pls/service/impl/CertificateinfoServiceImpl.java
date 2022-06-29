@@ -50,9 +50,9 @@ public class CertificateinfoServiceImpl implements CertificateinfoService {
      * @return 实例对象
      */
     @Override
-    public Certificateinfo insert(Certificateinfo certificateinfo) {
-        this.certificateinfoDao.insert(certificateinfo);
-        return certificateinfo;
+    public boolean insert(Certificateinfo certificateinfo) {
+        return this.certificateinfoDao.insert(certificateinfo)>0;
+
     }
 
     /**
