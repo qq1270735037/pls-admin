@@ -13,6 +13,14 @@ import java.util.List;
  */
 public interface CertificateinfoDao {
 
+
+
+//    List<Certificateinfo> selectAll();
+
+    List<Certificateinfo> queryAll();
+
+    List<Certificateinfo> queryOne(Certificateinfo certificateinfo);
+
     /**
      * 通过ID查询单条数据
      *

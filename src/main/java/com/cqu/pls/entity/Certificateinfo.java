@@ -1,5 +1,6 @@
 package com.cqu.pls.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,24 +13,25 @@ import java.io.Serializable;
  * @author makejava
  * @since 2022-06-24 14:34:04
  */
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Certificateinfo implements Serializable {
     private static final long serialVersionUID = 738764997263637676L;
     
-    private Integer certificateId;
+    private Integer certificateId;  //自增主键
     
-    private Integer employeeId;
+    private Integer employeeId; //人员编号
     
-    private Integer certificateCode;
+    private Integer certificateCode; //证件编号
     
-    private String certificateName;
-    
+    private String certificateName; //证件名
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date certificateStartTime;
-    
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date certificateEndTime;
     
-    private String certificateAgent;
+    private String certificateAgent; //发证单位
 
 
     public Integer getCertificateId() {

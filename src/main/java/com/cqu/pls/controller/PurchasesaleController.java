@@ -3,10 +3,12 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Purchasesale;
 import com.cqu.pls.service.PurchasesaleService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
 
 /**
  * (Purchasesale)表控制层
@@ -41,9 +43,15 @@ public class PurchasesaleController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("{id}")
-    public ResponseEntity<Purchasesale> queryById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.purchasesaleService.queryById(id));
+    @GetMapping("/selectAll")
+    public DataResult selectAll() {
+        return DataResult.successByDataArray(purchasesaleService.queryAll());
+    }
+
+    @PostMapping("/selectOne")  //这里主要传入的是purchasesaleType属性
+    public DataResult selectOne(@RequestBody Purchasesale purchasesale){
+        return DataResult.successByDataArray(purchasesaleService.queryOne(purchasesale));
+
     }
 
     /**
@@ -52,9 +60,9 @@ public class PurchasesaleController {
      * @param purchasesale 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Purchasesale> add(Purchasesale purchasesale) {
-        return ResponseEntity.ok(this.purchasesaleService.insert(purchasesale));
+    @PostMapping("/add")
+    public DataResult add(@RequestBody Purchasesale purchasesale) {
+        return DataResult.successByData(purchasesaleService.insert(purchasesale));
     }
 
     /**
@@ -63,9 +71,9 @@ public class PurchasesaleController {
      * @param purchasesale 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Purchasesale> edit(Purchasesale purchasesale) {
-        return ResponseEntity.ok(this.purchasesaleService.update(purchasesale));
+    @PostMapping("/edit")
+    public DataResult edit(@RequestBody Purchasesale purchasesale) {
+        return DataResult.successByData(purchasesaleService.update(purchasesale));
     }
 
     /**
@@ -74,9 +82,9 @@ public class PurchasesaleController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.purchasesaleService.deleteById(id));
+    @PostMapping("/deleteById")
+    public DataResult deleteById(@RequestBody Purchasesale purchasesale) {
+        return DataResult.successByDatas(purchasesaleService.deleteById(purchasesale.getPurchasesaleId()));
     }
 
 }

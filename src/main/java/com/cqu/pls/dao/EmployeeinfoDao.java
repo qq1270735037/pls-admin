@@ -78,5 +78,6 @@ public interface EmployeeinfoDao {
      */
     int deleteById(Integer employeeId);
 
+    List<Employeeinfo> queryByPage(Employeeinfo employeeinfo);
 }
 

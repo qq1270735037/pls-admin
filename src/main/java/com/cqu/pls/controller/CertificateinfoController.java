@@ -3,10 +3,12 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Certificateinfo;
 import com.cqu.pls.service.CertificateinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Certificateinfo)表控制层
@@ -15,7 +17,7 @@ import javax.annotation.Resource;
  * @since 2022-06-24 14:34:04
  */
 @RestController
-@RequestMapping("certificateinfo")
+@RequestMapping("/certificateinfo")
 public class CertificateinfoController {
     /**
      * 服务对象
@@ -23,28 +25,24 @@ public class CertificateinfoController {
     @Resource
     private CertificateinfoService certificateinfoService;
 
-    /**
-     * 分页查询
-     *
-     * @param certificateinfo 筛选条件
-     * @param pageRequest      分页对象
-     * @return 查询结果
-     */
+
 //    @GetMapping
 //    public ResponseEntity<Page<Certificateinfo>> queryByPage(Certificateinfo certificateinfo, PageRequest pageRequest) {
 //        return ResponseEntity.ok(this.certificateinfoService.queryByPage(certificateinfo, pageRequest));
 //    }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("{id}")
-    public ResponseEntity<Certificateinfo> queryById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.certificateinfoService.queryById(id));
+
+    @GetMapping("/selectAll")
+    public DataResult queryAll() {
+
+        return DataResult.successByDataArray(certificateinfoService.queryAll());
     }
+    @PostMapping("/selectOne")
+    public DataResult queryOne(@RequestBody Certificateinfo certificateinfo){
+        return DataResult.successByDataArray(certificateinfoService.queryOne(certificateinfo));
+    }
+
+
 
     /**
      * 新增数据
@@ -52,9 +50,11 @@ public class CertificateinfoController {
      * @param certificateinfo 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<Certificateinfo> add(Certificateinfo certificateinfo) {
-        return ResponseEntity.ok(this.certificateinfoService.insert(certificateinfo));
+    @PostMapping("/add")
+    public DataResult add(@RequestBody Certificateinfo certificateinfo) {
+        System.out.println(certificateinfo.getCertificateEndTime());
+        System.out.println(certificateinfo.getCertificateCode());
+        return DataResult.successByData(certificateinfoService.insert(certificateinfo));
     }
 
     /**
@@ -63,20 +63,16 @@ public class CertificateinfoController {
      * @param certificateinfo 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<Certificateinfo> edit(Certificateinfo certificateinfo) {
-        return ResponseEntity.ok(this.certificateinfoService.update(certificateinfo));
+    @PostMapping("/edit")
+    public DataResult edit(@RequestBody Certificateinfo certificateinfo) {
+        return DataResult.successByData(certificateinfoService.update(certificateinfo));
     }
 
-    /**
-     * 删除数据
-     *
-     * @param id 主键
-     * @return 删除是否成功
-     */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.certificateinfoService.deleteById(id));
+
+    @PostMapping("/deleteById")
+    public DataResult deleteById (@RequestBody Certificateinfo certificateinfo) {
+        return DataResult.successByDatas(certificateinfoService.deleteById(certificateinfo.getCertificateId()));
+
     }
 
 }
