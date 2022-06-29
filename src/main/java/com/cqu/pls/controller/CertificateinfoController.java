@@ -38,7 +38,7 @@ public class CertificateinfoController {
         return DataResult.successByDataArray(certificateinfoService.queryAll());
     }
     @PostMapping("/selectOne")
-    public DataResult queryOne(Certificateinfo certificateinfo){
+    public DataResult queryOne(@RequestBody Certificateinfo certificateinfo){
         return DataResult.successByDataArray(certificateinfoService.queryOne(certificateinfo));
     }
 
@@ -51,7 +51,9 @@ public class CertificateinfoController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public DataResult add(Certificateinfo certificateinfo) {
+    public DataResult add(@RequestBody Certificateinfo certificateinfo) {
+        System.out.println(certificateinfo.getCertificateEndTime());
+        System.out.println(certificateinfo.getCertificateCode());
         return DataResult.successByData(certificateinfoService.insert(certificateinfo));
     }
 
@@ -62,7 +64,7 @@ public class CertificateinfoController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public DataResult edit(Certificateinfo certificateinfo) {
+    public DataResult edit(@RequestBody Certificateinfo certificateinfo) {
         return DataResult.successByData(certificateinfoService.update(certificateinfo));
     }
 

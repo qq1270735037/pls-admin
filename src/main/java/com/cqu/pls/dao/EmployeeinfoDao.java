@@ -1,6 +1,7 @@
 package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Employeeinfo;
+import com.cqu.pls.vo.EmployeeVo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -79,5 +80,7 @@ public interface EmployeeinfoDao {
     int deleteById(Integer employeeId);
 
     List<Employeeinfo> queryByPage(Employeeinfo employeeinfo);
+
+    List<EmployeeVo> queryEmployeeVo(Employeeinfo employeeinfo);
 }
 

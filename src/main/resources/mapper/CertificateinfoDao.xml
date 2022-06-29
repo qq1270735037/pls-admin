@@ -156,7 +156,7 @@
     </delete>
     
     <select id="queryOne" resultMap="BaseResultMap">
-        select * from CertificateInfo where cast(certificate_code as char) like concat('${certificateId}','%')
+        select * from CertificateInfo where cast(certificate_code as char) like concat('${certificateCode}','%')
     </select>
     
 
