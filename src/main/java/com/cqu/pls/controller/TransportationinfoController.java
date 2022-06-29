@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * (Transportationinfo)表控制层
  *
- * @author makejava
+ * @author qufang
  * @since 2022-06-24 14:34:05
  */
 @RestController

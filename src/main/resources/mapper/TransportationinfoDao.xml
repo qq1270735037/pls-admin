@@ -150,7 +150,7 @@
 
     <select id="queryByCondition" resultMap="BaseResultMap">
         select
-            transportation_id, car_id, address_city, transportation_start_time,transportation_end_time,
+            transportation_id, car_id, transportation_start_time,transportation_end_time,
             transportation_start_location,transportation_end_location,transportation_money
             from TransportationInfo
             <where>
