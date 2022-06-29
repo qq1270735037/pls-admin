@@ -1,6 +1,8 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.dto.MaterialInfoDTO;
 import com.cqu.pls.entity.Matetialinfo;
+import com.cqu.pls.vo.MaterialAndType;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -79,6 +81,10 @@ public interface MatetialinfoDao {
 
     List<Matetialinfo> queryAll();
 
-    List<Matetialinfo> selectByName(Matetialinfo materialName);
+    List<MaterialAndType> selectByName(MaterialInfoDTO materialInfoDTO);
+
+    List<MaterialAndType> getMaterialAndTypeList(MaterialInfoDTO materialInfoDTO);
+
+    Long selectByNamecount(Matetialinfo matetialinfo);
 }
 

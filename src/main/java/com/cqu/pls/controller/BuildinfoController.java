@@ -1,14 +1,19 @@
 package com.cqu.pls.controller;
 
+import com.cqu.pls.dto.BuildAndTypeDTO;
+import com.cqu.pls.dto.MaterialInfoDTO;
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.service.BuildinfoService;
 import com.cqu.pls.utils.result.DataResult;
 import com.cqu.pls.vo.BuildAndAddress;
+import com.cqu.pls.vo.MaterialAndType;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Buildinfo)表控制层
@@ -106,9 +111,18 @@ public class BuildinfoController {
      */
     @PostMapping("getBuildByName")
     @ResponseBody
-    public DataResult getBuildByName(@RequestBody BuildAndAddress buildAndAddress) {
+    public DataResult getBuildByName(@RequestBody(required = false) BuildAndTypeDTO buildAndTypeDTO) {
+        //查询得到总条数
+        buildAndTypeDTO.setPage((buildAndTypeDTO.getPage() - 1) * buildAndTypeDTO.getLimit());
+        Buildinfo buildinfo = new Buildinfo();
+        BeanUtils.copyProperties(buildAndTypeDTO, buildinfo);
+        List<BuildAndAddress> buildAndAddresses = buildinfoService.getBuildByName(buildAndTypeDTO);
 
-        return DataResult.successByDataArray(this.buildinfoService.getBuildByName(buildAndAddress));
+        BeanUtils.copyProperties(buildAndAddresses, buildinfo);
+
+        Long total = this.buildinfoService.selectByNamecount(buildinfo);
+
+        return DataResult.successByTotalData(buildAndAddresses,total);
     }
 
 }

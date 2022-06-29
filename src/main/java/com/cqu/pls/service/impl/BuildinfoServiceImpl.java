@@ -1,5 +1,6 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.dto.BuildAndTypeDTO;
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.dao.BuildinfoDao;
 import com.cqu.pls.service.BuildinfoService;
@@ -80,7 +81,17 @@ public class BuildinfoServiceImpl implements BuildinfoService {
     }
 
     @Override
-    public List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress) {
-        return this.buildinfoDao.getBuildByName( buildAndAddress);
+    public List<BuildAndAddress> getBuildByName(BuildAndTypeDTO buildAndTypeDTO) {
+        return this.buildinfoDao.getBuildByName( buildAndTypeDTO);
+    }
+
+    @Override
+    public Long count(Buildinfo buildinfo) {
+        return this.buildinfoDao.count( buildinfo);
+    }
+
+    @Override
+    public Long selectByNamecount(Buildinfo buildinfo) {
+        return  this.buildinfoDao.selectByNamecount( buildinfo);
     }
 }
