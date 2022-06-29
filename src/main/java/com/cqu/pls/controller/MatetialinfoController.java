@@ -1,14 +1,21 @@
 package com.cqu.pls.controller;
 
+import com.cqu.pls.dao.MatetialinfoDao;
+import com.cqu.pls.dto.MaterialInfoDTO;
+import com.cqu.pls.entity.Materialtype;
 import com.cqu.pls.entity.Matetialinfo;
+import com.cqu.pls.service.MaterialtypeService;
 import com.cqu.pls.service.MatetialinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.vo.MaterialAndType;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * (Matetialinfo)表控制层
@@ -25,6 +32,8 @@ public class MatetialinfoController {
      */
     @Resource
     private MatetialinfoService matetialinfoService;
+    @Resource
+    private MaterialtypeService materialtypeService;
 
     /**
      * 分页查询
@@ -72,9 +81,17 @@ public class MatetialinfoController {
      */
     @PostMapping("selectByName")
     @ResponseBody
-    public DataResult selectByName(@RequestBody Matetialinfo matetialinfo) {
-
-        return DataResult.successByDataArray(matetialinfoService.selectByName(matetialinfo));
+    public DataResult selectByName(@RequestBody(required = false)MaterialInfoDTO materialInfoDTO) {
+        //查询得到总条数
+        materialInfoDTO.setPage((materialInfoDTO.getPage() - 1) * materialInfoDTO.getLimit());
+        Matetialinfo matetialinfo = new Matetialinfo();
+        BeanUtils.copyProperties(materialInfoDTO, matetialinfo);
+        List<MaterialAndType> materialAndTypes = matetialinfoService.selectByName(materialInfoDTO);
+        BeanUtils.copyProperties(materialAndTypes, matetialinfo);
+//        System.out.println("*****************************");
+//        System.out.println(materialInfoDTO);
+        Long total = this.matetialinfoService.selectByNamecount(matetialinfo);
+        return DataResult.successByTotalData(materialAndTypes,total);
     }
     /**
      * 新增数据
@@ -84,8 +101,8 @@ public class MatetialinfoController {
      */
     @PostMapping("add")
     public DataResult add(@RequestBody Matetialinfo matetialinfo) {
-        Matetialinfo insert = this.matetialinfoService.insert(matetialinfo);
-        return DataResult.successByData(insert);
+        System.out.println(matetialinfo);
+        return DataResult.successByData(matetialinfoService.insert(matetialinfo));
     }
 
 
@@ -106,5 +123,27 @@ public class MatetialinfoController {
         return DataResult.successByDatas(b);
     }
 
+    /**
+     * \
+     * 联合查询
+     *
+     * @return
+     */
+    @PostMapping("getMaterialAndTypeList")
+    public DataResult getMaterialAndTypeList(@RequestBody(required = false)MaterialInfoDTO materialInfoDTO) {
+//        System.out.println("*****************************");
+//        System.out.println(materialInfoDTO);
+        //查询得到总条数
+        materialInfoDTO.setPage((materialInfoDTO.getPage() - 1) * materialInfoDTO.getLimit());
+        Matetialinfo matetialinfo = new Matetialinfo();
+        Long total = this.matetialinfoService.count(matetialinfo);
+        return DataResult.successByTotalData(this.matetialinfoService.getMaterialAndTypeList(materialInfoDTO),total);
+    }
+
+    @PostMapping("selectType")
+    public DataResult selectType() {
+//        System.out.println(materialtypeService.queryAll());
+        return DataResult.successByDataArray(materialtypeService.queryAll());
+    }
 }
 

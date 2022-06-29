@@ -1,8 +1,10 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.dto.MaterialInfoDTO;
 import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.dao.MatetialinfoDao;
 import com.cqu.pls.service.MatetialinfoService;
+import com.cqu.pls.vo.MaterialAndType;
 import org.springframework.stereotype.Service;
 
 
@@ -74,7 +76,22 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
     }
 
     @Override
-    public List<Matetialinfo> selectByName(Matetialinfo matetialinfo) {
-        return  this.matetialinfoDao.selectByName(matetialinfo);
+    public List<MaterialAndType> selectByName(MaterialInfoDTO materialInfoDTO) {
+        return  this.matetialinfoDao.selectByName(materialInfoDTO);
+    }
+
+    @Override
+    public List<MaterialAndType> getMaterialAndTypeList(MaterialInfoDTO materialInfoDTO) {
+        return this.matetialinfoDao.getMaterialAndTypeList(materialInfoDTO);
+    }
+
+    @Override
+    public Long count(Matetialinfo matetialinfo) {
+        return this.matetialinfoDao.count(matetialinfo);
+    }
+
+    @Override
+    public Long selectByNamecount(Matetialinfo matetialinfo) {
+        return this.matetialinfoDao.selectByNamecount(matetialinfo);
     }
 }

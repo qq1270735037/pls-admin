@@ -185,6 +185,13 @@
         select * from BuildInfo, AddressInfo
         where bulid_name like concat('%',#{bulidName},'%')
         and BuildInfo.address_id=AddressInfo.address_id
+        order by build_id asc limit #{page}, #{limit}
+    </select>
+
+    <select id="selectByNamecount" resultType="java.lang.Long">
+        select count(1)
+        from BuildInfo
+        where bulid_name like concat('%',#{bulidName},'%')
     </select>
 </mapper>
 

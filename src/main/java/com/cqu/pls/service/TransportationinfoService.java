@@ -1,6 +1,9 @@
 package com.cqu.pls.service;
 
+import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Transportationinfo;
+
+import java.util.List;
 
 
 /**
@@ -44,5 +47,13 @@ public interface TransportationinfoService {
      * @return 是否成功
      */
     boolean deleteById(Long transportationId);
+
+
+    /**
+     *
+     * @param transportationinfo
+     * @return
+     */
+    List<Transportationinfo> queryBycondition(Transportationinfo transportationinfo);
 
 }

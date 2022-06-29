@@ -1,6 +1,8 @@
 package com.cqu.pls.service;
 
+import com.cqu.pls.dto.MaterialInfoDTO;
 import com.cqu.pls.entity.Matetialinfo;
+import com.cqu.pls.vo.MaterialAndType;
 
 import java.util.List;
 
@@ -49,5 +51,11 @@ public interface MatetialinfoService {
 
     List<Matetialinfo> queryAll();
 
-    List<Matetialinfo> selectByName(Matetialinfo matetialinfo);
+    List<MaterialAndType> selectByName(MaterialInfoDTO materialInfoDTO );
+
+    List<MaterialAndType> getMaterialAndTypeList(MaterialInfoDTO materialInfoDTO);
+
+    Long count(Matetialinfo matetialinfo);
+
+    Long selectByNamecount(Matetialinfo matetialinfo);
 }

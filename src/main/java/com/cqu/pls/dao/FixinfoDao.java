@@ -78,5 +78,11 @@ public interface FixinfoDao {
      */
     int deleteById(Integer fixId);
 
+    /**
+     * 通过维修工名称查询
+     * @param fixinfo
+     * @return
+     */
+    List<Fixinfo> qureyByName(Fixinfo fixinfo);
 }
 

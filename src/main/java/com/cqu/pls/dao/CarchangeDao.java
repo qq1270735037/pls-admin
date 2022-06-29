@@ -79,5 +79,6 @@ public interface CarchangeDao {
      */
     int deleteById(Integer carChangeId);
 
+    List<Carchange> queryByOperation(Carchange carchange);
 }
 

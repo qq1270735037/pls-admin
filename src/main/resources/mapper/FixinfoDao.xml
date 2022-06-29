@@ -136,5 +136,15 @@
         delete from FixInfo where fix_id = #{fixId}
     </delete>
 
+    <select id="qureyByName" resultMap="BaseResultMap">
+        select
+        fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
+        from FixInfo
+        <where>
+            <if test="fixName != null and fixName != ''">
+                and fix_name like concat('%',#{fixName},'%')
+            </if>
+        </where>
+    </select>
 </mapper>
 

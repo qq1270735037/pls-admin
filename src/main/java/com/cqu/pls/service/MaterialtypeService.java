@@ -1,6 +1,9 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Materialtype;
+import com.cqu.pls.vo.BuildAndAddress;
+
+import java.util.List;
 
 
 /**
@@ -45,4 +48,5 @@ public interface MaterialtypeService {
      */
     boolean deleteById(Integer materialtypeId);
 
+    List<Materialtype> queryAll();
 }

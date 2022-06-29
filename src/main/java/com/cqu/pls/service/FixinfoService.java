@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Fixinfo;
 
+import java.util.List;
+
 
 /**
  * (Fixinfo)表服务接口
@@ -45,4 +47,10 @@ public interface FixinfoService {
      */
     boolean deleteById(Integer fixId);
 
+    /**
+     * 通过维修工姓名查询
+     * @param fixinfo
+     * @return
+     */
+    List<Fixinfo> queryByName(Fixinfo fixinfo);
 }

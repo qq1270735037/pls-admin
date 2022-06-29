@@ -77,5 +77,6 @@ public interface MaterialtypeDao {
      */
     int deleteById(Integer materialtypeId);
 
+    List<Materialtype> queryAll();
 }
 

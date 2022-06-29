@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Materialtype)表服务实现类
@@ -65,5 +66,10 @@ public class MaterialtypeServiceImpl implements MaterialtypeService {
     @Override
     public boolean deleteById(Integer materialtypeId) {
         return this.materialtypeDao.deleteById(materialtypeId) > 0;
+    }
+
+    @Override
+    public List<Materialtype> queryAll() {
+        return this.materialtypeDao.queryAll();
     }
 }

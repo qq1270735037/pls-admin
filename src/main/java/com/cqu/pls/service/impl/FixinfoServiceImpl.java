@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Fixinfo)表服务实现类
@@ -65,5 +66,16 @@ public class FixinfoServiceImpl implements FixinfoService {
     @Override
     public boolean deleteById(Integer fixId) {
         return this.fixinfoDao.deleteById(fixId) > 0;
+    }
+
+    /**
+     * 通过维修工姓名查询
+     * @param fixinfo
+     * @return
+     */
+    @Override
+    public List<Fixinfo> queryByName(Fixinfo fixinfo) {
+
+        return this.fixinfoDao.qureyByName(fixinfo);
     }
 }

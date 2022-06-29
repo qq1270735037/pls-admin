@@ -1,5 +1,6 @@
 package com.cqu.pls.service;
 
+import com.cqu.pls.dto.BuildAndTypeDTO;
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.vo.BuildAndAddress;
 
@@ -52,5 +53,9 @@ public interface BuildinfoService {
 
     List<BuildAndAddress> getBuildAndAddressList();
 
-    List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress);
+    List<BuildAndAddress> getBuildByName(BuildAndTypeDTO buildAndTypeDTO);
+
+    Long count(Buildinfo buildinfo);
+
+    Long selectByNamecount(Buildinfo buildinfo);
 }

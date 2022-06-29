@@ -1,5 +1,6 @@
 package com.cqu.pls.dao;
 
+import com.cqu.pls.dto.BuildAndTypeDTO;
 import com.cqu.pls.entity.Buildinfo;
 import com.cqu.pls.entity.Matetialinfo;
 import com.cqu.pls.vo.BuildAndAddress;
@@ -89,6 +90,8 @@ public interface BuildinfoDao {
      */
     List<BuildAndAddress> getBuildAndAddressList();
 
-    List<BuildAndAddress> getBuildByName(BuildAndAddress buildAndAddress);
+    List<BuildAndAddress> getBuildByName(BuildAndTypeDTO buildAndTypeDTO);
+
+    Long selectByNamecount(Buildinfo buildinfo);
 }
 

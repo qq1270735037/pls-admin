@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Transportationinfo)表服务实现类
@@ -65,5 +66,10 @@ public class TransportationinfoServiceImpl implements TransportationinfoService 
     @Override
     public boolean deleteById(Long transportationId) {
         return this.transportationinfoDao.deleteById(transportationId) > 0;
+    }
+
+    @Override
+    public List<Transportationinfo> queryBycondition(Transportationinfo transportationinfo) {
+        return this.transportationinfoDao.queryByCondition(transportationinfo);
     }
 }
