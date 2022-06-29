@@ -1,5 +1,6 @@
 package com.cqu.pls.service.impl;
 
+import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
 import com.cqu.pls.dao.CommunicationinfoDao;
 import com.cqu.pls.service.CommunicationinfoService;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Communicationinfo)表服务实现类
@@ -30,7 +32,10 @@ public class CommunicationinfoServiceImpl implements CommunicationinfoService {
         return this.communicationinfoDao.queryById(communicationId);
     }
 
-
+    @Override
+    public List<Communicationinfo> queryBycondition(Communicationinfo communicationinfo) {
+        return this.communicationinfoDao.queryByCondition(communicationinfo);
+    }
 
     /**
      * 新增数据
