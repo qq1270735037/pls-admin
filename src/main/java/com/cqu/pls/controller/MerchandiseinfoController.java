@@ -31,7 +31,7 @@ public class MerchandiseinfoController {
      * @return
      */
     @PostMapping("queryByCondition")
-    public DataResult queryByCondition(Merchandiseinfo merchandiseinfo) {
+    public DataResult queryByCondition(@RequestBody Merchandiseinfo merchandiseinfo) {
         return DataResult.successByDataArray(this.merchandiseinfoService.queryBycondition(merchandiseinfo));
     }
 
