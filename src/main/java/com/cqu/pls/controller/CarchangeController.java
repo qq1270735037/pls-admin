@@ -3,6 +3,8 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Carchange;
 import com.cqu.pls.service.CarchangeService;
 
+import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.utils.result.code.Code;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,5 +81,40 @@ public class CarchangeController {
         return ResponseEntity.ok(this.carchangeService.deleteById(id));
     }
 
+    /**
+     * 通过买卖类型筛选数据
+     * @param carchange
+     * @return
+     */
+    @PostMapping("getByOperation")
+    public DataResult getByOperation(@RequestBody Carchange carchange){
+        return DataResult.successByDataArray(this.carchangeService.getByOperation(carchange));
+    }
+
+    /**
+     * 通过买卖类型筛选数据
+     * @param carchange
+     * @return
+     */
+    @PostMapping("updateCarChange")
+    public DataResult updateCarChange(@RequestBody Carchange carchange){
+        if(carchange==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        return DataResult.successByMessage("更新成功",this.carchangeService.update(carchange));
+    }
+    /**
+     * 通过买卖类型筛选数据
+     * @param carchange
+     * @return
+     */
+    @PostMapping("deleteCarChange")
+    public DataResult deleteCarChange(@RequestBody Carchange carchange){
+        if(carchange==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        Integer id = carchange.getCarChangeId();
+        return DataResult.successByMessage("删除成功",this.carchangeService.deleteById(id));
+    }
 }
 

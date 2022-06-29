@@ -114,5 +114,15 @@
         delete from CarChange where car_change_id = #{carChangeId}
     </delete>
 
+    <select id="queryByOperation" resultMap="BaseResultMap">
+        select
+        car_change_id, car_id, car_change_type, operation
+        from CarChange
+        <where>
+            <if test="operation != null">
+                and operation = #{operation}
+            </if>
+        </where>
+    </select>
 </mapper>
 

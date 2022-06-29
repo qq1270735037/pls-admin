@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Carchange)表服务实现类
@@ -65,5 +66,16 @@ public class CarchangeServiceImpl implements CarchangeService {
     @Override
     public boolean deleteById(Integer carChangeId) {
         return this.carchangeDao.deleteById(carChangeId) > 0;
+    }
+
+    /**
+     * 通过买卖类型筛选数据
+     * @param carchange
+     * @return
+     */
+    @Override
+    public List<Carchange> getByOperation(Carchange carchange) {
+
+        return this.carchangeDao.queryByOperation(carchange);
     }
 }

@@ -2,6 +2,8 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Carchange;
 
+import java.util.List;
+
 
 /**
  * (Carchange)表服务接口
@@ -45,4 +47,10 @@ public interface CarchangeService {
      */
     boolean deleteById(Integer carChangeId);
 
+    /**
+     * 通过买卖类型筛选数据
+     * @param carchange
+     * @return
+     */
+    List<Carchange> getByOperation(Carchange carchange);
 }
