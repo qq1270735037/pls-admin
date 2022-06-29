@@ -3,6 +3,8 @@ package com.cqu.pls.controller;
 import com.cqu.pls.entity.Fixinfo;
 import com.cqu.pls.service.FixinfoService;
 
+import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.utils.result.code.Code;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,5 +81,56 @@ public class FixinfoController {
         return ResponseEntity.ok(this.fixinfoService.deleteById(id));
     }
 
+    /**
+     * 通过维修工姓名查询
+     * @param fixinfo
+     * @return
+     */
+    @PostMapping("getByRepairmanName")
+    public DataResult getByRepairmanName(@RequestBody Fixinfo fixinfo){
+        return DataResult.successByDataArray(this.fixinfoService.queryByName(fixinfo));
+    }
+
+    /**
+     * 更新维修记录
+     * @param fixinfo
+     * @return
+     */
+    @PostMapping("updateFixLog")
+    public DataResult update(@RequestBody Fixinfo fixinfo){
+        if(fixinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+//        System.out.println(fixinfo);
+        return DataResult.successByMessage("更新成功",this.fixinfoService.update(fixinfo));
+    }
+
+    /**
+     * 新增维修记录
+     * @param fixinfo
+     * @return
+     */
+    @PostMapping("insertFixLog")
+    public DataResult insert(@RequestBody Fixinfo fixinfo){
+        if(fixinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+//        System.out.println(fixinfo);
+        return DataResult.successByMessage("插入成功",this.fixinfoService.insert(fixinfo));
+    }
+
+    /**
+     * 删除维修记录
+     * @param fixinfo
+     * @return
+     */
+    @PostMapping("deleteFixLog")
+    public DataResult delete(@RequestBody Fixinfo fixinfo){
+        if(fixinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        int id=fixinfo.getFixId();
+        return DataResult.successByMessage("删除成功",this.fixinfoService.deleteById(id));
+    }
 }
 
