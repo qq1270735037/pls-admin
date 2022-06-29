@@ -203,5 +203,16 @@
             </if>
         </where>
     </select>
+<!--人员vo-->
+    <select id="queryEmployeeVo" resultType="com.cqu.pls.vo.EmployeeVo">
+        SELECT employee_id,EmployeeInfo.company_id,company_name,employee_name
+             ,employee_gender,employee_address,employee_mobile,
+               employee_date,employee_status,employee_number
+        FROM EmployeeInfo,CompanyInfo
+        WHERE EmployeeInfo.company_id = CompanyInfo.company_id
+        <if test="employeeName != null and employeeName != ''">
+            and employee_name like concat("%",#{employeeName},"%")
+        </if>
+    </select>
 </mapper>
 

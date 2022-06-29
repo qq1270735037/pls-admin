@@ -1,6 +1,7 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Employeeinfo;
+import com.cqu.pls.vo.EmployeeVo;
 
 import java.util.List;
 
@@ -29,6 +30,12 @@ public interface EmployeeinfoService {
      */
     List<Employeeinfo> queryByPage(Employeeinfo employeeinfo);
 
+    /**
+     * 人员信息视图
+     * @param employeeinfo
+     * @return
+     */
+    List<EmployeeVo> queryEmployeeVo(Employeeinfo employeeinfo);
     /**
      * 新增数据
      *

@@ -3,6 +3,7 @@ package com.cqu.pls.service.impl;
 import com.cqu.pls.entity.Employeeinfo;
 import com.cqu.pls.dao.EmployeeinfoDao;
 import com.cqu.pls.service.EmployeeinfoService;
+import com.cqu.pls.vo.EmployeeVo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -38,6 +39,16 @@ public class EmployeeinfoServiceImpl implements EmployeeinfoService {
     @Override
     public List<Employeeinfo> queryByPage(Employeeinfo employeeinfo){
         return this.employeeinfoDao.queryByPage(employeeinfo);
+    }
+
+    /**
+     *
+     * @param employeeinfo
+     * @return
+     */
+    @Override
+    public List<EmployeeVo> queryEmployeeVo(Employeeinfo employeeinfo){
+        return this.employeeinfoDao.queryEmployeeVo(employeeinfo);
     }
     /**
      * 新增数据
