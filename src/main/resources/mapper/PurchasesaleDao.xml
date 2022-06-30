@@ -13,7 +13,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
-          purchasesale_id, purchasesale_type, purchasesale_price, purchasesale_count
+          *
         from PurchaseSale
         where purchasesale_id = #{purchasesaleId}
     </select>

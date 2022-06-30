@@ -63,26 +63,35 @@ public class PurchasesaleController {
 
         //当主表有相应货物编号
         if(purchasesale.getPurchasesaleType().equals("购入")){
-            purchasesaleService.insert(purchasesale);
-            Boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale);
 
-            if(b==false){
-                return DataResult.err().setMessage("修改货物表单信息失败");
-            }
-            return DataResult.successByDatas(b);
+
+           try{
+               Boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale);
+               purchasesaleService.insert(purchasesale);
+               return DataResult.successByDatas(b);
+
+           }catch (Exception e){
+               return DataResult.err().setMessage("插入购销信息失败,请查看填写字段是否有误");
+           }
 
         }
+        //判断库存是否足够
         else if(purchasesale.getPurchasesaleType().equals("售出")){
             if(merchandiseinfo.getRepositoryCount()<purchasesale.getPurchasesaleCount()){
                 return DataResult.err().setMessage("货物仓库中的"+purchasesale.getMerchandiseName()+"库存不足!");
             }
-            purchasesaleService.insert(purchasesale);
 
-            Boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
-            if(b==false){
-                return DataResult.err().setMessage("修改货物表单信息失败");
+            try{
+                Boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
+                purchasesaleService.insert(purchasesale);
+                return DataResult.successByDatas(b);
+
+            }catch (Exception e){
+                return DataResult.err().setMessage("插入购销信息失败,请查看填写字段是否有误");
+
             }
-            return DataResult.successByDatas(b);
+
+
 
 
         }
@@ -95,16 +104,35 @@ public class PurchasesaleController {
 
 
 
-
+    //删除购销信息也会修改货物主表内容
     @PostMapping("/deleteById")
     public DataResult deleteById(@RequestBody Purchasesale purchasesale){
-        boolean b = purchasesaleService.deleteById(purchasesale.getPurchasesaleId());
-        if(b==false) return DataResult.err();
+        Purchasesale purchasesale1 = purchasesaleService.queryById(purchasesale.getPurchasesaleId());
+        if(purchasesale1.getPurchasesaleType().equals("购入")){
+            try{
+                 //因为之前加过所以减后库存>=0
+                purchasesaleService.deleteById(purchasesale.getPurchasesaleId());
+                return DataResult.successByDatas( purchasesaleService.reduceToMerchandiseInfo(purchasesale1));
+            }
+            catch (Exception e)
+            {
+                return DataResult.err().setMessage("删除失败, 其他错误");
+            }
 
-        return DataResult.successByDatas(purchasesaleService.deleteById(purchasesale.getPurchasesaleId()));
+        }
+        else{
+            try{
+                purchasesaleService.deleteById(purchasesale.getPurchasesaleId());
+                return DataResult.successByDatas(purchasesaleService.addToMerchandiseInfo(purchasesale1));
+            }
+            catch (Exception e){
+                return DataResult.err().setMessage("删除失败, 其他错误");
+            }
+        }
+
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/edit")  //p是新提交的表单数据, p1是旧的表单数据, p2.count是前两者差值的绝对值, p2.merchandiseId=...=...
     public DataResult edit(@RequestBody Purchasesale purchasesale){
 
         Merchandiseinfo merchandiseinfo= merchandiseinfoService.queryById(purchasesale.getMerchandiseId());
@@ -116,16 +144,26 @@ public class PurchasesaleController {
             //购入修改购入
             if(purchasesale.getPurchasesaleType().equals("购入")){
 
-                if(abs>0){
-                    purchasesale.setPurchasesaleCount(abs);
-                    boolean b =  purchasesaleService.addToMerchandiseInfo(purchasesale);
-                    purchasesaleService.update(purchasesale);
-                    if(b==false){
-                        return DataResult.err().setMessage("修改货物表单信息失败");
 
+
+                if(abs>0){
+                    Purchasesale purchasesale2 = new Purchasesale();
+                    purchasesale2.setPurchasesaleCount(abs);
+                    purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
+
+
+                    try{
+                        boolean b =  purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                        purchasesaleService.update(purchasesale);
+                        return DataResult.successByDatas(b);
+
+                    }catch (Exception e){
+                        return DataResult.err().setMessage("修改货物表单信息失败");
                     }
 
-                    return DataResult.successByDatas(b);
+
+
+
 
 
                 }
@@ -134,14 +172,22 @@ public class PurchasesaleController {
                     if(merchandiseinfo.getRepositoryCount()<abs){
                         return DataResult.err().setMessage("货物仓库中的"+purchasesale.getMerchandiseName()+"库存不足!");
                     }
-                    purchasesale.setPurchasesaleCount(abs);
-                    boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
-                    purchasesaleService.update(purchasesale);
-                    if(b==false){
+                    Purchasesale purchasesale2 = new Purchasesale();
+                    purchasesale2.setPurchasesaleCount(abs);
+                    purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
+
+                    try{
+                        boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
+                        purchasesaleService.update(purchasesale);
+                        return DataResult.successByDatas(b);
+
+                    }catch (Exception e){
                         return DataResult.err().setMessage("修改货物表单信息失败");
                     }
 
-                    return DataResult.successByDatas(b);
+
+
+
                 }
 
 
@@ -154,12 +200,22 @@ public class PurchasesaleController {
                 if(merchandiseinfo.getRepositoryCount()<totalCount){
                     return DataResult.err().setMessage("货物仓库中的"+purchasesale.getMerchandiseName()+"库存不足!");
                 }
+                Purchasesale purchasesale2 = new Purchasesale();
+                purchasesale2.setPurchasesaleCount(totalCount);
+                purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
 
-                purchasesale.setPurchasesaleCount(totalCount);
-                boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
-                purchasesaleService.update(purchasesale);
-                if(b==false)return DataResult.err().setMessage("修改货物表单信息失败");
-                return DataResult.successByDatas(b);
+                try{
+                    boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
+                    purchasesaleService.update(purchasesale);
+                    return DataResult.successByDatas(b);
+
+                }catch (Exception e){
+                    return DataResult.err().setMessage("修改货物表单信息失败");
+
+                }
+
+
+
 
 
             }
@@ -173,11 +229,20 @@ public class PurchasesaleController {
                 int oldCount = purchasesale1.getPurchasesaleCount();
                 int newCount = purchasesale.getPurchasesaleCount();
                 int totalCount = oldCount+newCount;
-                purchasesale.setPurchasesaleCount(totalCount);
-                boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale);
-                purchasesaleService.update(purchasesale);
-                if(b==false) return DataResult.err().setMessage("修改货物表单信息失败");
-                return DataResult.successByDatas(b);
+                Purchasesale purchasesale2 = new Purchasesale();
+                purchasesale2.setPurchasesaleCount(totalCount);
+                purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
+
+
+                try{
+                    boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                    purchasesaleService.update(purchasesale);
+                    return DataResult.successByDatas(b);
+
+                }catch (Exception e){
+                    return DataResult.err().setMessage("修改货物表单信息失败");
+
+                }
 
             }
 
@@ -189,22 +254,42 @@ public class PurchasesaleController {
                         return DataResult.err().setMessage("货物仓库中的"+purchasesale.getMerchandiseName()+"库存不足!");
                     }
 
+                    Purchasesale purchasesale2 = new Purchasesale();
+                    purchasesale2.setPurchasesaleCount(abs);
+                    purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
 
-                    purchasesale.setPurchasesaleCount(abs);
-                    boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
-                    purchasesaleService.update(purchasesale);
-                    if(b==false) return DataResult.err().setMessage("修改货物表单信息失败");
-                    return DataResult.successByDatas(b);
+                    try{
+                        boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
+                        purchasesaleService.update(purchasesale);
+                        return DataResult.successByDatas(b);
+
+                    }catch (Exception e){
+                       return DataResult.err().setMessage("修改货物表单信息失败");
+
+                    }
+
+
+
 
 
                 }
                 else{
                     abs=-abs;
-                    purchasesale.setPurchasesaleCount(abs);
-                    boolean b = purchasesaleService.addToMerchandiseInfo(purchasesale);
-                    purchasesaleService.update(purchasesale);
-                    if(b==false) return DataResult.err().setMessage("修改货物表单信息失败");
-                    return DataResult.successByDatas(b);
+                    Purchasesale purchasesale2 = new Purchasesale();
+                    purchasesale2.setPurchasesaleCount(abs);
+                    purchasesale2.setMerchandiseId(purchasesale.getMerchandiseId());
+
+                    try {
+                        boolean b = purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                        purchasesaleService.update(purchasesale);
+                        return DataResult.successByDatas(b);
+
+                    }catch (Exception e){
+                        return DataResult.err().setMessage("修改货物表单信息失败");
+                    }
+
+
+
                 }
 
 

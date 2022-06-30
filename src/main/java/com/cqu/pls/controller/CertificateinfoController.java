@@ -77,21 +77,36 @@ public class CertificateinfoController {
      */
     @PostMapping("/edit")
     public DataResult edit(@RequestBody Certificateinfo certificateinfo) {
-        Certificateinfo certificateinfo1 = certificateinfoService.update(certificateinfo);
-        if(certificateinfo1==null) return DataResult.err().setMessage("修改,请查看是否填写字段有误");
-        return DataResult.successByData(certificateinfo1);
+
+
+        try{
+            Certificateinfo certificateinfo1 = certificateinfoService.update(certificateinfo);
+            return DataResult.successByData(certificateinfo1);
+
+        }catch(Exception e){
+             return DataResult.err().setMessage("修改失败,请查看是否填写字段有误");
+        }
+
+
 
     }
 
 
     @PostMapping("/deleteById")
     public DataResult deleteById (@RequestBody Certificateinfo certificateinfo) {
-        boolean b = certificateinfoService.deleteById(certificateinfo.getCertificateId());
-        if(b==false){
-            return DataResult.err().setMessage("删除失败");
+
+        try{
+            boolean b = certificateinfoService.deleteById(certificateinfo.getCertificateId());
+            return DataResult.successByDatas(b);
+
 
         }
-        return DataResult.successByDatas(b);
+
+        catch(Exception e){
+            return DataResult.err().setMessage("删除失败,");
+
+        }
+
 
 
     }
