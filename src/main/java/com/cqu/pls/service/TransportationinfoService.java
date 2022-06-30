@@ -2,6 +2,7 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Transportationinfo;
+import com.cqu.pls.vo.TransportationAndCar;
 
 import java.util.List;
 
@@ -51,9 +52,9 @@ public interface TransportationinfoService {
 
     /**
      *
-     * @param transportationinfo
+     * @param transportationAndCar
      * @return
      */
-    List<Transportationinfo> queryBycondition(Transportationinfo transportationinfo);
+    List<TransportationAndCar> queryBycondition(TransportationAndCar transportationAndCar);
 
 }

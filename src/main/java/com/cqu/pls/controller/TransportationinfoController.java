@@ -6,6 +6,7 @@ import com.cqu.pls.entity.Transportationinfo;
 import com.cqu.pls.service.TransportationinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
+import com.cqu.pls.vo.TransportationAndCar;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,12 +40,12 @@ public class TransportationinfoController {
 
     /**
      *
-     * @param transportationinfo
+     * @param transportationAndCar
      * @return
      */
     @PostMapping("queryByCondition")
-    public DataResult queryByCondition(@RequestBody Transportationinfo transportationinfo) {
-        return DataResult.successByDataArray(this.transportationinfoService.queryBycondition(transportationinfo));
+    public DataResult queryByCondition(@RequestBody TransportationAndCar transportationAndCar) {
+        return DataResult.successByDataArray(this.transportationinfoService.queryBycondition(transportationAndCar));
     }
 
     /**

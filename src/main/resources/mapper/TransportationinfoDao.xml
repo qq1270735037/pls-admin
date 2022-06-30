@@ -13,6 +13,16 @@
         <result property="transportationMoney" column="transportation_money" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap id="BaseResultMap1" type="com.cqu.pls.vo.TransportationAndCar">
+        <result property="transportationId" column="transportation_id" jdbcType="INTEGER"/>
+        <result property="carNumber" column="car_number" jdbcType="VARCHAR"/>
+        <result property="transportationStartTime" column="transportation_start_time" jdbcType="TIMESTAMP"/>
+        <result property="transportationEndTime" column="transportation_end_time" jdbcType="TIMESTAMP"/>
+        <result property="transportationStartLocation" column="transportation_start_location" jdbcType="VARCHAR"/>
+        <result property="transportationEndLocation" column="transportation_end_location" jdbcType="VARCHAR"/>
+        <result property="transportationMoney" column="transportation_money" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
@@ -148,17 +158,18 @@
     </delete>
 
 
-    <select id="queryByCondition" resultMap="BaseResultMap">
+    <select id="queryByCondition" resultType="com.cqu.pls.vo.TransportationAndCar">
         select
-            transportation_id, car_id, transportation_start_time,transportation_end_time,
+            transportation_id, car_number, transportation_start_time,transportation_end_time,
             transportation_start_location,transportation_end_location,transportation_money
-            from TransportationInfo
+            from TransportationInfo,CarInfo
+            where TransportationInfo.car_id = CarInfo.car_id
             <where>
                 <if test="transportationId != null">
                     and transportation_id = #{transportationId}
                 </if>
-                <if test="carId != null">
-                    and car_id = #{carId}
+                <if test="carNumber != null and carNumber != ''">
+                    and car_number like concat('%',#{carNumber,jdbcType=VARCHAR},'%')
                 </if>
                 <if test="transportationStartTime != null and transportationStartTime != ''">
                     and transportation_start_time like concat("%",#{transportationStartTime},"%")
@@ -173,7 +184,7 @@
                     and transportation_end_location  like concat("%",#{transportationEndLocation},"%")
                 </if>
                 <if test="transportationMoney != null and transportationMoney != ''">
-                    and transportation_money  like concat("%",#{transportationMoney},"%")
+                    and transportation_money like concat("%",#{transportationMoney},"%")
                 </if>
             </where>
     </select>
