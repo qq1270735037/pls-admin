@@ -20,7 +20,7 @@ import  java.util.Date;
 @RestController
 @RequestMapping("fileupload")
 public class FileUploadController {
-//    private final String storageUrl="http://159.75.38.129:9000";
+    //    private final String storageUrl="http://159.75.38.129:9000";
 //    private final String storageAccessKey="jN0IHFLCIFltCDYI";
 //    private final String storageSecretKey="Be95DutMH0M3fyUVSzC9Kul0hnwSFCD1";
     SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
