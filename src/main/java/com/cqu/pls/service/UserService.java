@@ -45,4 +45,5 @@ public interface UserService {
      */
     boolean deleteById(Integer userId);
 
+    int queryTotal();
 }

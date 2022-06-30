@@ -114,5 +114,9 @@
         delete from user where user_id = #{userId}
     </delete>
 
+    <select id="queryTotal" resultType="int">
+        select count(1)
+        from user
+    </select>
 </mapper>
 
