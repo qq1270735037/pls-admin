@@ -163,8 +163,8 @@
             transportation_id, car_number, transportation_start_time,transportation_end_time,
             transportation_start_location,transportation_end_location,transportation_money
             from TransportationInfo,CarInfo
-            where TransportationInfo.car_id = CarInfo.car_id
             <where>
+                TransportationInfo.car_id = CarInfo.car_id
                 <if test="transportationId != null">
                     and transportation_id = #{transportationId}
                 </if>
