@@ -1,5 +1,6 @@
 package com.cqu.pls.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -20,9 +21,9 @@ public class Transportationinfo implements Serializable {
     private Long transportationId;
     
     private Integer carId;
-    
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date transportationStartTime;
-    
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date transportationEndTime;
     
     private String transportationStartLocation;

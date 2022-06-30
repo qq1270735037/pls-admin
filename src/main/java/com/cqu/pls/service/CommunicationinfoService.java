@@ -2,6 +2,7 @@ package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
+import com.cqu.pls.vo.CommunicationAndEmployee;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface CommunicationinfoService {
     Communicationinfo queryById(Integer communicationId);
 
 
-    List<Communicationinfo> queryBycondition(Communicationinfo communicationinfo);
+    List<CommunicationAndEmployee> queryBycondition(Communicationinfo communicationinfo);
     /**
      * 新增数据
      *

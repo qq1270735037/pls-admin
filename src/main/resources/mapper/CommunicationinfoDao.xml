@@ -126,17 +126,17 @@
     </delete>
 
     <!--  条件查询  -->
-    <select id="queryByCondition" resultMap="BaseResultMap">
+    <select id="queryByCondition" resultType="com.cqu.pls.vo.CommunicationAndEmployee">
         select
-        communication_id, employee_id, communication_title, communication_context, communication_time
-        from CommunicationInfo
-        <where>
+        communication_id, CommunicationInfo.employee_id, communication_title, communication_context, communication_time,employee_name
+        from CommunicationInfo,EmployeeInfo
+        where CommunicationInfo.employee_id = EmployeeInfo.employee_id
             <if test="communicationId != null">
                 and communication_id = #{communicationId}
             </if>
-            <if test="employeeId != null">
-                and employee_id = #{employeeId}
-            </if>
+<!--            <if test="employeeId != null">-->
+<!--                and employee_id = #{employeeId}-->
+<!--            </if>-->
             <if test="communicationTitle != null and communicationTitle != ''">
                 and communication_title like concat("%",#{communicationTitle},"%")
             </if>
@@ -146,7 +146,7 @@
             <if test="communicationTime != null">
                 and communication_time = #{communicationTime}
             </if>
-        </where>
+
     </select>
 </mapper>
 
