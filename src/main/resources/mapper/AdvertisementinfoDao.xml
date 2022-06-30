@@ -5,19 +5,18 @@
     <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Advertisementinfo">
         <!--@Table AdvertisementInfo-->
         <result property="adId" column="ad_id" jdbcType="INTEGER"/>
-        <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
         <result property="adContent" column="ad_content" jdbcType="VARCHAR"/>
         <result property="adMoney" column="ad_money" jdbcType="VARCHAR"/>
         <result property="adAdviser" column="ad_adviser" jdbcType="VARCHAR"/>
-        <result property="adStart" column="ad_start" jdbcType="TIMESTAMP"/>
-        <result property="adEnd" column="ad_end" jdbcType="TIMESTAMP"/>
+        <result property="adStart" column="ad_start" jdbcType="VARCHAR"/>
+        <result property="adEnd" column="ad_end" jdbcType="VARCHAR"/>
         <result property="adImages" column="ad_images" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
-          ad_id, employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
         from AdvertisementInfo
         where ad_id = #{adId}
     </select>
@@ -25,14 +24,11 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BaseResultMap">
         select
-          ad_id, employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
         from AdvertisementInfo
         <where>
             <if test="adId != null">
                 and ad_id = #{adId}
-            </if>
-            <if test="employeeId != null">
-                and employee_id = #{employeeId}
             </if>
             <if test="adContent != null and adContent != ''">
                 and ad_content = #{adContent}
@@ -43,10 +39,10 @@
             <if test="adAdviser != null and adAdviser != ''">
                 and ad_adviser = #{adAdviser}
             </if>
-            <if test="adStart != null">
+            <if test="adStart != null and adStart != ''">
                 and ad_start = #{adStart}
             </if>
-            <if test="adEnd != null">
+            <if test="adEnd != null and adEnd != ''">
                 and ad_end = #{adEnd}
             </if>
             <if test="adImages != null and adImages != ''">
@@ -59,8 +55,31 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BaseResultMap">
         select
-          ad_id, employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
-        from pls.AdvertisementInfo
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+        from AdvertisementInfo
+        <where>
+            <if test="adId != null">
+                and ad_id = #{adId}
+            </if>
+            <if test="adContent != null and adContent != ''">
+                and ad_content like concat("%", #{adContent},"%")
+            </if>
+            <if test="adMoney != null and adMoney != ''">
+                and ad_money = #{adMoney}
+            </if>
+            <if test="adAdviser != null and adAdviser != ''">
+                and ad_adviser = #{adAdviser}
+            </if>
+            <if test="adStart != null and adStart != ''">
+                and ad_start = #{adStart}
+            </if>
+            <if test="adEnd != null and adEnd != ''">
+                and ad_end = #{adEnd}
+            </if>
+            <if test="adImages != null and adImages != ''">
+                and ad_images = #{adImages}
+            </if>
+        </where>
     </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
@@ -69,9 +88,6 @@
         <where>
             <if test="adId != null">
                 and ad_id = #{adId}
-            </if>
-            <if test="employeeId != null">
-                and employee_id = #{employeeId}
             </if>
             <if test="adContent != null and adContent != ''">
                 and ad_content = #{adContent}
@@ -82,10 +98,10 @@
             <if test="adAdviser != null and adAdviser != ''">
                 and ad_adviser = #{adAdviser}
             </if>
-            <if test="adStart != null">
+            <if test="adStart != null and adStart != ''">
                 and ad_start = #{adStart}
             </if>
-            <if test="adEnd != null">
+            <if test="adEnd != null and adEnd != ''">
                 and ad_end = #{adEnd}
             </if>
             <if test="adImages != null and adImages != ''">
@@ -96,26 +112,25 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="adId" useGeneratedKeys="true">
-        insert into AdvertisementInfo(employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
-        values (#{employeeId}, #{adContent}, #{adMoney}, #{adAdviser}, #{adStart}, #{adEnd}, #{adImages})
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        values (#{adContent}, #{adMoney}, #{adAdviser}, #{adStart}, #{adEnd}, #{adImages})
     </insert>
 
     <insert id="insertBatch" keyProperty="adId" useGeneratedKeys="true">
-        insert into AdvertisementInfo(employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
         values
         <foreach collection="entities" item="entity" separator=",">
-        (#{entity.employeeId}, #{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
+        (#{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="adId" useGeneratedKeys="true">
-        insert into AdvertisementInfo(employee_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.employeeId}, #{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
+            (#{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
         </foreach>
         on duplicate key update
-        employee_id = values(employee_id),
         ad_content = values(ad_content),
         ad_money = values(ad_money),
         ad_adviser = values(ad_adviser),
@@ -128,9 +143,6 @@
     <update id="update">
         update AdvertisementInfo
         <set>
-            <if test="employeeId != null">
-                employee_id = #{employeeId},
-            </if>
             <if test="adContent != null and adContent != ''">
                 ad_content = #{adContent},
             </if>
@@ -140,10 +152,10 @@
             <if test="adAdviser != null and adAdviser != ''">
                 ad_adviser = #{adAdviser},
             </if>
-            <if test="adStart != null">
+            <if test="adStart != null and adStart != ''">
                 ad_start = #{adStart},
             </if>
-            <if test="adEnd != null">
+            <if test="adEnd != null and adEnd != ''">
                 ad_end = #{adEnd},
             </if>
             <if test="adImages != null and adImages != ''">
