@@ -114,6 +114,16 @@
         delete from user where user_id = #{userId}
     </delete>
 
+    <select id="login" resultMap="BaseResultMap">
+        select user_id,
+               authority_id,
+               user_name,
+               user_pwd
+        from user
+        where user_id = #{userId}
+          and user_pwd = #{userPwd}
+    </select>
+
     <select id="queryTotal" resultType="int">
         select count(1)
         from user

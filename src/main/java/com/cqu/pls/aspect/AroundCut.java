@@ -19,7 +19,7 @@ public class AroundCut {
             "execution(* com.cqu.pls.controller.AddressinfoController.*(..)) || " +
             "execution(* com.cqu.pls.controller.AdvertisementinfoController.*(..)) || " +
             "execution(* com.cqu.pls.controller.AuthorityController.*(..)) || " +
-            "execution(* com.cqu.pls.controller.BuildinfoController.*(..))"+
+            "execution(* com.cqu.pls.controller.BuildinfoController.*(..)) || "+
             "execution(* com.cqu.pls.controller.CarchangeController.*(..)) || " +
             "execution(* com.cqu.pls.controller.CarinfoController.*(..)) || " +
             "execution(* com.cqu.pls.controller.CertificateinfoController.*(..)) || " +
@@ -33,7 +33,7 @@ public class AroundCut {
             "execution(* com.cqu.pls.controller.MerchandiseinfoController.*(..)) || " +
             "execution(* com.cqu.pls.controller.PurchasesaleController.*(..)) || " +
             "execution(* com.cqu.pls.controller.TransportationinfoController.*(..)) || " +
-            "execution(* com.cqu.pls.controller.UserController.*(..)) || " ;
+            "execution(* com.cqu.pls.controller.UserController.*(..))" ;
 
     /**
      * 判断用户的登录是否有效
@@ -46,6 +46,7 @@ public class AroundCut {
         //获取session
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
         //判断用户登录是否有效
+        System.out.println(session.getAttributeNames());
         if(VerifyUtil.isNull(session.getAttribute("userInfo"))){
             //返回登录失效
             return DataResult.errByErrCode(Code.LOGIN_OUT);

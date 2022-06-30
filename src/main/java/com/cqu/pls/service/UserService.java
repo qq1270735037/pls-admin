@@ -45,5 +45,12 @@ public interface UserService {
      */
     boolean deleteById(Integer userId);
 
+    /**
+     * 通过主键，密码查询
+     * @param user
+     * @return
+     */
+    User loginUser(User user);
+
     int queryTotal();
 }
