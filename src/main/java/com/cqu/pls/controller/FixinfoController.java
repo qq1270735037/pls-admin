@@ -1,6 +1,8 @@
 package com.cqu.pls.controller;
 
+import com.cqu.pls.entity.Carinfo;
 import com.cqu.pls.entity.Fixinfo;
+import com.cqu.pls.service.CarinfoService;
 import com.cqu.pls.service.FixinfoService;
 
 import com.cqu.pls.utils.result.DataResult;
@@ -24,7 +26,8 @@ public class FixinfoController {
      */
     @Resource
     private FixinfoService fixinfoService;
-
+    @Resource
+    private CarinfoService carinfoService;
     /**
      * 分页查询
      *
@@ -113,6 +116,10 @@ public class FixinfoController {
     @PostMapping("insertFixLog")
     public DataResult insert(@RequestBody Fixinfo fixinfo){
         if(fixinfo==null){
+            return DataResult.errByErrCode(Code.ERROR);
+        }
+        Carinfo car = this.carinfoService.queryById(fixinfo.getCarId());
+        if(car==null){
             return DataResult.errByErrCode(Code.ERROR);
         }
 //        System.out.println(fixinfo);
