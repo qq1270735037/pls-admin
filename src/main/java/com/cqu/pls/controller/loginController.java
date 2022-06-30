@@ -47,6 +47,7 @@ public class loginController {
         userVo.setUserName(loginUser.getUserName());
         //3.将用户数据放入session
         session.setAttribute("userInfo", userVo);
+        System.out.println(session.getAttribute("userInfo"));
         //4.设置session过期时间
         session.setMaxInactiveInterval(20 * 60);
         return DataResult.successByData(userVo);
