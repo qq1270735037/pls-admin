@@ -77,5 +77,6 @@ public interface UserDao {
      */
     int deleteById(Integer userId);
 
+    int queryTotal();
 }
 

@@ -2,6 +2,7 @@ package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.User;
 import com.cqu.pls.service.UserService;
+import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,5 +79,11 @@ public class UserController {
         return ResponseEntity.ok(this.userService.deleteById(id));
     }
 
+
+
+    @PostMapping("total")
+    public DataResult total() {
+        return DataResult.successByDatas(this.userService.queryTotal());
+    }
 }
 
