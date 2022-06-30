@@ -76,6 +76,12 @@ public interface UserDao {
      * @return 影响行数
      */
     int deleteById(Integer userId);
+    /**
+     * 通过主键加密码登录
+     * @param user
+     * @return
+     */
+    User login(User user);
 
     int queryTotal();
 }

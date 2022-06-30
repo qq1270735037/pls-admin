@@ -71,4 +71,14 @@ public class UserServiceImpl implements UserService {
     public int queryTotal() {
         return this.userDao.queryTotal();
     }
+
+    /**
+     * 通过主键加密码登录
+     * @param user
+     * @return
+     */
+    @Override
+    public User loginUser(User user) {
+        return this.userDao.login(user);
+    }
 }
