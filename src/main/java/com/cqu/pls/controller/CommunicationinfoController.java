@@ -1,10 +1,9 @@
 package com.cqu.pls.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
 import com.cqu.pls.service.CommunicationinfoService;
-
+import com.cqu.pls.vo.CommunicationAndEmployee;
 import com.cqu.pls.utils.result.DataResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,8 +49,8 @@ public class CommunicationinfoController {
     }
 
     @PostMapping("queryByCondition")
-    public DataResult queryByCondition(@RequestBody Communicationinfo communicationinfo) {
-        return DataResult.successByDataArray(this.communicationinfoService.queryBycondition(communicationinfo));
+    public DataResult queryByCondition(@RequestBody CommunicationAndEmployee communicationAndEmployee) {
+        return DataResult.successByDataArray(this.communicationinfoService.queryBycondition(communicationAndEmployee));
     }
     /**
      * 新增数据

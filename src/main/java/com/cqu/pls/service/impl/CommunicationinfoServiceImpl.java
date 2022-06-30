@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Addressinfo;
 import com.cqu.pls.entity.Communicationinfo;
 import com.cqu.pls.dao.CommunicationinfoDao;
 import com.cqu.pls.service.CommunicationinfoService;
+import com.cqu.pls.vo.CommunicationAndEmployee;
 import org.springframework.stereotype.Service;
 
 
@@ -33,7 +34,7 @@ public class CommunicationinfoServiceImpl implements CommunicationinfoService {
     }
 
     @Override
-    public List<Communicationinfo> queryBycondition(Communicationinfo communicationinfo) {
+    public List<CommunicationAndEmployee> queryBycondition(Communicationinfo communicationinfo) {
         return this.communicationinfoDao.queryByCondition(communicationinfo);
     }
 
