@@ -1,6 +1,7 @@
 package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Certificateinfo;
+import com.cqu.pls.vo.CertificateinfoVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,9 +18,9 @@ public interface CertificateinfoDao {
 
 //    List<Certificateinfo> selectAll();
 
-    List<Certificateinfo> queryAll();
+    List<CertificateinfoVo> queryAll();
 
-    List<Certificateinfo> queryOne(Certificateinfo certificateinfo);
+    List<CertificateinfoVo> queryOne(Certificateinfo certificateinfo);
 
     /**
      * 通过ID查询单条数据

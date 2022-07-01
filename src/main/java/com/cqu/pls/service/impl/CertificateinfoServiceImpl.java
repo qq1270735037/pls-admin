@@ -3,6 +3,7 @@ package com.cqu.pls.service.impl;
 import com.cqu.pls.entity.Certificateinfo;
 import com.cqu.pls.dao.CertificateinfoDao;
 import com.cqu.pls.service.CertificateinfoService;
+import com.cqu.pls.vo.CertificateinfoVo;
 import org.springframework.stereotype.Service;
 
 
@@ -21,12 +22,12 @@ public class CertificateinfoServiceImpl implements CertificateinfoService {
     private CertificateinfoDao certificateinfoDao;
 
     @Override
-    public List<Certificateinfo> queryAll() {
+    public List<CertificateinfoVo> queryAll() {
         return certificateinfoDao.queryAll();
     }
 
     @Override
-    public List<Certificateinfo> queryOne(Certificateinfo certificateinfo) {
+    public List<CertificateinfoVo> queryOne(Certificateinfo certificateinfo) {
         return certificateinfoDao.queryOne(certificateinfo);
     }
 

@@ -12,6 +12,17 @@
         <result property="certificateEndTime" column="certificate_end_time" jdbcType="TIMESTAMP"/>
         <result property="certificateAgent" column="certificate_agent" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="BaseResultMapVo" type="com.cqu.pls.vo.CertificateinfoVo">
+        <!--@Table CertificateInfo-->
+        <result property="certificateId" column="certificate_id" jdbcType="INTEGER"/>
+        <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+        <result property="certificateCode" column="certificate_code" jdbcType="INTEGER"/>
+        <result property="certificateName" column="certificate_name" jdbcType="VARCHAR"/>
+        <result property="certificateStartTime" column="certificate_start_time" jdbcType="TIMESTAMP"/>
+        <result property="certificateEndTime" column="certificate_end_time" jdbcType="TIMESTAMP"/>
+        <result property="certificateAgent" column="certificate_agent" jdbcType="VARCHAR"/>
+        <result property="employeeName" column="employee_name" jdbcType="VARCHAR"></result>
+    </resultMap>
 
 
 
@@ -61,10 +72,10 @@
     </select>
 
     <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="BaseResultMap">
+    <select id="queryAll" resultMap="BaseResultMapVo">
         select
-          certificate_id, employee_id, certificate_code, certificate_name, certificate_start_time, certificate_end_time, certificate_agent
-        from pls.CertificateInfo
+            certificate_id, EmployeeInfo.employee_id, certificate_code, certificate_name, certificate_start_time, certificate_end_time, certificate_agent,employee_name
+        from pls.CertificateInfo , EmployeeInfo where CertificateInfo.employee_id=EmployeeInfo.employee_id
     </select>
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
@@ -155,8 +166,8 @@
         delete from CertificateInfo where certificate_id = #{certificateId}
     </delete>
     
-    <select id="queryOne" resultMap="BaseResultMap">
-        select * from CertificateInfo where cast(certificate_code as char) like concat('${certificateCode}','%')
+    <select id="queryOne" resultMap="BaseResultMapVo">
+        select certificate_id, EmployeeInfo.employee_id, certificate_code, certificate_name, certificate_start_time, certificate_end_time, certificate_agent,employee_name from CertificateInfo,EmployeeInfo where cast(certificate_code as char) like concat('${certificateCode}','%') and CertificateInfo.employee_id=EmployeeInfo.employee_id
     </select>
     
 

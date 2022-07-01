@@ -66,8 +66,18 @@ public class PurchasesaleController {
 
 
            try{
+
                Boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale);
-               purchasesaleService.insert(purchasesale);
+               try {
+                   purchasesaleService.insert(purchasesale);
+
+               }catch (Exception e){
+                   //回滚报错
+                   purchasesaleService.reduceToMerchandiseInfo(purchasesale);
+                   return DataResult.err().setMessage("插入购销信息失败,请查看填写字段是否有误");
+               }
+
+
                return DataResult.successByDatas(b);
 
            }catch (Exception e){
@@ -83,7 +93,16 @@ public class PurchasesaleController {
 
             try{
                 Boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale);
-                purchasesaleService.insert(purchasesale);
+                //插入主表出错回滚抛异常
+                try{
+                    purchasesaleService.insert(purchasesale);
+
+                }catch (Exception e){
+                    purchasesaleService.addToMerchandiseInfo(purchasesale);
+                    return DataResult.err().setMessage("插入购销信息失败,请查看填写字段是否有误");
+
+                }
+
                 return DataResult.successByDatas(b);
 
             }catch (Exception e){
@@ -111,7 +130,7 @@ public class PurchasesaleController {
         if(purchasesale1.getPurchasesaleType().equals("购入")){
             try{
                  //因为之前加过所以减后库存>=0
-                purchasesaleService.deleteById(purchasesale.getPurchasesaleId());
+                purchasesaleService.deleteById(purchasesale.getPurchasesaleId()); //删除主表信息一般没有异常
                 return DataResult.successByDatas( purchasesaleService.reduceToMerchandiseInfo(purchasesale1));
             }
             catch (Exception e)
@@ -154,7 +173,15 @@ public class PurchasesaleController {
 
                     try{
                         boolean b =  purchasesaleService.addToMerchandiseInfo(purchasesale2);
-                        purchasesaleService.update(purchasesale);
+                        try{
+                            purchasesaleService.update(purchasesale);
+                        }
+                        catch(Exception e){
+                            purchasesaleService.reduceToMerchandiseInfo(purchasesale2); //如果插入购销表出错, 回滚事务
+                            return DataResult.err().setMessage("请检查输入字段是否正确");
+                        }
+
+
                         return DataResult.successByDatas(b);
 
                     }catch (Exception e){
@@ -178,7 +205,14 @@ public class PurchasesaleController {
 
                     try{
                         boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
-                        purchasesaleService.update(purchasesale);
+                        //回滚抛异常
+                        try{
+                            purchasesaleService.update(purchasesale);
+                        }catch (Exception e){
+                            purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                            return DataResult.err().setMessage("请检查输入字段是否正确");
+                        }
+
                         return DataResult.successByDatas(b);
 
                     }catch (Exception e){
@@ -206,7 +240,14 @@ public class PurchasesaleController {
 
                 try{
                     boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
-                    purchasesaleService.update(purchasesale);
+                    try{
+                        purchasesaleService.update(purchasesale);
+
+                    }catch (Exception e){
+                        purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                        return DataResult.err().setMessage("请检查输入字段是否正确");
+                    }
+
                     return DataResult.successByDatas(b);
 
                 }catch (Exception e){
@@ -236,7 +277,14 @@ public class PurchasesaleController {
 
                 try{
                     boolean b =purchasesaleService.addToMerchandiseInfo(purchasesale2);
-                    purchasesaleService.update(purchasesale);
+                    try{
+                        purchasesaleService.update(purchasesale);
+
+                    }catch (Exception e){
+                        purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
+                        return DataResult.err().setMessage("请检查输入字段是否正确");
+                    }
+
                     return DataResult.successByDatas(b);
 
                 }catch (Exception e){
@@ -260,7 +308,13 @@ public class PurchasesaleController {
 
                     try{
                         boolean b = purchasesaleService.reduceToMerchandiseInfo(purchasesale2);
-                        purchasesaleService.update(purchasesale);
+                        try{
+                            purchasesaleService.update(purchasesale);
+
+                        }catch (Exception e){
+                            purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                            return DataResult.err().setMessage("请检查输入字段是否正确");
+                        }
                         return DataResult.successByDatas(b);
 
                     }catch (Exception e){
@@ -281,7 +335,13 @@ public class PurchasesaleController {
 
                     try {
                         boolean b = purchasesaleService.addToMerchandiseInfo(purchasesale2);
-                        purchasesaleService.update(purchasesale);
+                        try{
+                            purchasesaleService.update(purchasesale);
+
+                        }catch (Exception e){
+                            purchasesaleService.addToMerchandiseInfo(purchasesale2);
+                            return DataResult.err().setMessage("请检查输入字段是否正确");
+                        }
                         return DataResult.successByDatas(b);
 
                     }catch (Exception e){

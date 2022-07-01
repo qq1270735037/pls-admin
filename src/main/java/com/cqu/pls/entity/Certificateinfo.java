@@ -2,7 +2,9 @@ package com.cqu.pls.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 import java.io.Serializable;
@@ -16,8 +18,12 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@ToString
 public class Certificateinfo implements Serializable {
     private static final long serialVersionUID = 738764997263637676L;
+
+
     
     private Integer certificateId;  //自增主键
     
@@ -34,73 +40,6 @@ public class Certificateinfo implements Serializable {
     private String certificateAgent; //发证单位
 
 
-    public Integer getCertificateId() {
-        return certificateId;
-    }
 
-    public void setCertificateId(Integer certificateId) {
-        this.certificateId = certificateId;
-    }
-
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public Integer getCertificateCode() {
-        return certificateCode;
-    }
-
-    public void setCertificateCode(Integer certificateCode) {
-        this.certificateCode = certificateCode;
-    }
-
-    public String getCertificateName() {
-        return certificateName;
-    }
-
-    public void setCertificateName(String certificateName) {
-        this.certificateName = certificateName;
-    }
-
-    public Date getCertificateStartTime() {
-        return certificateStartTime;
-    }
-
-    public void setCertificateStartTime(Date certificateStartTime) {
-        this.certificateStartTime = certificateStartTime;
-    }
-
-    public Date getCertificateEndTime() {
-        return certificateEndTime;
-    }
-
-    public void setCertificateEndTime(Date certificateEndTime) {
-        this.certificateEndTime = certificateEndTime;
-    }
-
-    public String getCertificateAgent() {
-        return certificateAgent;
-    }
-
-    public void setCertificateAgent(String certificateAgent) {
-        this.certificateAgent = certificateAgent;
-    }
-
-    @Override
-    public String toString() {
-        return "Certificateinfo{" +
-                "certificateId=" + certificateId +
-                ", employeeId=" + employeeId +
-                ", certificateCode=" + certificateCode +
-                ", certificateName='" + certificateName + '\'' +
-                ", certificateStartTime=" + certificateStartTime +
-                ", certificateEndTime=" + certificateEndTime +
-                ", certificateAgent='" + certificateAgent + '\'' +
-                '}';
-    }
 }
 
