@@ -58,4 +58,6 @@ public interface MatetialinfoService {
     Long count(Matetialinfo matetialinfo);
 
     Long selectByNamecount(Matetialinfo matetialinfo);
+
+    Long selectByType(Matetialinfo matetialinfo);
 }
