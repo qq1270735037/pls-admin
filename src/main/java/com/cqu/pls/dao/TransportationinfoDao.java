@@ -1,6 +1,7 @@
 package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Transportationinfo;
+import com.cqu.pls.vo.TransportationAndCar;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -80,9 +81,9 @@ public interface TransportationinfoDao {
 
     /**
      *
-     * @param transportationinfo
+     * @param transportationAndCar
      * @return
      */
-    List<Transportationinfo> queryByCondition(Transportationinfo transportationinfo);
+    List<TransportationAndCar> queryByCondition(TransportationAndCar transportationAndCar);
 }
 

@@ -1,13 +1,16 @@
 package com.cqu.pls.service;
 
 import com.cqu.pls.entity.Advertisementinfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
+import java.util.List;
 
 /**
  * (Advertisementinfo)表服务接口
  *
  * @author makejava
- * @since 2022-06-24 14:34:02
+ * @since 2022-06-29 16:29:36
  */
 public interface AdvertisementinfoService {
 
@@ -19,8 +22,21 @@ public interface AdvertisementinfoService {
      */
     Advertisementinfo queryById(Integer adId);
 
+    /**
+     * 分页查询
+     *
+     * @param advertisementinfo 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
+    Page<Advertisementinfo> queryByPage(Advertisementinfo advertisementinfo, PageRequest pageRequest);
 
-
+    /**
+     * 查询所有
+     * @param advertisementinfo
+     * @return
+     */
+    List<Advertisementinfo> queryAll(Advertisementinfo advertisementinfo);
     /**
      * 新增数据
      *

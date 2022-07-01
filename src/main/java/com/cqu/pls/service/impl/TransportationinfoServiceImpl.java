@@ -3,6 +3,7 @@ package com.cqu.pls.service.impl;
 import com.cqu.pls.entity.Transportationinfo;
 import com.cqu.pls.dao.TransportationinfoDao;
 import com.cqu.pls.service.TransportationinfoService;
+import com.cqu.pls.vo.TransportationAndCar;
 import org.springframework.stereotype.Service;
 
 
@@ -69,7 +70,7 @@ public class TransportationinfoServiceImpl implements TransportationinfoService 
     }
 
     @Override
-    public List<Transportationinfo> queryBycondition(Transportationinfo transportationinfo) {
-        return this.transportationinfoDao.queryByCondition(transportationinfo);
+    public List<TransportationAndCar> queryBycondition(TransportationAndCar transportationAndCar) {
+        return this.transportationinfoDao.queryByCondition(transportationAndCar);
     }
 }

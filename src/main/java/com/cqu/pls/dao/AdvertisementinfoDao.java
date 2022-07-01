@@ -2,14 +2,14 @@ package com.cqu.pls.dao;
 
 import com.cqu.pls.entity.Advertisementinfo;
 import org.apache.ibatis.annotations.Param;
-
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
  * (Advertisementinfo)表数据库访问层
  *
  * @author makejava
- * @since 2022-06-24 14:34:02
+ * @since 2022-06-29 16:29:33
  */
 public interface AdvertisementinfoDao {
 
@@ -28,8 +28,14 @@ public interface AdvertisementinfoDao {
      * @param pageable         分页对象
      * @return 对象列表
      */
-//    List<Advertisementinfo> queryAllByLimit(Advertisementinfo advertisementinfo, @Param("pageable") Pageable pageable);
+    List<Advertisementinfo> queryAllByLimit(Advertisementinfo advertisementinfo, @Param("pageable") Pageable pageable);
 
+    /**
+     * 查询所有
+     * @param advertisementinfo
+     * @return
+     */
+    List<Advertisementinfo> queryAll(Advertisementinfo advertisementinfo);
     /**
      * 统计总行数
      *

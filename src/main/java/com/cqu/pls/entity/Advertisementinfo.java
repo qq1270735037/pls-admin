@@ -2,24 +2,23 @@ package com.cqu.pls.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.Date;
 import java.io.Serializable;
 
 /**
  * (Advertisementinfo)实体类
  *
  * @author makejava
- * @since 2022-06-24 14:34:02
+ * @since 2022-06-29 16:29:34
  */
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Advertisementinfo implements Serializable {
-    private static final long serialVersionUID = 974213785492429353L;
+    private static final long serialVersionUID = 879635802462968646L;
     
     private Integer adId;
-    
-    private Integer employeeId;
     
     private String adContent;
     
@@ -27,9 +26,9 @@ public class Advertisementinfo implements Serializable {
     
     private String adAdviser;
     
-    private Date adStart;
+    private String adStart;
     
-    private Date adEnd;
+    private String adEnd;
     
     private String adImages;
 
@@ -40,14 +39,6 @@ public class Advertisementinfo implements Serializable {
 
     public void setAdId(Integer adId) {
         this.adId = adId;
-    }
-
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getAdContent() {
@@ -74,19 +65,19 @@ public class Advertisementinfo implements Serializable {
         this.adAdviser = adAdviser;
     }
 
-    public Date getAdStart() {
+    public String getAdStart() {
         return adStart;
     }
 
-    public void setAdStart(Date adStart) {
+    public void setAdStart(String adStart) {
         this.adStart = adStart;
     }
 
-    public Date getAdEnd() {
+    public String getAdEnd() {
         return adEnd;
     }
 
-    public void setAdEnd(Date adEnd) {
+    public void setAdEnd(String adEnd) {
         this.adEnd = adEnd;
     }
 
@@ -98,18 +89,5 @@ public class Advertisementinfo implements Serializable {
         this.adImages = adImages;
     }
 
-    @Override
-    public String toString() {
-        return "Advertisementinfo{" +
-                "adId=" + adId +
-                ", employeeId=" + employeeId +
-                ", adContent='" + adContent + '\'' +
-                ", adMoney='" + adMoney + '\'' +
-                ", adAdviser='" + adAdviser + '\'' +
-                ", adStart=" + adStart +
-                ", adEnd=" + adEnd +
-                ", adImages='" + adImages + '\'' +
-                '}';
-    }
 }
 
