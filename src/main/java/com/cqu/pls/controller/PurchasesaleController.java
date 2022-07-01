@@ -60,6 +60,10 @@ public class PurchasesaleController {
             return DataResult.err().setMessage("货物主表中查无此货物,请到货物主表添加后再新建购售信息");
 
         }
+        else if(!purchasesale.getMerchandiseName().equals(merchandiseinfo.getMerchandiseName())){
+            return DataResult.err().setMessage("该货物编号对应的货物名称出错");
+        }
+
 
         //当主表有相应货物编号
         if(purchasesale.getPurchasesaleType().equals("购入")){
