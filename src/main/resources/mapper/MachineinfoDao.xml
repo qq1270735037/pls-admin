@@ -59,7 +59,7 @@
                 and machine_id = #{machineId}
             </if>
             <if test="machineName != null and machineName != ''">
-                and machine_name = #{machineName}
+                and machine_name like concat("%",#{machineName},"%")
             </if>
             <if test="machineType != null and machineType != ''">
                 and machine_type = #{machineType}
