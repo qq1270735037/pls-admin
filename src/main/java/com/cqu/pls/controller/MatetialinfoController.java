@@ -79,6 +79,22 @@ public class MatetialinfoController {
      * 根据名字查询
      * @return
      */
+    @PostMapping("selectByType")
+    @ResponseBody
+    public DataResult selectByType(@RequestBody(required = false)Matetialinfo matetialinfo) {
+
+        Long total = matetialinfoService.selectByType(matetialinfo);
+
+//        System.out.println("*****************************");
+//        System.out.println(materialInfoDTO);
+
+        return DataResult.successByDatas(total);
+    }
+
+    /**
+     * 根据类型查询数量
+     * @return
+     */
     @PostMapping("selectByName")
     @ResponseBody
     public DataResult selectByName(@RequestBody(required = false)MaterialInfoDTO materialInfoDTO) {

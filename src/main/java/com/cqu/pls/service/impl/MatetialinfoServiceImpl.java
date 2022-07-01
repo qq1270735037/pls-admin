@@ -94,4 +94,9 @@ public class MatetialinfoServiceImpl implements MatetialinfoService {
     public Long selectByNamecount(Matetialinfo matetialinfo) {
         return this.matetialinfoDao.selectByNamecount(matetialinfo);
     }
+
+    @Override
+    public Long selectByType(Matetialinfo matetialinfo) {
+        return this.matetialinfoDao.selectByType(matetialinfo);
+    }
 }

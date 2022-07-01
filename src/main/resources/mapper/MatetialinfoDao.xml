@@ -156,5 +156,11 @@
         from MatetialInfo
         where material_name like concat('%',#{materialName},'%')
     </select>
+
+    <select id="selectByType" resultType="java.lang.Long">
+        select count(1)
+        from MatetialInfo
+        where materialtype_id = #{materialtypeId}
+    </select>
 </mapper>
 

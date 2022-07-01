@@ -86,5 +86,7 @@ public interface MatetialinfoDao {
     List<MaterialAndType> getMaterialAndTypeList(MaterialInfoDTO materialInfoDTO);
 
     Long selectByNamecount(Matetialinfo matetialinfo);
+
+    Long selectByType(Matetialinfo matetialinfo);
 }
 
