@@ -4,6 +4,7 @@ import com.cqu.pls.entity.Authority;
 import com.cqu.pls.entity.User;
 import com.cqu.pls.service.AuthorityService;
 import com.cqu.pls.service.UserService;
+import com.cqu.pls.utils.Md5Encoding;
 import com.cqu.pls.utils.result.DataResult;
 import com.cqu.pls.utils.result.code.Code;
 import com.cqu.pls.vo.UserVo;
@@ -33,6 +34,7 @@ public class loginController {
     public DataResult login(@RequestBody User user, HttpSession session){
         System.out.println("sessionId = " + session.getId());
         //1.查询用户是否存在
+        user.setUserPwd(Md5Encoding.md5FixSaltEncode(user.getUserPwd()));
         User loginUser = userService.loginUser(user);
         if(null == loginUser){//用户不存在
             return DataResult.errByErrCode(Code.LOGIN_NOT_EXIST);
@@ -63,3 +65,4 @@ public class loginController {
         return DataResult.succ();
     }
 }
+
