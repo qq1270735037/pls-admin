@@ -1,8 +1,10 @@
 package com.cqu.pls.controller;
 
 import com.cqu.pls.entity.Certificateinfo;
+import com.cqu.pls.entity.Employeeinfo;
 import com.cqu.pls.service.CertificateinfoService;
 
+import com.cqu.pls.service.EmployeeinfoService;
 import com.cqu.pls.utils.result.DataResult;
 import com.cqu.pls.utils.result.code.Code;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ public class CertificateinfoController {
      */
     @Resource
     private CertificateinfoService certificateinfoService;
+    @Resource
+    private EmployeeinfoService employeeinfoService;
 
 
 //    @GetMapping
@@ -53,6 +57,20 @@ public class CertificateinfoController {
      */
     @PostMapping("/add")
     public DataResult add(@RequestBody Certificateinfo certificateinfo) {
+
+        //查询失败不会报错
+//        try{
+//            employeeinfoService.queryById(certificateinfo.getEmployeeId()); //添加之前先去寻找主表中是否有相应的人员
+//        }catch (Exception e){
+//            return DataResult.err().setMessage("人员表中查无此人, 无法为其新增证件信息");
+//
+//        }
+
+        Employeeinfo employeeinfo= employeeinfoService.queryById(certificateinfo.getEmployeeId()); //添加之前先去寻找主表中是否有相应的人员
+        if(employeeinfo==null)  return DataResult.err().setMessage("人员表中查无此人, 无法为其新增证件信息");
+
+
+
 
         try{
             boolean b = certificateinfoService.insert(certificateinfo);
