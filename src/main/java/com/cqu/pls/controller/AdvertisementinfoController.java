@@ -29,18 +29,6 @@ public class AdvertisementinfoController {
     @Resource
     private AdvertisementinfoService advertisementinfoService;
 
-//    /**
-//     * 分页查询
-//     *
-//     * @param advertisementinfo 筛选条件
-//     * @param pageRequest      分页对象
-//     * @return 查询结果
-//     */
-//    @GetMapping
-//    public ResponseEntity<Page<Advertisementinfo>> queryByPage(Advertisementinfo advertisementinfo, PageRequest pageRequest) {
-//        return ResponseEntity.ok(this.advertisementinfoService.queryByPage(advertisementinfo, pageRequest));
-//    }
-
     /**
      *
      * @param ad 实体对象
@@ -74,24 +62,6 @@ public class AdvertisementinfoController {
         return DataResult.successByMessage("成功",
                 this.advertisementinfoService.insert(ad));
     }
-    @PostMapping("test")
-    public  void  t(MultipartFile file){
-        System.out.println("hhhhhh");
-    }
-//    @PostMapping("/insert")
-//    public void insertGoods(@RequestParam(value = "ad",required = false) String ad,
-//                                         @RequestParam(value = "file") MultipartFile file) {
-////        Advertisementinfo parseObject = JSON.parseObject(ad,Advertisementinfo.class);
-//        MinioUtil instance = MinioUtil.getInstance();
-////        String upLoadFile = instance.upLoadFile(file);
-////        parseObject.setAdImages(upLoadFile);
-////        this.advertisementinfoService.insert(parseObject);
-////        return resultMap.success().message("添加成功！");
-//        System.out.println("执行插入");
-////        System.out.println("广告："+parseObject);
-//        System.out.println(upLoadFile);
-////        return parseObject;
-//    }
     /**
      * 编辑数据
      *

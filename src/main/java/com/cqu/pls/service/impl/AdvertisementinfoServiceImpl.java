@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @since 2022-06-29 16:29:38
  */
 @Service("advertisementinfoService")
+@Transactional
 public class AdvertisementinfoServiceImpl implements AdvertisementinfoService {
     @Resource
     private AdvertisementinfoDao advertisementinfoDao;

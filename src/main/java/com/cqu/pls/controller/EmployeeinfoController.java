@@ -41,18 +41,6 @@ public class EmployeeinfoController {
      */
     @PostMapping("queryByPage")
     public DataResult queryByPage(@RequestBody(required = false) Employeeinfo employeeinfo) {
-//        ArrayList<EmployeeVo> employeeVos = new ArrayList<>();
-//        List<Employeeinfo> employeeinfos = this.employeeinfoService.queryByPage(employeeinfo);
-//        int size = employeeinfos.size();
-//
-//        for (Employeeinfo employeeinfo1 : employeeinfos) {
-//            String companyName = this.companyinfoService.queryById(employeeinfo1.getCompanyId()).getCompanyName();
-//            EmployeeVo employeeVo = new EmployeeVo();
-//            BeanUtils.copyProperties(employeeinfo1,employeeVo);
-//            employeeVo.setCompanyName(companyName);
-//            employeeVos.add(employeeVo);
-//        }
-//        System.out.println();
         List<EmployeeVo> employeeVos = this.employeeinfoService.queryEmployeeVo(employeeinfo);
         int size = employeeVos.size();
         return DataResult.successByTotalData(employeeVos,(long)size);

@@ -20,23 +20,20 @@ import  java.util.Date;
 @RestController
 @RequestMapping("fileupload")
 public class FileUploadController {
-    //    private final String storageUrl="http://159.75.38.129:9000";
-//    private final String storageAccessKey="jN0IHFLCIFltCDYI";
-//    private final String storageSecretKey="Be95DutMH0M3fyUVSzC9Kul0hnwSFCD1";
     SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
 
     @PostMapping("add")
     public String test(MultipartFile file, HttpServletRequest req) throws IOException {
         String format = sdf.format(new Date());
-        System.out.println();
+//        System.out.println();
         String realPath = req.getServletContext().getRealPath("/") + format;
-        System.out.println(realPath);
+//        System.out.println(realPath);
         File folder = new File(realPath);
         if(!folder.exists()){
             folder.mkdirs();
         }
         String name = file.getOriginalFilename();
-        System.out.println(file.getContentType());
+//        System.out.println(file.getContentType());
         String newName = UUID.randomUUID().toString();
         if(file.getContentType().equals("image/jpeg")){
 //            System.out.println("这是jpg");
@@ -44,12 +41,12 @@ public class FileUploadController {
         }else { //png图片
             newName += ".png";
         }
-        System.out.println("新的文件名");
-        System.out.println(folder);
-        System.out.println(newName);
+//        System.out.println("新的文件名");
+//        System.out.println(folder);
+//        System.out.println(newName);
         file.transferTo(new File(folder,newName));
         String url = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+format+newName;
-        System.out.println(url);
+//        System.out.println(url);
         return url;
     }
 }
