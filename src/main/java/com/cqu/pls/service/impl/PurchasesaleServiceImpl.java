@@ -23,6 +23,11 @@ public class PurchasesaleServiceImpl implements PurchasesaleService {
     private PurchasesaleDao purchasesaleDao;
 
     @Override
+    public List<Integer> preciseQueryMerchandiseIdByMerchandiseName(String mname) {
+        return purchasesaleDao.preciseQueryMerchandiseIdByMerchandiseName(mname);
+    }
+
+    @Override
     public Boolean addToMerchandiseInfo(Purchasesale purchasesale) {
         return purchasesaleDao.addToMerchandiseinfo(purchasesale)>0;
     }

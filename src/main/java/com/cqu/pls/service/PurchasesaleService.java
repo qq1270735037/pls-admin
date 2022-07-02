@@ -13,6 +13,8 @@ import java.util.List;
  * @since 2022-06-29 10:59:35
  */
 public interface PurchasesaleService {
+
+    List<Integer> preciseQueryMerchandiseIdByMerchandiseName(String mname);
     Boolean addToMerchandiseInfo(Purchasesale purchasesale);
     Boolean reduceToMerchandiseInfo(Purchasesale purchasesale);
     List<Purchasesale> queryOne(Purchasesale purchasesale);

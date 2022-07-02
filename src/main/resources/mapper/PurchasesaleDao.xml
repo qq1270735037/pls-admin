@@ -135,6 +135,9 @@
         update MerchandiseInfo set repository_count=repository_count-#{purchasesaleCount} where merchandise_id = #{merchandiseId}
     </update>
 
+    <select id="preciseQueryMerchandiseIdByMerchandiseName" resultType="int">
+        select merchandise_id from MerchandiseInfo where merchandise_name = #{mname}
+    </select>
 
 
 

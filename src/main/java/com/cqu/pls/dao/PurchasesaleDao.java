@@ -18,7 +18,7 @@ public interface PurchasesaleDao {
     int addToMerchandiseinfo(Purchasesale purchasesale);
     int reduceToMerchandiseinfo(Purchasesale purchasesale);
 
-
+    List<Integer> preciseQueryMerchandiseIdByMerchandiseName(@Param("mname")String mname); //这里参数映射不要映射错
 
     List<Purchasesale>  queryAll();
     List<Purchasesale> queryOne(Purchasesale purchasesale);

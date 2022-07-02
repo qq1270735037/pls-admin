@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.xml.crypto.Data;
+import java.util.List;
 
 /**
  * (Purchasesale)表控制层
@@ -35,6 +36,24 @@ public class PurchasesaleController {
      */
     @Resource
     private PurchasesaleService purchasesaleService;
+
+
+    @PostMapping("/preciseQuery")
+    public DataResult preciseQuery(@RequestBody Purchasesale purchasesale){
+        List<Integer> integers = purchasesaleService.preciseQueryMerchandiseIdByMerchandiseName(purchasesale.getMerchandiseName());
+        if(integers.size()>1){
+            return DataResult.err().setMessage("该货物名对应多个货物编号,请检查货物基本信息表");
+        }
+        else if(integers.size()==1){
+            int a = integers.get(0);
+            return DataResult.successByDatas(a);
+
+        }
+        else{
+            return DataResult.err().setMessage("查询不到货物编号");
+        }
+
+    }
 
     @GetMapping("/selectAll")
     public DataResult selectAll(){
