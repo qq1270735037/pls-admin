@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.FixinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Fixinfo">
+        <!--@Table FixInfo-->
+        <result property="fixId" column="fix_id" jdbcType="INTEGER"/>
+        <result property="carId" column="car_id" jdbcType="INTEGER"/>
+        <result property="fixStarttime" column="fix_starttime" jdbcType="TIMESTAMP"/>
+        <result property="fixEndtime" column="fix_endtime" jdbcType="TIMESTAMP"/>
+        <result property="fixName" column="fix_name" jdbcType="VARCHAR"/>
+        <result property="fixMoney" column="fix_money" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
+        from FixInfo
+        where fix_id = #{fixId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
+        from FixInfo
+        <where>
+            <if test="fixId != null">
+                and fix_id = #{fixId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="fixStarttime != null">
+                and fix_starttime = #{fixStarttime}
+            </if>
+            <if test="fixEndtime != null">
+                and fix_endtime = #{fixEndtime}
+            </if>
+            <if test="fixName != null and fixName != ''">
+                and fix_name = #{fixName}
+            </if>
+            <if test="fixMoney != null">
+                and fix_money = #{fixMoney}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
+        from pls.FixInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from FixInfo
+        <where>
+            <if test="fixId != null">
+                and fix_id = #{fixId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="fixStarttime != null">
+                and fix_starttime = #{fixStarttime}
+            </if>
+            <if test="fixEndtime != null">
+                and fix_endtime = #{fixEndtime}
+            </if>
+            <if test="fixName != null and fixName != ''">
+                and fix_name = #{fixName}
+            </if>
+            <if test="fixMoney != null">
+                and fix_money = #{fixMoney}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="fixId" useGeneratedKeys="true">
+        insert into FixInfo(car_id, fix_starttime, fix_endtime, fix_name, fix_money)
+        values (#{carId}, #{fixStarttime}, #{fixEndtime}, #{fixName}, #{fixMoney})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="fixId" useGeneratedKeys="true">
+        insert into FixInfo(car_id, fix_starttime, fix_endtime, fix_name, fix_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.carId}, #{entity.fixStarttime}, #{entity.fixEndtime}, #{entity.fixName}, #{entity.fixMoney})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="fixId" useGeneratedKeys="true">
+        insert into FixInfo(car_id, fix_starttime, fix_endtime, fix_name, fix_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.carId}, #{entity.fixStarttime}, #{entity.fixEndtime}, #{entity.fixName}, #{entity.fixMoney})
+        </foreach>
+        on duplicate key update
+        car_id = values(car_id),
+        fix_starttime = values(fix_starttime),
+        fix_endtime = values(fix_endtime),
+        fix_name = values(fix_name),
+        fix_money = values(fix_money)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update FixInfo
+        <set>
+            <if test="carId != null">
+                car_id = #{carId},
+            </if>
+            <if test="fixStarttime != null">
+                fix_starttime = #{fixStarttime},
+            </if>
+            <if test="fixEndtime != null">
+                fix_endtime = #{fixEndtime},
+            </if>
+            <if test="fixName != null and fixName != ''">
+                fix_name = #{fixName},
+            </if>
+            <if test="fixMoney != null">
+                fix_money = #{fixMoney},
+            </if>
+        </set>
+        where fix_id = #{fixId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from FixInfo where fix_id = #{fixId}
+    </delete>
+
+    <select id="qureyByName" resultMap="BaseResultMap">
+        select
+        fix_id, car_id, fix_starttime, fix_endtime, fix_name, fix_money
+        from FixInfo
+        <where>
+            <if test="fixName != null and fixName != ''">
+                and fix_name like concat('%',#{fixName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
+

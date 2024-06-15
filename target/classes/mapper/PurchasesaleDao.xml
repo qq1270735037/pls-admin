@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.PurchasesaleDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Purchasesale">
+        <!--@Table PurchaseSale-->
+        <result property="purchasesaleId" column="purchasesale_id" jdbcType="INTEGER"/>
+        <result property="purchasesaleType" column="purchasesale_type" jdbcType="VARCHAR"/>
+        <result property="purchasesalePrice" column="purchasesale_price" jdbcType="NUMERIC"/>
+        <result property="purchasesaleCount" column="purchasesale_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          *
+        from PurchaseSale
+        where purchasesale_id = #{purchasesaleId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          purchasesale_id, purchasesale_type, purchasesale_price, purchasesale_count
+        from PurchaseSale
+        <where>
+            <if test="purchasesaleId != null">
+                and purchasesale_id = #{purchasesaleId}
+            </if>
+            <if test="purchasesaleType != null and purchasesaleType != ''">
+                and purchasesale_type = #{purchasesaleType}
+            </if>
+            <if test="purchasesalePrice != null">
+                and purchasesale_price = #{purchasesalePrice}
+            </if>
+            <if test="purchasesaleCount != null">
+                and purchasesale_count = #{purchasesaleCount}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          *
+        from pls.PurchaseSale
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from PurchaseSale
+        <where>
+            <if test="purchasesaleId != null">
+                and purchasesale_id = #{purchasesaleId}
+            </if>
+            <if test="purchasesaleType != null and purchasesaleType != ''">
+                and purchasesale_type = #{purchasesaleType}
+            </if>
+            <if test="purchasesalePrice != null">
+                and purchasesale_price = #{purchasesalePrice}
+            </if>
+            <if test="purchasesaleCount != null">
+                and purchasesale_count = #{purchasesaleCount}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="purchasesaleId" useGeneratedKeys="true">
+        insert into PurchaseSale(purchasesale_type,purchasesale_price,purchasesale_count,merchandise_id,merchandise_name)
+        values (#{purchasesaleType}, #{purchasesalePrice}, #{purchasesaleCount},#{merchandiseId},#{merchandiseName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="purchasesaleId" useGeneratedKeys="true">
+        insert into PurchaseSale(purchasesale_type, purchasesale_price, purchasesale_count)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.purchasesaleType}, #{entity.purchasesalePrice}, #{entity.purchasesaleCount})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="purchasesaleId" useGeneratedKeys="true">
+        insert into PurchaseSale(purchasesale_type, purchasesale_price, purchasesale_count)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.purchasesaleType}, #{entity.purchasesalePrice}, #{entity.purchasesaleCount})
+        </foreach>
+        on duplicate key update
+        purchasesale_type = values(purchasesale_type),
+        purchasesale_price = values(purchasesale_price),
+        purchasesale_count = values(purchasesale_count)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update PurchaseSale
+        <set>
+            <if test="purchasesaleType != null and purchasesaleType != ''">
+                purchasesale_type = #{purchasesaleType},
+            </if>
+            <if test="purchasesalePrice != null">
+                purchasesale_price = #{purchasesalePrice},
+            </if>
+            <if test="purchasesaleCount != null">
+                purchasesale_count = #{purchasesaleCount},
+            </if>
+            <if test="merchandiseName!=null">
+            merchandise_name=#{merchandiseName},
+
+            </if>
+            <if test="merchandiseId!=null">
+            merchandise_id=#{merchandiseId}
+
+            </if>
+        </set>
+        where purchasesale_id = #{purchasesaleId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from PurchaseSale where purchasesale_id = #{purchasesaleId}
+    </delete>
+
+    <select id="queryOne" resultMap="BaseResultMap">
+        select * from PurchaseSale where merchandise_name like concat('%',#{merchandiseName},'%')
+    </select>
+
+
+    <update id="addToMerchandiseinfo" >
+        update MerchandiseInfo set repository_count = repository_count+ #{purchasesaleCount} where merchandise_id= #{merchandiseId}
+    </update>
+
+    <update id="reduceToMerchandiseinfo">
+        update MerchandiseInfo set repository_count=repository_count-#{purchasesaleCount} where merchandise_id = #{merchandiseId}
+    </update>
+
+    <select id="preciseQueryMerchandiseIdByMerchandiseName" resultType="int">
+        select merchandise_id from MerchandiseInfo where merchandise_name = #{mname}
+    </select>
+
+
+
+
+
+
+
+</mapper>
+

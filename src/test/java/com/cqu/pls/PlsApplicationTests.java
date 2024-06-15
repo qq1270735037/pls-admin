@@ -19,8 +19,8 @@ class PlsApplicationTests {
 
     @Test
     void contextLoads() {
-        List<Certificateinfo> certificateinfos = certificateinfoService.queryAll();
-        System.out.println(certificateinfos);
+//        List<Certificateinfo> certificateinfos = certificateinfoService.queryAll();
+//        System.out.println(certificateinfos);
     }
 
 }

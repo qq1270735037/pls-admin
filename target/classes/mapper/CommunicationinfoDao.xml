@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.CommunicationinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Communicationinfo">
+        <!--@Table CommunicationInfo-->
+        <result property="communicationId" column="communication_id" jdbcType="INTEGER"/>
+        <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+        <result property="communicationTitle" column="communication_title" jdbcType="VARCHAR"/>
+        <result property="communicationContext" column="communication_context" jdbcType="VARCHAR"/>
+        <result property="communicationTime" column="communication_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          communication_id, employee_id, communication_title, communication_context, communication_time
+        from CommunicationInfo
+        where communication_id = #{communicationId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          communication_id, employee_id, communication_title, communication_context, communication_time
+        from CommunicationInfo
+        <where>
+            <if test="communicationId != null">
+                and communication_id = #{communicationId}
+            </if>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="communicationTitle != null and communicationTitle != ''">
+                and communication_title = #{communicationTitle}
+            </if>
+            <if test="communicationContext != null and communicationContext != ''">
+                and communication_context = #{communicationContext}
+            </if>
+            <if test="communicationTime != null">
+                and communication_time = #{communicationTime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          communication_id, employee_id, communication_title, communication_context, communication_time
+        from pls.CommunicationInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from CommunicationInfo
+        <where>
+            <if test="communicationId != null">
+                and communication_id = #{communicationId}
+            </if>
+            <if test="employeeId != null">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="communicationTitle != null and communicationTitle != ''">
+                and communication_title = #{communicationTitle}
+            </if>
+            <if test="communicationContext != null and communicationContext != ''">
+                and communication_context = #{communicationContext}
+            </if>
+            <if test="communicationTime != null">
+                and communication_time = #{communicationTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="communicationId" useGeneratedKeys="true">
+        insert into CommunicationInfo(employee_id, communication_title, communication_context, communication_time)
+        values (#{employeeId}, #{communicationTitle}, #{communicationContext}, #{communicationTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="communicationId" useGeneratedKeys="true">
+        insert into CommunicationInfo(employee_id, communication_title, communication_context, communication_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.employeeId}, #{entity.communicationTitle}, #{entity.communicationContext}, #{entity.communicationTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="communicationId" useGeneratedKeys="true">
+        insert into CommunicationInfo(employee_id, communication_title, communication_context, communication_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.employeeId}, #{entity.communicationTitle}, #{entity.communicationContext}, #{entity.communicationTime})
+        </foreach>
+        on duplicate key update
+        employee_id = values(employee_id),
+        communication_title = values(communication_title),
+        communication_context = values(communication_context),
+        communication_time = values(communication_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update CommunicationInfo
+        <set>
+            <if test="employeeId != null">
+                employee_id = #{employeeId},
+            </if>
+            <if test="communicationTitle != null and communicationTitle != ''">
+                communication_title = #{communicationTitle},
+            </if>
+            <if test="communicationContext != null and communicationContext != ''">
+                communication_context = #{communicationContext},
+            </if>
+            <if test="communicationTime != null">
+                communication_time = #{communicationTime},
+            </if>
+        </set>
+        where communication_id = #{communicationId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from CommunicationInfo where communication_id = #{communicationId}
+    </delete>
+
+    <!--  条件查询  -->
+    <select id="queryByCondition" resultType="com.cqu.pls.vo.CommunicationAndEmployee">
+        select
+        communication_id, CommunicationInfo.employee_id, communication_title, communication_context, communication_time,employee_name
+        from CommunicationInfo,EmployeeInfo
+        where CommunicationInfo.employee_id = EmployeeInfo.employee_id
+            <if test="communicationId != null">
+                and communication_id = #{communicationId}
+            </if>
+<!--            <if test="employeeId != null">-->
+<!--                and employee_id = #{employeeId}-->
+<!--            </if>-->
+            <if test="communicationTitle != null and communicationTitle != ''">
+                and communication_title like concat("%",#{communicationTitle},"%")
+            </if>
+            <if test="communicationContext != null and communicationContext != ''">
+                and communication_context = #{communicationContext}
+            </if>
+            <if test="communicationTime != null">
+                and communication_time = #{communicationTime}
+            </if>
+
+    </select>
+</mapper>
+

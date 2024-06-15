@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.CarinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Carinfo">
+        <!--@Table CarInfo-->
+        <result property="carId" column="car_id" jdbcType="INTEGER"/>
+        <result property="carNumber" column="car_number" jdbcType="VARCHAR"/>
+        <result property="carStyle" column="car_style" jdbcType="VARCHAR"/>
+        <result property="carLoad" column="car_load" jdbcType="NUMERIC"/>
+        <result property="carMileage" column="car_mileage" jdbcType="NUMERIC"/>
+        <result property="carBrand" column="car_brand" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from CarInfo
+        where car_id = #{carId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from CarInfo
+        <where>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and car_number = #{carNumber}
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                and car_style = #{carStyle}
+            </if>
+            <if test="carLoad != null">
+                and car_load = #{carLoad}
+            </if>
+            <if test="carMileage != null">
+                and car_mileage = #{carMileage}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                and car_brand = #{carBrand}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from pls.CarInfo
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from CarInfo
+        <where>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and car_number like concat("%",#{carNumber},"%")
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                and car_style = #{carStyle}
+            </if>
+            <if test="carLoad != null">
+                and car_load = #{carLoad}
+            </if>
+            <if test="carMileage != null">
+                and car_mileage = #{carMileage}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                and car_brand = #{carBrand}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="carId" useGeneratedKeys="true">
+        insert into CarInfo(car_number, car_style, car_load, car_mileage, car_brand)
+        values (#{carNumber}, #{carStyle}, #{carLoad}, #{carMileage}, #{carBrand})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="carId" useGeneratedKeys="true">
+        insert into CarInfo(car_number, car_style, car_load, car_mileage, car_brand)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.carNumber}, #{entity.carStyle}, #{entity.carLoad}, #{entity.carMileage}, #{entity.carBrand})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="carId" useGeneratedKeys="true">
+        insert into CarInfo(car_number, car_style, car_load, car_mileage, car_brand)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.carNumber}, #{entity.carStyle}, #{entity.carLoad}, #{entity.carMileage}, #{entity.carBrand})
+        </foreach>
+        on duplicate key update
+        car_number = values(car_number),
+        car_style = values(car_style),
+        car_load = values(car_load),
+        car_mileage = values(car_mileage),
+        car_brand = values(car_brand)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update CarInfo
+        <set>
+            <if test="carNumber != null and carNumber != ''">
+                car_number = #{carNumber},
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                car_style = #{carStyle},
+            </if>
+            <if test="carLoad != null">
+                car_load = #{carLoad},
+            </if>
+            <if test="carMileage != null">
+                car_mileage = #{carMileage},
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                car_brand = #{carBrand},
+            </if>
+        </set>
+        where car_id = #{carId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from CarInfo where car_id = #{carId}
+    </delete>
+
+    <select id="queryByCondition" resultMap="BaseResultMap">
+        select
+        car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from CarInfo
+        <where>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and car_number like concat("%",#{carNumber},"%")
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                and car_style like concat("%",#{carStyle},"%")
+            </if>
+            <if test="carLoad != null">
+                and car_load  like concat("%",#{carLoad},"%")
+            </if>
+            <if test="carMileage != null">
+                and car_mileage = #{carMileage}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                and car_brand = #{carBrand}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByPage" resultMap="BaseResultMap" parameterType="com.cqu.pls.dto.CarinfoDTO" >
+        select
+        car_id, car_number, car_style, car_load, car_mileage, car_brand
+        from CarInfo
+        <where>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carNumber != null and carNumber != ''">
+                and car_number like concat("%",#{carNumber},"%")
+            </if>
+            <if test="carStyle != null and carStyle != ''">
+                and car_style like concat("%",#{carStyle},"%")
+            </if>
+            <if test="carLoad != null">
+                and car_load  like concat("%",#{carLoad},"%")
+            </if>
+            <if test="carMileage != null">
+                and car_mileage = #{carMileage}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                and car_brand = #{carBrand}
+            </if>
+        </where>
+        order by car_id asc limit #{page}, #{limit}
+    </select>
+</mapper>
+

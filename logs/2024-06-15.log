@@ -1,0 +1,25 @@
+[INFO]2024-06-15 19:32:55,141 - Starting PlsApplication using Java 1.8.0_301 on DESKTOP-D137OBD with PID 17684 (C:\Users\DAGUAISHOU\Documents\GitHub\pls-admin\target\classes started by DAGUAISHOU in C:\Users\DAGUAISHOU\Documents\GitHub\pls-admin)
+[INFO]2024-06-15 19:32:55,142 - No active profile set, falling back to 1 default profile: "default"
+[INFO]2024-06-15 19:32:55,200 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO]2024-06-15 19:32:55,200 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO]2024-06-15 19:32:56,781 - Tomcat initialized with port(s): 8080 (http)
+[INFO]2024-06-15 19:32:56,782 - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+[INFO]2024-06-15 19:32:56,782 - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+[INFO]2024-06-15 19:32:56,782 - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+[INFO]2024-06-15 19:32:56,787 - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+[INFO]2024-06-15 19:32:56,795 - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO]2024-06-15 19:32:56,796 - Starting service [Tomcat]
+[INFO]2024-06-15 19:32:56,796 - Starting Servlet engine: [Apache Tomcat/9.0.64]
+[INFO]2024-06-15 19:32:56,933 - Initializing Spring embedded WebApplicationContext
+[INFO]2024-06-15 19:32:56,933 - Root WebApplicationContext: initialization completed in 1731 ms
+[INFO]2024-06-15 19:32:58,145 - LiveReload server is running on port 35729
+[INFO]2024-06-15 19:32:58,162 - Starting ProtocolHandler ["http-nio-8080"]
+[INFO]2024-06-15 19:32:58,182 - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO]2024-06-15 19:32:58,209 - Started PlsApplication in 3.63 seconds (JVM running for 6.836)
+[INFO]2024-06-15 19:33:04,255 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO]2024-06-15 19:33:04,255 - Initializing Servlet 'dispatcherServlet'
+[INFO]2024-06-15 19:33:04,257 - Completed initialization in 2 ms
+[INFO]2024-06-15 19:33:04,325 - HikariPool-1 - Starting...
+[INFO]2024-06-15 19:33:04,477 - HikariPool-1 - Start completed.
+[INFO]2024-06-15 19:46:43,305 - HikariPool-1 - Shutdown initiated...
+[INFO]2024-06-15 19:46:43,314 - HikariPool-1 - Shutdown completed.

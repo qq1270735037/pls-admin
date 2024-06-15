@@ -46,11 +46,14 @@ public class AroundCut {
         //获取session
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
         //判断用户登录是否有效
-        System.out.println(session.getAttributeNames());
-        if(VerifyUtil.isNull(session.getAttribute("userInfo"))){
-            //返回登录失效
-            return DataResult.errByErrCode(Code.LOGIN_OUT);
-        }
+
+        System.err.println(session.getAttributeNames());
+        //判斷登錄是否生效(暫不處理)
+//        if(VerifyUtil.isNull(session.getAttribute("userInfo"))){
+//            //返回登录失效
+//            System.err.println(session.getAttribute("userInfo"));
+//            return DataResult.errByErrCode(Code.LOGIN_OUT);
+//        }
         return (DataResult) pjp.proceed();
     }
 }

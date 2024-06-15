@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.CarchangeDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Carchange">
+        <!--@Table CarChange-->
+        <result property="carChangeId" column="car_change_id" jdbcType="INTEGER"/>
+        <result property="carId" column="car_id" jdbcType="INTEGER"/>
+        <result property="carChangeType" column="car_change_type" jdbcType="VARCHAR"/>
+        <result property="operation" column="operation" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          car_change_id, car_id, car_change_type, operation
+        from CarChange
+        where car_change_id = #{carChangeId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          car_change_id, car_id, car_change_type, operation
+        from CarChange
+        <where>
+            <if test="carChangeId != null">
+                and car_change_id = #{carChangeId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carChangeType != null and carChangeType != ''">
+                and car_change_type = #{carChangeType}
+            </if>
+            <if test="operation != null">
+                and operation = #{operation}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          car_change_id, car_id, car_change_type, operation
+        from pls.CarChange
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from CarChange
+        <where>
+            <if test="carChangeId != null">
+                and car_change_id = #{carChangeId}
+            </if>
+            <if test="carId != null">
+                and car_id = #{carId}
+            </if>
+            <if test="carChangeType != null and carChangeType != ''">
+                and car_change_type = #{carChangeType}
+            </if>
+            <if test="operation != null">
+                and operation = #{operation}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="carChangeId" useGeneratedKeys="true">
+        insert into CarChange(car_id, car_change_type, operation)
+        values (#{carId}, #{carChangeType}, #{operation})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="carChangeId" useGeneratedKeys="true">
+        insert into CarChange(car_id, car_change_type, operation)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.carId}, #{entity.carChangeType}, #{entity.operation})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="carChangeId" useGeneratedKeys="true">
+        insert into CarChange(car_id, car_change_type, operation)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.carId}, #{entity.carChangeType}, #{entity.operation})
+        </foreach>
+        on duplicate key update
+        car_id = values(car_id),
+        car_change_type = values(car_change_type),
+        operation = values(operation)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update CarChange
+        <set>
+            <if test="carId != null">
+                car_id = #{carId},
+            </if>
+            <if test="carChangeType != null and carChangeType != ''">
+                car_change_type = #{carChangeType},
+            </if>
+            <if test="operation != null">
+                operation = #{operation},
+            </if>
+        </set>
+        where car_change_id = #{carChangeId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from CarChange where car_change_id = #{carChangeId}
+    </delete>
+
+    <select id="queryByOperation" resultMap="BaseResultMap">
+        select
+        car_change_id, car_id, car_change_type, operation
+        from CarChange
+        <where>
+            <if test="operation != null">
+                and operation = #{operation}
+            </if>
+        </where>
+    </select>
+</mapper>
+

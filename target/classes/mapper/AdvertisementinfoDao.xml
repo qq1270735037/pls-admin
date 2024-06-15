@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.pls.dao.AdvertisementinfoDao">
+
+    <resultMap id="BaseResultMap" type="com.cqu.pls.entity.Advertisementinfo">
+        <!--@Table AdvertisementInfo-->
+        <result property="adId" column="ad_id" jdbcType="INTEGER"/>
+        <result property="adContent" column="ad_content" jdbcType="VARCHAR"/>
+        <result property="adMoney" column="ad_money" jdbcType="VARCHAR"/>
+        <result property="adAdviser" column="ad_adviser" jdbcType="VARCHAR"/>
+        <result property="adStart" column="ad_start" jdbcType="VARCHAR"/>
+        <result property="adEnd" column="ad_end" jdbcType="VARCHAR"/>
+        <result property="adImages" column="ad_images" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+        from AdvertisementInfo
+        where ad_id = #{adId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+        from AdvertisementInfo
+        <where>
+            <if test="adId != null">
+                and ad_id = #{adId}
+            </if>
+            <if test="adContent != null and adContent != ''">
+                and ad_content = #{adContent}
+            </if>
+            <if test="adMoney != null and adMoney != ''">
+                and ad_money = #{adMoney}
+            </if>
+            <if test="adAdviser != null and adAdviser != ''">
+                and ad_adviser = #{adAdviser}
+            </if>
+            <if test="adStart != null and adStart != ''">
+                and ad_start = #{adStart}
+            </if>
+            <if test="adEnd != null and adEnd != ''">
+                and ad_end = #{adEnd}
+            </if>
+            <if test="adImages != null and adImages != ''">
+                and ad_images = #{adImages}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          ad_id, ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images
+        from AdvertisementInfo
+        <where>
+            <if test="adId != null">
+                and ad_id = #{adId}
+            </if>
+            <if test="adContent != null and adContent != ''">
+                and ad_content like concat("%", #{adContent},"%")
+            </if>
+            <if test="adMoney != null and adMoney != ''">
+                and ad_money = #{adMoney}
+            </if>
+            <if test="adAdviser != null and adAdviser != ''">
+                and ad_adviser = #{adAdviser}
+            </if>
+            <if test="adStart != null and adStart != ''">
+                and ad_start = #{adStart}
+            </if>
+            <if test="adEnd != null and adEnd != ''">
+                and ad_end = #{adEnd}
+            </if>
+            <if test="adImages != null and adImages != ''">
+                and ad_images = #{adImages}
+            </if>
+        </where>
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from AdvertisementInfo
+        <where>
+            <if test="adId != null">
+                and ad_id = #{adId}
+            </if>
+            <if test="adContent != null and adContent != ''">
+                and ad_content = #{adContent}
+            </if>
+            <if test="adMoney != null and adMoney != ''">
+                and ad_money = #{adMoney}
+            </if>
+            <if test="adAdviser != null and adAdviser != ''">
+                and ad_adviser = #{adAdviser}
+            </if>
+            <if test="adStart != null and adStart != ''">
+                and ad_start = #{adStart}
+            </if>
+            <if test="adEnd != null and adEnd != ''">
+                and ad_end = #{adEnd}
+            </if>
+            <if test="adImages != null and adImages != ''">
+                and ad_images = #{adImages}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="adId" useGeneratedKeys="true">
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        values (#{adContent}, #{adMoney}, #{adAdviser}, #{adStart}, #{adEnd}, #{adImages})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="adId" useGeneratedKeys="true">
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="adId" useGeneratedKeys="true">
+        insert into AdvertisementInfo(ad_content, ad_money, ad_adviser, ad_start, ad_end, ad_images)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.adContent}, #{entity.adMoney}, #{entity.adAdviser}, #{entity.adStart}, #{entity.adEnd}, #{entity.adImages})
+        </foreach>
+        on duplicate key update
+        ad_content = values(ad_content),
+        ad_money = values(ad_money),
+        ad_adviser = values(ad_adviser),
+        ad_start = values(ad_start),
+        ad_end = values(ad_end),
+        ad_images = values(ad_images)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update AdvertisementInfo
+        <set>
+            <if test="adContent != null and adContent != ''">
+                ad_content = #{adContent},
+            </if>
+            <if test="adMoney != null and adMoney != ''">
+                ad_money = #{adMoney},
+            </if>
+            <if test="adAdviser != null and adAdviser != ''">
+                ad_adviser = #{adAdviser},
+            </if>
+            <if test="adStart != null and adStart != ''">
+                ad_start = #{adStart},
+            </if>
+            <if test="adEnd != null and adEnd != ''">
+                ad_end = #{adEnd},
+            </if>
+            <if test="adImages != null and adImages != ''">
+                ad_images = #{adImages},
+            </if>
+        </set>
+        where ad_id = #{adId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from AdvertisementInfo where ad_id = #{adId}
+    </delete>
+
+</mapper>
+
